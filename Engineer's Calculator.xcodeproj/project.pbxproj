@@ -7,19 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		475368721F49D25600F0DFBC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475368711F49D25600F0DFBC /* WebView.swift */; };
 		4760D45B1F49ADD20001CAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */; };
 		4760D45D1F49ADD20001CAA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45C1F49ADD20001CAA2 /* ViewController.swift */; };
 		4760D45F1F49ADD20001CAA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4760D45E1F49ADD20001CAA2 /* Assets.xcassets */; };
 		4760D4621F49ADD20001CAA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4760D4601F49ADD20001CAA2 /* Main.storyboard */; };
+		4760D46A1F49C1440001CAA2 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D4691F49C1440001CAA2 /* MainController.swift */; };
+		478AE1D31F4ADB3C004847B5 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AE1D21F4ADB3C004847B5 /* ButtonStyle.swift */; };
+		478AE1DD1F4B0115004847B5 /* SYFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 478AE1DC1F4B0115004847B5 /* SYFlatButton.m */; };
+		478AE1E01F4B2C2F004847B5 /* LetterPadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AE1DF1F4B2C2F004847B5 /* LetterPadController.swift */; };
+		478AE1E31F4B3180004847B5 /* DigitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AE1E11F4B3180004847B5 /* DigitController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		475368711F49D25600F0DFBC /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		4760D4571F49ADD20001CAA2 /* Engineer's Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Engineer's Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4760D45C1F49ADD20001CAA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4760D45E1F49ADD20001CAA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4760D4611F49ADD20001CAA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4760D4631F49ADD20001CAA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4760D4691F49C1440001CAA2 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		478AE1D21F4ADB3C004847B5 /* ButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		478AE1DA1F4B0115004847B5 /* Engineer's Calculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Engineer's Calculator-Bridging-Header.h"; sourceTree = "<group>"; };
+		478AE1DB1F4B0115004847B5 /* SYFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYFlatButton.h; sourceTree = "<group>"; };
+		478AE1DC1F4B0115004847B5 /* SYFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYFlatButton.m; sourceTree = "<group>"; };
+		478AE1DF1F4B2C2F004847B5 /* LetterPadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterPadController.swift; sourceTree = "<group>"; };
+		478AE1E11F4B3180004847B5 /* DigitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +66,19 @@
 		4760D4591F49ADD20001CAA2 /* Engineer's Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				478AE1D21F4ADB3C004847B5 /* ButtonStyle.swift */,
 				4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */,
 				4760D45C1F49ADD20001CAA2 /* ViewController.swift */,
 				4760D45E1F49ADD20001CAA2 /* Assets.xcassets */,
 				4760D4601F49ADD20001CAA2 /* Main.storyboard */,
 				4760D4631F49ADD20001CAA2 /* Info.plist */,
+				478AE1DF1F4B2C2F004847B5 /* LetterPadController.swift */,
+				478AE1E11F4B3180004847B5 /* DigitController.swift */,
+				4760D4691F49C1440001CAA2 /* MainController.swift */,
+				475368711F49D25600F0DFBC /* WebView.swift */,
+				478AE1DB1F4B0115004847B5 /* SYFlatButton.h */,
+				478AE1DC1F4B0115004847B5 /* SYFlatButton.m */,
+				478AE1DA1F4B0115004847B5 /* Engineer's Calculator-Bridging-Header.h */,
 			);
 			path = "Engineer's Calculator";
 			sourceTree = "<group>";
@@ -94,6 +116,7 @@
 					4760D4561F49ADD20001CAA2 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 6389FT2N69;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,6 +157,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4760D45D1F49ADD20001CAA2 /* ViewController.swift in Sources */,
+				478AE1E01F4B2C2F004847B5 /* LetterPadController.swift in Sources */,
+				475368721F49D25600F0DFBC /* WebView.swift in Sources */,
+				4760D46A1F49C1440001CAA2 /* MainController.swift in Sources */,
+				478AE1DD1F4B0115004847B5 /* SYFlatButton.m in Sources */,
+				478AE1E31F4B3180004847B5 /* DigitController.swift in Sources */,
+				478AE1D31F4ADB3C004847B5 /* ButtonStyle.swift in Sources */,
 				4760D45B1F49ADD20001CAA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,12 +277,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6389FT2N69;
 				INFOPLIST_FILE = "Engineer's Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.c-inspirations.Engineer-s-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Engineer's Calculator/Engineer's Calculator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -262,12 +295,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6389FT2N69;
 				INFOPLIST_FILE = "Engineer's Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.c-inspirations.Engineer-s-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Engineer's Calculator/Engineer's Calculator-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -291,6 +327,7 @@
 				4760D4681F49ADD20001CAA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
