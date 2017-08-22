@@ -76,6 +76,7 @@ class ViewController: NSViewController, WKUIDelegate {
     var equation = ""
     var result = ""
     var keypad = 0
+    var radix = 10
     var bits = 32 {
         didSet {
             digitsDisplay.setLabel("Bits: \(digits)", forSegment: 0)
@@ -105,9 +106,22 @@ class ViewController: NSViewController, WKUIDelegate {
         default: expButton.title = "99"
         }
     }
+    
+    func setButton(_ button: SYFlatButton, label: String, color: NSColor, enabled: Bool) {
+        button.title = label
+        button.backgroundNormalColor = color
+        button.isEnabled = enabled
+    }
 
     @IBAction func radixChanged(_ sender: NSSegmentedControl) {
         if keypad == 2 { setFFButton() }
+        switch sender.integerValue {
+        case 0: radix = 2
+        case 1: radix = 8
+        case 2: radix = 10
+        case 3: radix = 16
+        default: radix = 10
+        }
     }
     
     func setKeypadLabels(_ mode: Int) {
@@ -116,15 +130,15 @@ class ViewController: NSViewController, WKUIDelegate {
         numberModeControl.isEnabled = true
         switch mode {
         case 0: // math mode
-            aButton.title = "→rθ"; aButton.backgroundNormalColor = functionColour
+            setButton(aButton, label: "→rθ", color: functionColour, enabled: true)
             toiButton.title = "→𝒊"
-            bButton.title = ">"; bButton.backgroundNormalColor = functionColour
-            cButton.title = "<"; cButton.backgroundNormalColor = functionColour
-            dButton.title = "≥"; dButton.backgroundNormalColor = functionColour
+            setButton(bButton, label: ">", color: functionColour, enabled: true)
+            setButton(cButton, label: "<", color: functionColour, enabled: true)
+            setButton(dButton, label: "≥", color: functionColour, enabled: true)
             eButton.title = "≤"
             fButton.title = "≠"
-            pmButton.title = "⁺⁄-"; pmButton.backgroundNormalColor = functionColour
-            percentButton.title = "%"; percentButton.backgroundNormalColor = functionColour
+            setButton(pmButton, label: "⁺⁄-", color: functionColour, enabled: true)
+            setButton(percentButton, label: "%", color: functionColour, enabled: true)
             dpButton.title = "."
             expButton.title = "EE"
             sinhButton.title = "sinh"
@@ -149,13 +163,13 @@ class ViewController: NSViewController, WKUIDelegate {
             digits += 0  // refresh digits display
         case 1: break
         default: // programmer mode
-            aButton.title = "A"; aButton.backgroundNormalColor = numberColour
+            setButton(aButton, label: "A", color: numberColour, enabled: radix > 10)
+            setButton(bButton, label: "B", color: numberColour, enabled: radix > 11)
+            setButton(cButton, label: "C", color: numberColour, enabled: radix > 12)
+            setButton(dButton, label: "D", color: numberColour, enabled: radix > 13)
+            setButton(pmButton, label: "E", color: numberColour, enabled: radix > 14)
+            setButton(percentButton, label: "F", color: numberColour, enabled: radix > 15)
             toiButton.title = "mod"
-            bButton.title = "B"; bButton.backgroundNormalColor = numberColour
-            cButton.title = "C"; cButton.backgroundNormalColor = numberColour
-            dButton.title = "D"; dButton.backgroundNormalColor = numberColour
-            pmButton.title = "E"; pmButton.backgroundNormalColor = numberColour
-            percentButton.title = "F"; percentButton.backgroundNormalColor = numberColour
             dpButton.title = "00"
             setFFButton()
             sinhButton.title = "and"
