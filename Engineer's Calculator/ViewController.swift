@@ -15,19 +15,26 @@ class ViewController: NSViewController, WKUIDelegate {
     @IBOutlet weak var bButton: SYFlatButton!
     @IBOutlet weak var cButton: SYFlatButton!
     @IBOutlet weak var dButton: SYFlatButton!
-    @IBOutlet weak var eButton: SYFlatButton!
-    @IBOutlet weak var fButton: SYFlatButton!
+    @IBOutlet weak var leButton: SYFlatButton!
+    @IBOutlet weak var neButton: SYFlatButton!
     @IBOutlet weak var dpButton: SYFlatButton!
     @IBOutlet weak var expButton: SYFlatButton!
     @IBOutlet weak var pmButton: SYFlatButton!
     @IBOutlet weak var percentButton: SYFlatButton!
     
-    @IBOutlet weak var zeroButton: SYFlatButton! {
+    @IBOutlet weak var twoButton: SYFlatButton! {
         didSet {
             // pick up this colour
-            numberColour = zeroButton.backgroundNormalColor
+            numberColour = twoButton.backgroundNormalColor
         }
     }
+    @IBOutlet weak var threeButton: SYFlatButton!
+    @IBOutlet weak var fourButton: SYFlatButton!
+    @IBOutlet weak var fiveButton: SYFlatButton!
+    @IBOutlet weak var sixButton: SYFlatButton!
+    @IBOutlet weak var sevenButton: SYFlatButton!
+    @IBOutlet weak var eightButton: SYFlatButton!
+    @IBOutlet weak var nineButton: SYFlatButton!
     
     @IBOutlet weak var sinhButton: SYFlatButton! {
         didSet {
@@ -79,7 +86,7 @@ class ViewController: NSViewController, WKUIDelegate {
     var radix = 10
     var bits = 32 {
         didSet {
-            digitsDisplay.setLabel("Bits: \(digits)", forSegment: 0)
+            digitsDisplay.setLabel("Bits: \(bits)", forSegment: 0)
         }
     }
     var digits = 25 {
@@ -110,7 +117,31 @@ class ViewController: NSViewController, WKUIDelegate {
     func setButton(_ button: SYFlatButton, label: String, color: NSColor, enabled: Bool) {
         button.title = label
         button.backgroundNormalColor = color
+        if !enabled {
+            button.imageNormalColor = NSColor.gray
+            button.titleNormalColor = NSColor.gray
+        } else {
+            button.imageNormalColor = NSColor.black
+            button.titleNormalColor = NSColor.black
+        }
         button.isEnabled = enabled
+    }
+    
+    func enableDigits() {
+        setButton(twoButton,   label: "2", color: numberColour, enabled: radix > 2)
+        setButton(threeButton, label: "3", color: numberColour, enabled: radix > 3)
+        setButton(fourButton,  label: "4", color: numberColour, enabled: radix > 4)
+        setButton(fiveButton,  label: "5", color: numberColour, enabled: radix > 5)
+        setButton(sixButton,   label: "6", color: numberColour, enabled: radix > 6)
+        setButton(sevenButton, label: "7", color: numberColour, enabled: radix > 7)
+        setButton(eightButton, label: "8", color: numberColour, enabled: radix > 8)
+        setButton(nineButton,  label: "9", color: numberColour, enabled: radix > 9)
+        setButton(aButton,     label: "A", color: numberColour, enabled: radix > 10)
+        setButton(bButton,     label: "B", color: numberColour, enabled: radix > 11)
+        setButton(cButton,     label: "C", color: numberColour, enabled: radix > 12)
+        setButton(dButton,     label: "D", color: numberColour, enabled: radix > 13)
+        setButton(pmButton,    label: "E", color: numberColour, enabled: radix > 14)
+        setButton(percentButton, label: "F", color: numberColour, enabled: radix > 15)
     }
 
     @IBAction func radixChanged(_ sender: NSSegmentedControl) {
@@ -122,6 +153,7 @@ class ViewController: NSViewController, WKUIDelegate {
         case 3: radix = 16
         default: radix = 10
         }
+        enableDigits()
     }
     
     func setKeypadLabels(_ mode: Int) {
@@ -130,16 +162,18 @@ class ViewController: NSViewController, WKUIDelegate {
         numberModeControl.isEnabled = true
         switch mode {
         case 0: // math mode
+            radix = 10
+            enableDigits()
             setButton(aButton, label: "→rθ", color: functionColour, enabled: true)
-            toiButton.title = "→𝒊"
             setButton(bButton, label: ">", color: functionColour, enabled: true)
             setButton(cButton, label: "<", color: functionColour, enabled: true)
             setButton(dButton, label: "≥", color: functionColour, enabled: true)
-            eButton.title = "≤"
-            fButton.title = "≠"
             setButton(pmButton, label: "⁺⁄-", color: functionColour, enabled: true)
             setButton(percentButton, label: "%", color: functionColour, enabled: true)
+            toiButton.title = "→𝒊"
             dpButton.title = "."
+            leButton.title = "≤"
+            neButton.title = "≠"
             expButton.title = "EE"
             sinhButton.title = "sinh"
             coshButton.title = "cosh"
@@ -152,6 +186,7 @@ class ViewController: NSViewController, WKUIDelegate {
             iButton.title = "𝒊"
             exButton.title = "𝒆"
             piButton.title = "𝛑"
+            etoxButton.image = NSImage(named: "powerOf"); etoxButton.title = ""
             lnButton.image = NSImage(named: "ln"); lnButton.title = ""
             logyButton.image = NSImage(named: "logy"); logyButton.title = ""
             asinhButton.image = NSImage(named: "asinh"); asinhButton.title = ""
@@ -163,26 +198,24 @@ class ViewController: NSViewController, WKUIDelegate {
             digits += 0  // refresh digits display
         case 1: break
         default: // programmer mode
-            setButton(aButton, label: "A", color: numberColour, enabled: radix > 10)
-            setButton(bButton, label: "B", color: numberColour, enabled: radix > 11)
-            setButton(cButton, label: "C", color: numberColour, enabled: radix > 12)
-            setButton(dButton, label: "D", color: numberColour, enabled: radix > 13)
-            setButton(pmButton, label: "E", color: numberColour, enabled: radix > 14)
-            setButton(percentButton, label: "F", color: numberColour, enabled: radix > 15)
+            enableDigits()
             toiButton.title = "mod"
             dpButton.title = "00"
+            leButton.title = "CE"
+            neButton.title = "0d"
             setFFButton()
             sinhButton.title = "and"
             coshButton.title = "or"
             tanhButton.title = "xor"
             sinButton.title = "<<"
             cosButton.title = ">>"
-            tanButton.title = ""
+            tanButton.title = "gcd"
             intButton.title = "rol"
             fracButton.title = "ror"
             iButton.title = "0x"
             exButton.title = "0o"
             piButton.title = "0b"
+            etoxButton.title = "fib"; etoxButton.image = nil
             lnButton.title = "1’s"; lnButton.image = nil
             logyButton.title = "2’s"; logyButton.image = nil
             asinhButton.title = "nand"; asinhButton.image = nil
@@ -190,7 +223,7 @@ class ViewController: NSViewController, WKUIDelegate {
             atanhButton.title = "xnor"; atanhButton.image = nil
             asinButton.title = "<<1"; asinButton.image = nil
             acosButton.title = ">>1"; acosButton.image = nil
-            atanButton.title = ""; atanButton.image = nil
+            atanButton.title = "lcd"; atanButton.image = nil
             bits += 0  // refresh bits display
             radixControl.isEnabled = true
             degRadGradControl.isEnabled = false
@@ -238,11 +271,16 @@ class ViewController: NSViewController, WKUIDelegate {
             }
         } else if segue.identifier == "Show Digits" {
             let vc = segue.destinationController as! DigitController
-            vc.digits = self.digits
-            vc.callback = { digits in
-                if self.keypad == 2 {
+            if self.keypad != 2 {
+                vc.digits = self.digits
+                vc.bits = 0
+                vc.callback = { digits in
                     self.digits = digits
-                } else {
+                }
+            } else {
+                vc.digits = 0
+                vc.bits = self.bits
+                vc.callback = { digits in
                     self.bits = digits
                 }
             }

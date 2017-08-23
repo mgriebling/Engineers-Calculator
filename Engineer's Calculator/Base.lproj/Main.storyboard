@@ -3972,20 +3972,24 @@ Aw
                         <outlet property="degRadGradControl" destination="WFa-9n-085" id="vI5-dT-e1F"/>
                         <outlet property="digitsDisplay" destination="mOo-Ir-htU" id="Y9X-Q5-GiR"/>
                         <outlet property="dpButton" destination="o4o-WJ-bNz" id="2Ke-W0-NAh"/>
-                        <outlet property="eButton" destination="XZZ-2Q-ZMt" id="lLE-GN-SI6"/>
+                        <outlet property="eightButton" destination="Yy3-TG-FuC" id="N5p-Fp-gQa"/>
                         <outlet property="etoxButton" destination="ozQ-qG-DYv" id="Hu2-wZ-CpG"/>
                         <outlet property="exButton" destination="XZZ-2Q-ZMt" id="IW5-h2-Y69"/>
                         <outlet property="expButton" destination="40u-bS-Zsv" id="gHU-ev-WGa"/>
-                        <outlet property="fButton" destination="qzZ-gK-xTv" id="VUh-Y6-MGE"/>
+                        <outlet property="fiveButton" destination="9GS-VS-hc3" id="Ymh-Rh-qQw"/>
+                        <outlet property="fourButton" destination="rgv-dH-P8x" id="DbJ-iM-zrx"/>
                         <outlet property="fracButton" destination="yzw-vJ-WS9" id="nbu-Ul-e3E"/>
                         <outlet property="iButton" destination="uhi-Au-4dn" id="cfS-rO-kOl"/>
                         <outlet property="imButton" destination="hPK-4L-SBo" id="6HV-rG-nFP"/>
                         <outlet property="intButton" destination="bpR-7D-zqG" id="Sg0-tS-qen"/>
+                        <outlet property="leButton" destination="8fK-Ya-tjZ" id="0HS-Lk-sQ3"/>
                         <outlet property="lnButton" destination="mAe-y6-yO3" id="EhQ-ma-mJK"/>
                         <outlet property="log10Button" destination="jLf-xl-CDv" id="3vd-xC-wY3"/>
                         <outlet property="log2Button" destination="6nR-bF-OfH" id="XJZ-JB-dS0"/>
                         <outlet property="logyButton" destination="hI2-KR-ss7" id="Y0M-tm-uKt"/>
                         <outlet property="nRootButton" destination="W80-2T-meI" id="JsW-Jd-JoH"/>
+                        <outlet property="neButton" destination="qzZ-gK-xTv" id="shK-zM-feA"/>
+                        <outlet property="nineButton" destination="qdM-0r-sN7" id="gfd-RY-V0e"/>
                         <outlet property="numberModeControl" destination="c0k-PS-oKf" id="CTF-3A-bVa"/>
                         <outlet property="percentButton" destination="RfV-YS-3ez" id="1Z9-Fg-npU"/>
                         <outlet property="piButton" destination="Fgr-Wb-tZY" id="8F6-22-5fU"/>
@@ -3993,14 +3997,17 @@ Aw
                         <outlet property="radixControl" destination="WD9-Yw-akL" id="Rfs-IT-Yr1"/>
                         <outlet property="reButton" destination="A9T-7y-WEE" id="Ps8-85-TJW"/>
                         <outlet property="reciprocalButton" destination="XEj-Wi-Dbr" id="aWx-zi-awH"/>
+                        <outlet property="sevenButton" destination="Yim-Db-xvu" id="FQD-Ye-Foe"/>
                         <outlet property="sinButton" destination="uSD-hD-T8F" id="IdI-JH-HqG"/>
                         <outlet property="sinhButton" destination="2ne-JR-BVB" id="2c0-yW-Mdx"/>
+                        <outlet property="sixButton" destination="j3P-ug-mhf" id="zsk-Xr-LmX"/>
                         <outlet property="sqrtButton" destination="Xrr-bG-8rw" id="nDr-rO-lvR"/>
                         <outlet property="tanButton" destination="ThK-qe-CTI" id="U3n-Ln-VV1"/>
                         <outlet property="tanhButton" destination="dUl-uu-qFX" id="RZt-tl-pjG"/>
+                        <outlet property="threeButton" destination="un4-jO-RbH" id="zr9-Lx-EKr"/>
                         <outlet property="toiButton" destination="3oV-ON-eWe" id="fMP-Ow-f9b"/>
+                        <outlet property="twoButton" destination="Fuk-MW-jot" id="k0R-w2-eZR"/>
                         <outlet property="webView" destination="Ipf-Dz-kTP" id="U3u-9a-sNk"/>
-                        <outlet property="zeroButton" destination="t59-RM-ggQ" id="NNv-fX-Dd2"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
