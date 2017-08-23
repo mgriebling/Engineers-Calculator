@@ -55,6 +55,7 @@ class ViewController: NSViewController, WKUIDelegate {
     @IBOutlet weak var atanButton: SYFlatButton!
     @IBOutlet weak var intButton: SYFlatButton!
     @IBOutlet weak var fracButton: SYFlatButton!
+    @IBOutlet weak var divButton: SYFlatButton!
     @IBOutlet weak var reButton: SYFlatButton!
     @IBOutlet weak var imButton: SYFlatButton!
     @IBOutlet weak var toiButton: SYFlatButton!
@@ -149,7 +150,6 @@ class ViewController: NSViewController, WKUIDelegate {
         switch sender.integerValue {
         case 0: radix = 2
         case 1: radix = 8
-        case 2: radix = 10
         case 3: radix = 16
         default: radix = 10
         }
@@ -183,11 +183,18 @@ class ViewController: NSViewController, WKUIDelegate {
             tanButton.title = "tan"
             intButton.title = "int"
             fracButton.title = "frac"
+            divButton.title = "div"
             iButton.title = "𝒊"
             exButton.title = "𝒆"
             piButton.title = "𝛑"
+            sqrtButton.image = NSImage(named: "sqrt"); sqrtButton.title = ""
+            cbrtButton.image = NSImage(named: "cbrt"); cbrtButton.title = ""
+            nRootButton.image = NSImage(named: "nroot"); nRootButton.title = ""
+            log10Button.image = NSImage(named: "log10"); log10Button.title = ""
+            log2Button.image = NSImage(named: "log2"); log2Button.title = ""
+            reciprocalButton.image = NSImage(named: "inverse"); reciprocalButton.title = ""
             etoxButton.image = NSImage(named: "powerOf"); etoxButton.title = ""
-            lnButton.image = NSImage(named: "ln"); lnButton.title = ""
+            lnButton.image = NSImage(named: "log"); lnButton.title = ""
             logyButton.image = NSImage(named: "logy"); logyButton.title = ""
             asinhButton.image = NSImage(named: "asinh"); asinhButton.title = ""
             acoshButton.image = NSImage(named: "acosh"); acoshButton.title = ""
@@ -212,9 +219,16 @@ class ViewController: NSViewController, WKUIDelegate {
             tanButton.title = "gcd"
             intButton.title = "rol"
             fracButton.title = "ror"
+            divButton.title = "luc"
             iButton.title = "0x"
             exButton.title = "0o"
             piButton.title = "0b"
+            sqrtButton.title = "cbit"; sqrtButton.image = nil
+            cbrtButton.title = "sbit"; cbrtButton.image = nil
+            nRootButton.title = "tbit"; nRootButton.image = nil
+            log10Button.title = "bit"; log10Button.image = nil
+            log2Button.title = "cnt"; log2Button.image = nil
+            reciprocalButton.title = "odd"; reciprocalButton.image = nil
             etoxButton.title = "fib"; etoxButton.image = nil
             lnButton.title = "1’s"; lnButton.image = nil
             logyButton.title = "2’s"; logyButton.image = nil
@@ -223,7 +237,7 @@ class ViewController: NSViewController, WKUIDelegate {
             atanhButton.title = "xnor"; atanhButton.image = nil
             asinButton.title = "<<1"; asinButton.image = nil
             acosButton.title = ">>1"; acosButton.image = nil
-            atanButton.title = "lcd"; atanButton.image = nil
+            atanButton.title = "lcm"; atanButton.image = nil
             bits += 0  // refresh bits display
             radixControl.isEnabled = true
             degRadGradControl.isEnabled = false

@@ -3971,6 +3971,7 @@ Aw
                         <outlet property="dButton" destination="fpb-p5-S6f" id="V0q-YZ-vdp"/>
                         <outlet property="degRadGradControl" destination="WFa-9n-085" id="vI5-dT-e1F"/>
                         <outlet property="digitsDisplay" destination="mOo-Ir-htU" id="Y9X-Q5-GiR"/>
+                        <outlet property="divButton" destination="hUj-gw-xU4" id="8wb-Ys-8lv"/>
                         <outlet property="dpButton" destination="o4o-WJ-bNz" id="2Ke-W0-NAh"/>
                         <outlet property="eightButton" destination="Yy3-TG-FuC" id="N5p-Fp-gQa"/>
                         <outlet property="etoxButton" destination="ozQ-qG-DYv" id="Hu2-wZ-CpG"/>
