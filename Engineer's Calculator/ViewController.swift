@@ -106,11 +106,10 @@ class ViewController: NSViewController, WKUIDelegate {
     }
     
     func setFFButton() {
-        let choice = radixControl.integerValue
-        switch choice {
-        case 0: expButton.title = "11"
-        case 1: expButton.title = "77"
-        case 3: expButton.title = "FF"
+        switch radix {
+        case 2: expButton.title = "11"
+        case 8: expButton.title = "77"
+        case 16: expButton.title = "FF"
         default: expButton.title = "99"
         }
     }
@@ -176,11 +175,11 @@ class ViewController: NSViewController, WKUIDelegate {
             neButton.title = "≠"
             expButton.title = "EE"
             sinhButton.title = "sinh"
-            coshButton.title = "cosh"
-            tanhButton.title = "tanh"
-            sinButton.title = "sin"
-            cosButton.title = "cos"
-            tanButton.title = "tan"
+            coshButton.title = "cosh"; coshButton.image = nil
+            tanhButton.title = "tanh"; tanhButton.image = nil
+            sinButton.title = "sin"; sinButton.image = nil
+            cosButton.title = "cos"; cosButton.image = nil
+            tanButton.title = "tan"; tanButton.image = nil
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
@@ -203,7 +202,43 @@ class ViewController: NSViewController, WKUIDelegate {
             acosButton.image = NSImage(named: "acos"); acosButton.title = ""
             atanButton.image = NSImage(named: "atan"); atanButton.title = ""
             digits += 0  // refresh digits display
-        case 1: break
+        case 1: // statistic mode
+            radix = 10
+            enableDigits()
+            setButton(aButton, label: "→rθ", color: functionColour, enabled: true)
+            setButton(bButton, label: ">", color: functionColour, enabled: true)
+            setButton(cButton, label: "<", color: functionColour, enabled: true)
+            setButton(dButton, label: "≥", color: functionColour, enabled: true)
+            setButton(pmButton, label: "⁺⁄-", color: functionColour, enabled: true)
+            setButton(percentButton, label: "%", color: functionColour, enabled: true)
+            dpButton.title = "."
+            leButton.title = "≤"
+            neButton.title = "≠"
+            expButton.title = "EE"
+            sinhButton.title = "n"
+            coshButton.title = ""; coshButton.image = NSImage(named: "sumx")
+            tanhButton.title = ""; tanhButton.image = NSImage(named: "sumy")
+            sinButton.title = ""; sinButton.image = NSImage(named: "sumx2")
+            cosButton.title = ""; cosButton.image = NSImage(named: "sumy2")
+            tanButton.title = ""; tanButton.image = NSImage(named: "sigmax")
+            intButton.title = "int"
+            fracButton.title = "frac"
+            divButton.title = "div"
+            reciprocalButton.image = NSImage(named: "inverse"); reciprocalButton.title = ""
+            etoxButton.image = NSImage(named: "sigmay"); etoxButton.title = ""
+            sqrtButton.image = NSImage(named: "sqrt"); sqrtButton.title = ""
+            cbrtButton.image = NSImage(named: "cbrt"); cbrtButton.title = ""
+            nRootButton.image = NSImage(named: "nroot"); nRootButton.title = ""
+            log10Button.title = ""; log10Button.image = nil
+            log2Button.title = ""; log2Button.image = nil
+            lnButton.title = ""; lnButton.image = nil
+            logyButton.title = ""; logyButton.image = nil
+            asinhButton.title = "→x"; asinhButton.image = nil
+            acoshButton.title = "→y"; acoshButton.image = nil
+            atanhButton.title = "→x,y"; atanhButton.image = nil
+            asinButton.title = ""; asinButton.image = NSImage(named: "xmean")
+            acosButton.title = ""; acosButton.image = NSImage(named: "ymean")
+            atanButton.title = "CD"; atanButton.image = nil
         default: // programmer mode
             enableDigits()
             toiButton.title = "mod"
@@ -212,11 +247,11 @@ class ViewController: NSViewController, WKUIDelegate {
             neButton.title = "0d"
             setFFButton()
             sinhButton.title = "and"
-            coshButton.title = "or"
-            tanhButton.title = "xor"
-            sinButton.title = "<<"
-            cosButton.title = ">>"
-            tanButton.title = "gcd"
+            coshButton.title = "or"; coshButton.image = nil
+            tanhButton.title = "xor"; tanhButton.image = nil
+            sinButton.title = "<<"; sinButton.image = nil
+            cosButton.title = ">>"; cosButton.image = nil
+            tanButton.title = "gcd"; tanButton.image = nil
             intButton.title = "rol"
             fracButton.title = "ror"
             divButton.title = "luc"
