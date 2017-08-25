@@ -11,6 +11,12 @@ import WebKit
 
 class ViewController: NSViewController, WKUIDelegate {
     
+    @IBOutlet weak var boxBackdrop: NSBox!//{
+//        didSet {
+//            boxBackdrop.fillColor = NSColor.black
+//        }
+//    }
+    
     @IBOutlet weak var aButton: SYFlatButton!
     @IBOutlet weak var bButton: SYFlatButton!
     @IBOutlet weak var cButton: SYFlatButton!
@@ -95,6 +101,8 @@ class ViewController: NSViewController, WKUIDelegate {
             digitsDisplay.setLabel("Digits: \(digits)", forSegment: 0)
         }
     }
+    
+//    @IBAction func exitToHere() { } // stub to return to this view
 
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -183,9 +191,9 @@ class ViewController: NSViewController, WKUIDelegate {
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
-            iButton.title = "𝒊"
-            exButton.title = "𝒆"
-            piButton.title = "𝛑"
+            iButton.title = "let"
+            exButton.title = ","
+            piButton.title = "="
             sqrtButton.image = NSImage(named: "sqrt"); sqrtButton.title = ""
             cbrtButton.image = NSImage(named: "cbrt"); cbrtButton.title = ""
             nRootButton.image = NSImage(named: "nroot"); nRootButton.title = ""
@@ -201,6 +209,8 @@ class ViewController: NSViewController, WKUIDelegate {
             asinButton.image = NSImage(named: "asin"); asinButton.title = ""
             acosButton.image = NSImage(named: "acos"); acosButton.title = ""
             atanButton.image = NSImage(named: "atan"); atanButton.title = ""
+            reButton.title = "re"
+            imButton.title = "im"
             digits += 0  // refresh digits display
         case 1: // statistic mode
             radix = 10
@@ -219,32 +229,37 @@ class ViewController: NSViewController, WKUIDelegate {
             coshButton.title = ""; coshButton.image = NSImage(named: "sumx")
             tanhButton.title = ""; tanhButton.image = NSImage(named: "sumy")
             sinButton.title = ""; sinButton.image = NSImage(named: "sumx2")
-            cosButton.title = ""; cosButton.image = NSImage(named: "sumy2")
-            tanButton.title = ""; tanButton.image = NSImage(named: "sigmax")
+            cosButton.title = ""; cosButton.image = NSImage(named: "sumxy")
+            tanButton.title = ""; tanButton.image = NSImage(named: "sumy2")
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
+            iButton.title = "let"
+            exButton.title = ","
+            piButton.title = "="
             reciprocalButton.image = NSImage(named: "inverse"); reciprocalButton.title = ""
-            etoxButton.image = NSImage(named: "sigmay"); etoxButton.title = ""
+            etoxButton.image = NSImage(named: "powerOf"); etoxButton.title = ""
             sqrtButton.image = NSImage(named: "sqrt"); sqrtButton.title = ""
             cbrtButton.image = NSImage(named: "cbrt"); cbrtButton.title = ""
             nRootButton.image = NSImage(named: "nroot"); nRootButton.title = ""
-            log10Button.title = ""; log10Button.image = nil
-            log2Button.title = ""; log2Button.image = nil
-            lnButton.title = ""; lnButton.image = nil
-            logyButton.title = ""; logyButton.image = nil
+            log10Button.title = ""; log10Button.image = NSImage(named: "stddevx")
+            log2Button.title = ""; log2Button.image = NSImage(named: "stddevy")
+            lnButton.title = ""; lnButton.image = NSImage(named: "sigmax")
+            logyButton.title = ""; logyButton.image = NSImage(named: "sigmay")
             asinhButton.title = "→x"; asinhButton.image = nil
             acoshButton.title = "→y"; acoshButton.image = nil
             atanhButton.title = "→x,y"; atanhButton.image = nil
             asinButton.title = ""; asinButton.image = NSImage(named: "xmean")
             acosButton.title = ""; acosButton.image = NSImage(named: "ymean")
             atanButton.title = "CD"; atanButton.image = nil
+            reButton.title = "nPr"
+            imButton.title = "nCr"
         default: // programmer mode
             enableDigits()
             toiButton.title = "mod"
             dpButton.title = "00"
             leButton.title = "CE"
-            neButton.title = "0d"
+            neButton.title = "radix"
             setFFButton()
             sinhButton.title = "and"
             coshButton.title = "or"; coshButton.image = nil
@@ -255,9 +270,9 @@ class ViewController: NSViewController, WKUIDelegate {
             intButton.title = "rol"
             fracButton.title = "ror"
             divButton.title = "luc"
-            iButton.title = "0x"
-            exButton.title = "0o"
-            piButton.title = "0b"
+            iButton.title = "let"
+            exButton.title = ","
+            piButton.title = "="
             sqrtButton.title = "cbit"; sqrtButton.image = nil
             cbrtButton.title = "sbit"; cbrtButton.image = nil
             nRootButton.title = "tbit"; nRootButton.image = nil
@@ -273,6 +288,8 @@ class ViewController: NSViewController, WKUIDelegate {
             asinButton.title = "<<1"; asinButton.image = nil
             acosButton.title = ">>1"; acosButton.image = nil
             atanButton.title = "lcm"; atanButton.image = nil
+            reButton.title = "bit⇔"
+            imButton.title = "byt⇔"
             bits += 0  // refresh bits display
             radixControl.isEnabled = true
             degRadGradControl.isEnabled = false
@@ -311,6 +328,13 @@ class ViewController: NSViewController, WKUIDelegate {
         updateDisplay()
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "Show Radix" && keypad != 2 {
+            return false
+        }
+        return true
+    }
+    
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show LetterPad" {
             let vc = segue.destinationController as! LetterPadController
@@ -332,6 +356,12 @@ class ViewController: NSViewController, WKUIDelegate {
                 vc.callback = { digits in
                     self.bits = digits
                 }
+            }
+        } else if segue.identifier == "Show Radix" {
+            let vc = segue.destinationController as! RadixController
+            vc.callback = { prefix in
+                self.equation += prefix
+                self.updateDisplay()
             }
         }
     }
