@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		471C4F8D1F502D350017FB8E /* RadixController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F8B1F502D350017FB8E /* RadixController.swift */; };
+		471C4F901F5199CA0017FB8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F8F1F5199CA0017FB8E /* Constants.swift */; };
+		471C4F931F51CBCF0017FB8E /* ConstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F911F51CBCF0017FB8E /* ConstController.swift */; };
 		475368721F49D25600F0DFBC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475368711F49D25600F0DFBC /* WebView.swift */; };
 		4760D45B1F49ADD20001CAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */; };
 		4760D45D1F49ADD20001CAA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45C1F49ADD20001CAA2 /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		471C4F8B1F502D350017FB8E /* RadixController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadixController.swift; sourceTree = "<group>"; };
+		471C4F8F1F5199CA0017FB8E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		471C4F911F51CBCF0017FB8E /* ConstController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstController.swift; sourceTree = "<group>"; };
 		475368711F49D25600F0DFBC /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		4760D4571F49ADD20001CAA2 /* Engineer's Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Engineer's Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 				478AE1D21F4ADB3C004847B5 /* ButtonStyle.swift */,
 				4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */,
 				4760D45C1F49ADD20001CAA2 /* ViewController.swift */,
+				471C4F911F51CBCF0017FB8E /* ConstController.swift */,
 				4760D45E1F49ADD20001CAA2 /* Assets.xcassets */,
 				4760D4601F49ADD20001CAA2 /* Main.storyboard */,
 				4760D4631F49ADD20001CAA2 /* Info.plist */,
@@ -78,6 +83,7 @@
 				478AE1E11F4B3180004847B5 /* DigitController.swift */,
 				471C4F8B1F502D350017FB8E /* RadixController.swift */,
 				4760D4691F49C1440001CAA2 /* MainController.swift */,
+				471C4F8F1F5199CA0017FB8E /* Constants.swift */,
 				475368711F49D25600F0DFBC /* WebView.swift */,
 				478AE1DB1F4B0115004847B5 /* SYFlatButton.h */,
 				478AE1DC1F4B0115004847B5 /* SYFlatButton.m */,
@@ -164,9 +170,11 @@
 				475368721F49D25600F0DFBC /* WebView.swift in Sources */,
 				4760D46A1F49C1440001CAA2 /* MainController.swift in Sources */,
 				478AE1DD1F4B0115004847B5 /* SYFlatButton.m in Sources */,
+				471C4F901F5199CA0017FB8E /* Constants.swift in Sources */,
 				478AE1E31F4B3180004847B5 /* DigitController.swift in Sources */,
 				471C4F8D1F502D350017FB8E /* RadixController.swift in Sources */,
 				478AE1D31F4ADB3C004847B5 /* ButtonStyle.swift in Sources */,
+				471C4F931F51CBCF0017FB8E /* ConstController.swift in Sources */,
 				4760D45B1F49ADD20001CAA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

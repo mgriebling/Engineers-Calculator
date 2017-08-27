@@ -11,12 +11,7 @@ import WebKit
 
 class ViewController: NSViewController, WKUIDelegate {
     
-    @IBOutlet weak var boxBackdrop: NSBox!//{
-//        didSet {
-//            boxBackdrop.fillColor = NSColor.black
-//        }
-//    }
-    
+    @IBOutlet weak var boxBackdrop: NSBox!
     @IBOutlet weak var aButton: SYFlatButton!
     @IBOutlet weak var bButton: SYFlatButton!
     @IBOutlet weak var cButton: SYFlatButton!
@@ -31,7 +26,7 @@ class ViewController: NSViewController, WKUIDelegate {
     @IBOutlet weak var twoButton: SYFlatButton! {
         didSet {
             // pick up this colour
-            numberColour = twoButton.backgroundNormalColor
+            ViewController.numberColour = twoButton.backgroundNormalColor
         }
     }
     @IBOutlet weak var threeButton: SYFlatButton!
@@ -45,7 +40,7 @@ class ViewController: NSViewController, WKUIDelegate {
     @IBOutlet weak var sinhButton: SYFlatButton! {
         didSet {
             // pick up this colour
-            functionColour = sinhButton.backgroundNormalColor
+            ViewController.functionColour = sinhButton.backgroundNormalColor
         }
     }
     @IBOutlet weak var coshButton: SYFlatButton!
@@ -84,8 +79,8 @@ class ViewController: NSViewController, WKUIDelegate {
     @IBOutlet weak var degRadGradControl: NSSegmentedControl!
     @IBOutlet weak var numberModeControl: NSSegmentedControl!
     
-    var numberColour = NSColor.white    // replaced during loading
-    var functionColour = NSColor.white  // replaced during loading
+    static var numberColour : NSColor = NSColor.white    // replaced during loading
+    static var functionColour : NSColor = NSColor.white  // replaced during loading
     
     var equation = ""
     var result = ""
@@ -101,8 +96,6 @@ class ViewController: NSViewController, WKUIDelegate {
             digitsDisplay.setLabel("Digits: \(digits)", forSegment: 0)
         }
     }
-    
-//    @IBAction func exitToHere() { } // stub to return to this view
 
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -122,9 +115,7 @@ class ViewController: NSViewController, WKUIDelegate {
         }
     }
     
-    func setButton(_ button: SYFlatButton, label: String, color: NSColor, enabled: Bool) {
-        button.title = label
-        button.backgroundNormalColor = color
+    func setEnable(_ button: SYFlatButton, enabled: Bool = true) {
         if !enabled {
             button.imageNormalColor = NSColor.gray
             button.titleNormalColor = NSColor.gray
@@ -135,21 +126,35 @@ class ViewController: NSViewController, WKUIDelegate {
         button.isEnabled = enabled
     }
     
+    func setButton(_ button: SYFlatButton, label: String, color: NSColor = functionColour, enabled: Bool = true) {
+        button.title = label
+        button.image = nil
+        button.backgroundNormalColor = color
+        setEnable(button)
+    }
+    
+    func setButton(_ button: SYFlatButton, image: NSImage?, color: NSColor = functionColour, enabled: Bool = true) {
+        button.title = ""
+        button.image = image!
+        button.backgroundNormalColor = color
+        setEnable(button)
+    }
+    
     func enableDigits() {
-        setButton(twoButton,   label: "2", color: numberColour, enabled: radix > 2)
-        setButton(threeButton, label: "3", color: numberColour, enabled: radix > 3)
-        setButton(fourButton,  label: "4", color: numberColour, enabled: radix > 4)
-        setButton(fiveButton,  label: "5", color: numberColour, enabled: radix > 5)
-        setButton(sixButton,   label: "6", color: numberColour, enabled: radix > 6)
-        setButton(sevenButton, label: "7", color: numberColour, enabled: radix > 7)
-        setButton(eightButton, label: "8", color: numberColour, enabled: radix > 8)
-        setButton(nineButton,  label: "9", color: numberColour, enabled: radix > 9)
-        setButton(aButton,     label: "A", color: numberColour, enabled: radix > 10)
-        setButton(bButton,     label: "B", color: numberColour, enabled: radix > 11)
-        setButton(cButton,     label: "C", color: numberColour, enabled: radix > 12)
-        setButton(dButton,     label: "D", color: numberColour, enabled: radix > 13)
-        setButton(pmButton,    label: "E", color: numberColour, enabled: radix > 14)
-        setButton(percentButton, label: "F", color: numberColour, enabled: radix > 15)
+        setButton(twoButton,     label: "2", color: ViewController.numberColour, enabled: radix > 2)
+        setButton(threeButton,   label: "3", color: ViewController.numberColour, enabled: radix > 3)
+        setButton(fourButton,    label: "4", color: ViewController.numberColour, enabled: radix > 4)
+        setButton(fiveButton,    label: "5", color: ViewController.numberColour, enabled: radix > 5)
+        setButton(sixButton,     label: "6", color: ViewController.numberColour, enabled: radix > 6)
+        setButton(sevenButton,   label: "7", color: ViewController.numberColour, enabled: radix > 7)
+        setButton(eightButton,   label: "8", color: ViewController.numberColour, enabled: radix > 8)
+        setButton(nineButton,    label: "9", color: ViewController.numberColour, enabled: radix > 9)
+        setButton(aButton,       label: "A", color: ViewController.numberColour, enabled: radix > 10)
+        setButton(bButton,       label: "B", color: ViewController.numberColour, enabled: radix > 11)
+        setButton(cButton,       label: "C", color: ViewController.numberColour, enabled: radix > 12)
+        setButton(dButton,       label: "D", color: ViewController.numberColour, enabled: radix > 13)
+        setButton(pmButton,      label: "E", color: ViewController.numberColour, enabled: radix > 14)
+        setButton(percentButton, label: "F", color: ViewController.numberColour, enabled: radix > 15)
     }
 
     @IBAction func radixChanged(_ sender: NSSegmentedControl) {
@@ -171,87 +176,87 @@ class ViewController: NSViewController, WKUIDelegate {
         case 0: // math mode
             radix = 10
             enableDigits()
-            setButton(aButton, label: "→rθ", color: functionColour, enabled: true)
-            setButton(bButton, label: ">", color: functionColour, enabled: true)
-            setButton(cButton, label: "<", color: functionColour, enabled: true)
-            setButton(dButton, label: "≥", color: functionColour, enabled: true)
-            setButton(pmButton, label: "⁺⁄-", color: functionColour, enabled: true)
-            setButton(percentButton, label: "%", color: functionColour, enabled: true)
+            setButton(aButton, label: "→rθ")
+            setButton(bButton, label: ">")
+            setButton(cButton, label: "<")
+            setButton(dButton, label: "≥")
+            setButton(pmButton, label: "⁺⁄-")
+            setButton(percentButton, label: "%")
             toiButton.title = "→𝒊"
             dpButton.title = "."
             leButton.title = "≤"
             neButton.title = "≠"
             expButton.title = "EE"
             sinhButton.title = "sinh"
-            coshButton.title = "cosh"; coshButton.image = nil
-            tanhButton.title = "tanh"; tanhButton.image = nil
-            sinButton.title = "sin"; sinButton.image = nil
-            cosButton.title = "cos"; cosButton.image = nil
-            tanButton.title = "tan"; tanButton.image = nil
+            setButton(coshButton, label: "cosh")
+            setButton(tanhButton, label: "tanh")
+            setButton(sinButton, label: "sin")
+            setButton(cosButton, label: "cos")
+            setButton(tanButton, label: "tan")
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
             iButton.title = "let"
             exButton.title = ","
             piButton.title = "="
-            sqrtButton.image = NSImage(named: "sqrt"); sqrtButton.title = ""
-            cbrtButton.image = NSImage(named: "cbrt"); cbrtButton.title = ""
-            nRootButton.image = NSImage(named: "nroot"); nRootButton.title = ""
-            log10Button.image = NSImage(named: "log10"); log10Button.title = ""
-            log2Button.image = NSImage(named: "log2"); log2Button.title = ""
-            reciprocalButton.image = NSImage(named: "inverse"); reciprocalButton.title = ""
-            etoxButton.image = NSImage(named: "powerOf"); etoxButton.title = ""
-            lnButton.image = NSImage(named: "log"); lnButton.title = ""
-            logyButton.image = NSImage(named: "logy"); logyButton.title = ""
-            asinhButton.image = NSImage(named: "asinh"); asinhButton.title = ""
-            acoshButton.image = NSImage(named: "acosh"); acoshButton.title = ""
-            atanhButton.image = NSImage(named: "atanh"); atanhButton.title = ""
-            asinButton.image = NSImage(named: "asin"); asinButton.title = ""
-            acosButton.image = NSImage(named: "acos"); acosButton.title = ""
-            atanButton.image = NSImage(named: "atan"); atanButton.title = ""
+            setButton(sqrtButton, image: NSImage(named: "sqrt"))
+            setButton(cbrtButton, image: NSImage(named: "cbrt"))
+            setButton(nRootButton, image: NSImage(named: "nroot"))
+            setButton(log10Button, image: NSImage(named: "log10"))
+            setButton(log2Button, image: NSImage(named: "log2"))
+            setButton(reciprocalButton, image: NSImage(named: "inverse"))
+            setButton(etoxButton, image: NSImage(named: "powerOf"))
+            setButton(lnButton, image: NSImage(named: "log"))
+            setButton(logyButton, image: NSImage(named: "logy"))
+            setButton(asinhButton, image: NSImage(named: "asinh"))
+            setButton(acoshButton, image: NSImage(named: "acosh"))
+            setButton(atanhButton, image: NSImage(named: "atanh"))
+            setButton(asinButton, image: NSImage(named: "asin"))
+            setButton(acosButton, image: NSImage(named: "acos"))
+            setButton(atanButton, image: NSImage(named: "atan"))
             reButton.title = "re"
             imButton.title = "im"
             digits += 0  // refresh digits display
         case 1: // statistic mode
             radix = 10
             enableDigits()
-            setButton(aButton, label: "→rθ", color: functionColour, enabled: true)
-            setButton(bButton, label: ">", color: functionColour, enabled: true)
-            setButton(cButton, label: "<", color: functionColour, enabled: true)
-            setButton(dButton, label: "≥", color: functionColour, enabled: true)
-            setButton(pmButton, label: "⁺⁄-", color: functionColour, enabled: true)
-            setButton(percentButton, label: "%", color: functionColour, enabled: true)
+            setButton(aButton, label: "→rθ")
+            setButton(bButton, label: ">")
+            setButton(cButton, label: "<")
+            setButton(dButton, label: "≥")
+            setButton(pmButton, label: "⁺⁄-")
+            setButton(percentButton, label: "%")
             dpButton.title = "."
             leButton.title = "≤"
             neButton.title = "≠"
             expButton.title = "EE"
             sinhButton.title = "n"
-            coshButton.title = ""; coshButton.image = NSImage(named: "sumx")
-            tanhButton.title = ""; tanhButton.image = NSImage(named: "sumy")
-            sinButton.title = ""; sinButton.image = NSImage(named: "sumx2")
-            cosButton.title = ""; cosButton.image = NSImage(named: "sumxy")
-            tanButton.title = ""; tanButton.image = NSImage(named: "sumy2")
+            setButton(coshButton, image: NSImage(named: "sumx"))
+            setButton(tanhButton, image: NSImage(named: "sumy"))
+            setButton(sinButton, image: NSImage(named: "sumx2"))
+            setButton(cosButton, image: NSImage(named: "sumxy"))
+            setButton(tanButton, image: NSImage(named: "sumy2"))
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
             iButton.title = "let"
             exButton.title = ","
             piButton.title = "="
-            reciprocalButton.image = NSImage(named: "inverse"); reciprocalButton.title = ""
-            etoxButton.image = NSImage(named: "powerOf"); etoxButton.title = ""
-            sqrtButton.image = NSImage(named: "sqrt"); sqrtButton.title = ""
-            cbrtButton.image = NSImage(named: "cbrt"); cbrtButton.title = ""
-            nRootButton.image = NSImage(named: "nroot"); nRootButton.title = ""
-            log10Button.title = ""; log10Button.image = NSImage(named: "stddevx")
-            log2Button.title = ""; log2Button.image = NSImage(named: "stddevy")
-            lnButton.title = ""; lnButton.image = NSImage(named: "sigmax")
-            logyButton.title = ""; logyButton.image = NSImage(named: "sigmay")
-            asinhButton.title = "→x"; asinhButton.image = nil
-            acoshButton.title = "→y"; acoshButton.image = nil
-            atanhButton.title = "→x,y"; atanhButton.image = nil
-            asinButton.title = ""; asinButton.image = NSImage(named: "xmean")
-            acosButton.title = ""; acosButton.image = NSImage(named: "ymean")
-            atanButton.title = "CD"; atanButton.image = nil
+            setButton(reciprocalButton, image: NSImage(named: "inverse"))
+            setButton(etoxButton, image: NSImage(named: "powerOf"))
+            setButton(sqrtButton, image: NSImage(named: "sqrt"))
+            setButton(cbrtButton, image: NSImage(named: "cbrt"))
+            setButton(nRootButton, image: NSImage(named: "nroot"))
+            setButton(log10Button, image: NSImage(named: "stddevx"))
+            setButton(log2Button, image: NSImage(named: "stddevy"))
+            setButton(lnButton, image: NSImage(named: "sigmax"))
+            setButton(logyButton, image: NSImage(named: "sigmay"))
+            setButton(asinhButton, label: "→x")
+            setButton(acoshButton, label: "→y")
+            setButton(atanhButton, label: "→x,y")
+            setButton(asinButton, image: NSImage(named: "xmean"))
+            setButton(acosButton, image: NSImage(named: "ymean"))
+            setButton(atanButton, label: "CD")
             reButton.title = "nPr"
             imButton.title = "nCr"
         default: // programmer mode
@@ -262,32 +267,32 @@ class ViewController: NSViewController, WKUIDelegate {
             neButton.title = "radix"
             setFFButton()
             sinhButton.title = "and"
-            coshButton.title = "or"; coshButton.image = nil
-            tanhButton.title = "xor"; tanhButton.image = nil
-            sinButton.title = "<<"; sinButton.image = nil
-            cosButton.title = ">>"; cosButton.image = nil
-            tanButton.title = "gcd"; tanButton.image = nil
+            setButton(coshButton, label: "or")
+            setButton(tanhButton, label: "xor")
+            setButton(sinButton, label: "<<")
+            setButton(cosButton, label: ">>")
+            setButton(tanButton, label: "gcd")
             intButton.title = "rol"
             fracButton.title = "ror"
             divButton.title = "luc"
             iButton.title = "let"
             exButton.title = ","
             piButton.title = "="
-            sqrtButton.title = "cbit"; sqrtButton.image = nil
-            cbrtButton.title = "sbit"; cbrtButton.image = nil
-            nRootButton.title = "tbit"; nRootButton.image = nil
-            log10Button.title = "bit"; log10Button.image = nil
-            log2Button.title = "cnt"; log2Button.image = nil
-            reciprocalButton.title = "odd"; reciprocalButton.image = nil
-            etoxButton.title = "fib"; etoxButton.image = nil
-            lnButton.title = "1’s"; lnButton.image = nil
-            logyButton.title = "2’s"; logyButton.image = nil
-            asinhButton.title = "nand"; asinhButton.image = nil
-            acoshButton.title = "nor"; acoshButton.image = nil
-            atanhButton.title = "xnor"; atanhButton.image = nil
-            asinButton.title = "<<1"; asinButton.image = nil
-            acosButton.title = ">>1"; acosButton.image = nil
-            atanButton.title = "lcm"; atanButton.image = nil
+            setButton(sqrtButton, label: "cbit")
+            setButton(cbrtButton, label: "sbit")
+            setButton(nRootButton, label: "tbit")
+            setButton(log10Button, label: "bit")
+            setButton(log2Button, label: "cnt")
+            setButton(reciprocalButton, label: "odd")
+            setButton(etoxButton, label: "fib")
+            setButton(lnButton, label: "1’s")
+            setButton(logyButton, label: "2’s")
+            setButton(asinhButton, label: "nand")
+            setButton(acoshButton, label: "nor")
+            setButton(atanhButton, label: "xnor")
+            setButton(asinButton, label: "<<1")
+            setButton(acosButton, label: ">>1")
+            setButton(atanButton, label: "lcm")
             reButton.title = "bit⇔"
             imButton.title = "byt⇔"
             bits += 0  // refresh bits display
@@ -361,6 +366,16 @@ class ViewController: NSViewController, WKUIDelegate {
             let vc = segue.destinationController as! RadixController
             vc.callback = { prefix in
                 self.equation += prefix
+                self.updateDisplay()
+            }
+        } else if segue.identifier == "Show Constants" {
+            let vc = segue.destinationController as! ConstController
+            vc.callback = { const in
+                var const = const
+                if const.contains("_") {
+                    const = const.replacingOccurrences(of: "_", with: "<sub>") + "</sub>"
+                }
+                self.equation += const
                 self.updateDisplay()
             }
         }
