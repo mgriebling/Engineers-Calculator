@@ -20,8 +20,8 @@ extension ConstController : NSTableViewDataSource, NSTableViewDelegate {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         let selected = constTableView.selectedRow
-        let index = Constant.values.index(Constant.values.startIndex, offsetBy: selected)
-        let value = Constant.values[index]
+        let index = Constant.sorted.index(Constant.sorted.startIndex, offsetBy: selected)
+        let value = Constant.sorted[index]
         callback(value.key)
         dismissViewController(self)
     }
@@ -32,9 +32,9 @@ extension ConstController : NSTableViewDataSource, NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let colName = tableColumn!.headerCell.title + "ID"
-        let start = Constant.values.startIndex
-        let index = Constant.values.index(start, offsetBy: row)
-        let value = Constant.values[index]
+        let start = Constant.sorted.startIndex
+        let index = Constant.sorted.index(start, offsetBy: row)
+        let value = Constant.sorted[index]
         let text : NSAttributedString
         if colName == "DescriptionID" {
             text = NSAttributedString(string: value.value.description)

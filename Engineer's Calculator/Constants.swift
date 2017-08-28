@@ -36,7 +36,17 @@ class Constant {
         }
     }
     
+    static let sorted = values.sorted { (left, right) -> Bool in
+        if left.key == "π"  { return true }
+        if right.key == "π" { return false }
+        if left.key == "i"  { return true }
+        if right.key == "i"  { return false }
+        return left.key < right.key
+    }
+    
     static let values : [String: Description] = [
+        "π":    Description("π",                    "Pi"),
+        "i":    Description("i",                    "Square-root of -1"),
         "a_0":  Description("0.529_177_210_67E-10", "Bohr radius (m)"),
         "α":    Description("7.297_352_5664E-3",    "Fine structure constant"),
         "atm":  Description("101_325",              "Standard atmosphere (Pa)"),
@@ -56,7 +66,6 @@ class Constant {
         "G_0":  Description("7.748_091_7310E-5",    "Conductance quantum (S)"),
         "h":    Description("6.626_070_040E−34",    "Planck constant (J s)"),
         "ħ":    Description("1.054_571_800E−34",    "Planck constant/2π (J s)"),
-        "i":    Description("i",                    "Square-root of -1"),
         "k":    Description("1.380_648_52E−23",     "Boltzmann constant (J K⁻¹)"),
         "l_P":  Description("1.616_229E−35",        "Planck length (m)"),
         "ƛ_C":  Description("386.159_267_64E−15",   "Electron Compton wavelength/2π (m)"),
@@ -76,7 +85,6 @@ class Constant {
         "n_0":  Description("2.651_6467E25",        "Loschmidt constant (m⁻³)"),
         "N_A":  Description("6.022_140_857E23",     "Avagadro constant (mol⁻¹)"),
         "φ_0":  Description("2.067_833_831E−15",    "Magnetic flux quantum (Wb)"),
-        "π":    Description("π",                    "Pi"),
         "r_e":  Description("2.817_940_3227E−15",   "Electron classical radius (m)"),
         "R_K":  Description("25_812.807_4555",      "von Klitzing constant (Ω)"),
         "R":    Description("8.314_4598",           "Molar gas constant (J mol⁻¹ K⁻¹)"),

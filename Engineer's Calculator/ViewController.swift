@@ -309,6 +309,16 @@ class ViewController: NSViewController, WKUIDelegate {
         webView.loadHTMLString(content, baseURL: nil)
     }
     
+    func isNumber (_ button : SYFlatButton) -> Bool {
+        let char = button.title
+        if char == "." { return true }
+        if char.characters.count == 1 {
+            let ch = char.unicodeScalars.first!
+            return CharacterSet.decimalDigits.contains(ch)
+        }
+        return false
+    }
+    
     @IBAction func keypadChanged(_ sender: NSSegmentedControl) {
         keypad = sender.integerValue
         setKeypadLabels(sender.integerValue)
@@ -316,6 +326,13 @@ class ViewController: NSViewController, WKUIDelegate {
     
     @IBAction func keyPressed(_ sender: SYFlatButton) {
         equation += sender.title
+        if !isNumber(sender) { equation += " " }
+        updateDisplay()
+    }
+    
+    @IBAction func clearPressed(_ sender: Any) {
+        equation = "&emsp;"
+        result = "0"
         updateDisplay()
     }
     
@@ -328,9 +345,7 @@ class ViewController: NSViewController, WKUIDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        equation = "&emsp;"
-        result = "0"
-        updateDisplay()
+        clearPressed(iButton)  // dummy button argument
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

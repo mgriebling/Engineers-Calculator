@@ -2862,6 +2862,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="TUt-4P-SUx"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZZ-2Q-ZMt" customClass="SYFlatButton">
                                 <rect key="frame" x="295" y="245" width="60" height="50"/>
@@ -2903,6 +2906,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="Vkb-Bh-uoL"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fgr-Wb-tZY" customClass="SYFlatButton">
                                 <rect key="frame" x="354" y="245" width="60" height="50"/>
@@ -2944,6 +2950,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="g0M-Vj-Ax8"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adq-rn-SsB" customClass="SYFlatButton">
                                 <rect key="frame" x="649" y="196" width="60" height="50"/>
@@ -3132,7 +3141,7 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="24" name="HelveticaNeue"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
-Aw
+DQ
 </string>
                                 </buttonCell>
                                 <userDefinedRuntimeAttributes>
@@ -3257,6 +3266,9 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clearPressed:" target="XfG-lQ-9wD" id="V24-9q-L8i"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RfV-YS-3ez" customClass="SYFlatButton">
                                 <rect key="frame" x="590" y="196" width="60" height="50"/>
@@ -3797,6 +3809,9 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="IXu-4e-m7E"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXe-NX-fFK" customClass="SYFlatButton">
                                 <rect key="frame" x="413" y="0.0" width="60" height="50"/>
@@ -3879,6 +3894,9 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="zrJ-mY-agH"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fK-Ya-tjZ" customClass="SYFlatButton">
                                 <rect key="frame" x="413" y="196" width="60" height="50"/>
@@ -3920,6 +3938,9 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="Qfj-gQ-nOw"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-qX-b4B" customClass="SYFlatButton">
                                 <rect key="frame" x="413" y="98" width="60" height="50"/>
@@ -3963,6 +3984,9 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="P5m-8f-vq3"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qzZ-gK-xTv" customClass="SYFlatButton">
                                 <rect key="frame" x="413" y="245" width="60" height="50"/>
@@ -4005,6 +4029,7 @@ CA
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="Dmc-N3-KOZ"/>
                                     <segue destination="539-PU-b4s" kind="popover" identifier="Show Radix" popoverAnchorView="qzZ-gK-xTv" popoverBehavior="t" preferredEdge="maxY" id="yAw-mq-ycC"/>
                                 </connections>
                             </button>
@@ -5231,9 +5256,9 @@ CA
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16z-Dt-4hZ" customClass="SYFlatButton">
                                 <rect key="frame" x="138" y="81" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="α" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gno-9F-W8T">
+                                <buttonCell key="cell" type="square" title="π" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gno-9F-W8T">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="24" name="HelveticaNeue"/>
+                                    <font key="font" size="24" name="HelveticaNeue-Bold"/>
                                 </buttonCell>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundNormalColor">
@@ -5275,9 +5300,9 @@ CA
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kvy-Gi-e5u" customClass="SYFlatButton">
                                 <rect key="frame" x="197" y="81" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="β" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NgN-yK-guA">
+                                <buttonCell key="cell" type="square" title="i" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NgN-yK-guA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="24" name="HelveticaNeue"/>
+                                    <font key="font" size="24" name="HelveticaNeue-Bold"/>
                                 </buttonCell>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundNormalColor">
@@ -5319,7 +5344,7 @@ CA
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dhp-3S-sgp" customClass="SYFlatButton">
                                 <rect key="frame" x="256" y="81" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="δ" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5HQ-eh-pMG">
+                                <buttonCell key="cell" type="square" title="sub" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5HQ-eh-pMG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="24" name="HelveticaNeue"/>
                                 </buttonCell>
@@ -5345,7 +5370,7 @@ CA
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="momentary" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="momentary" value="NO"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundHighlightColor">
                                         <color key="value" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
@@ -5357,13 +5382,13 @@ CA
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="letterPressed:" target="WAh-1i-eO4" id="pIe-I5-FSl"/>
+                                    <action selector="subscriptPressed:" target="WAh-1i-eO4" id="oxm-qp-GYD"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UOX-vt-JCf" customClass="SYFlatButton">
                                 <rect key="frame" x="315" y="81" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="λ" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xin-zs-51S">
+                                <buttonCell key="cell" type="square" title="cap" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xin-zs-51S">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="24" name="HelveticaNeue"/>
                                 </buttonCell>
@@ -5389,7 +5414,7 @@ CA
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="momentary" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="momentary" value="NO"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundHighlightColor">
                                         <color key="value" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
@@ -5401,7 +5426,7 @@ CA
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="letterPressed:" target="WAh-1i-eO4" id="PnX-6a-EdM"/>
+                                    <action selector="capPressed:" target="WAh-1i-eO4" id="v9l-nV-Gmx"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUs-21-rQf" customClass="SYFlatButton">
@@ -5450,6 +5475,34 @@ CA
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="aButton" destination="krc-Az-R9x" id="XHg-ir-UMh"/>
+                        <outlet property="bButton" destination="zLG-f0-Ta7" id="DCQ-zI-bzh"/>
+                        <outlet property="cButton" destination="eF4-Gx-CIP" id="Tov-Vq-G04"/>
+                        <outlet property="dButton" destination="CEh-4e-B4D" id="4jl-4D-35v"/>
+                        <outlet property="eButton" destination="U1l-0y-boL" id="8QU-2U-pcD"/>
+                        <outlet property="fButton" destination="36A-bj-IQw" id="3Lm-UW-yVF"/>
+                        <outlet property="gButton" destination="Ito-rT-Iw2" id="9Sy-aD-V3f"/>
+                        <outlet property="hButton" destination="url-V6-gQU" id="kBD-Vx-jFY"/>
+                        <outlet property="iButton" destination="BVQ-4r-KlB" id="IDo-8C-jyu"/>
+                        <outlet property="jButton" destination="Dxj-Wv-uaG" id="sBg-x3-vVx"/>
+                        <outlet property="kButton" destination="c22-Bo-Oqv" id="BFY-TS-R3I"/>
+                        <outlet property="lButton" destination="0kO-bP-0mV" id="3j2-4z-pjH"/>
+                        <outlet property="mButton" destination="A9q-WU-LNC" id="yL6-gb-085"/>
+                        <outlet property="nButton" destination="x1T-ba-mZP" id="QyQ-3H-iLq"/>
+                        <outlet property="oButton" destination="abg-Tw-Rye" id="Oob-az-2z1"/>
+                        <outlet property="pButton" destination="PI5-0E-QFQ" id="W8K-wS-k2m"/>
+                        <outlet property="qButton" destination="ZAM-X3-WZK" id="zH3-7z-IhD"/>
+                        <outlet property="rButton" destination="9Kr-mu-tiF" id="9VS-d7-8bA"/>
+                        <outlet property="sButton" destination="zPi-xz-86T" id="diZ-dt-bhV"/>
+                        <outlet property="tButton" destination="JjD-la-fQn" id="fdV-4J-wZI"/>
+                        <outlet property="uButton" destination="mxT-hm-8rQ" id="f2J-sT-mj9"/>
+                        <outlet property="vButton" destination="ASl-1O-2Db" id="bwe-Ty-eHH"/>
+                        <outlet property="wButton" destination="yHf-uh-lzm" id="QS6-Pe-KI4"/>
+                        <outlet property="xButton" destination="lgn-Km-9JX" id="at5-F5-Lbh"/>
+                        <outlet property="yButton" destination="znJ-T6-ALg" id="Z6Y-QJ-ii2"/>
+                        <outlet property="zButton" destination="96J-2A-5lU" id="cK6-0l-uKs"/>
+                    </connections>
                 </viewController>
                 <customObject id="Y2v-L2-fLF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
