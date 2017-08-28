@@ -180,8 +180,8 @@ class ViewController: NSViewController, WKUIDelegate {
             setButton(bButton, label: ">")
             setButton(cButton, label: "<")
             setButton(dButton, label: "≥")
-            setButton(pmButton, label: "⁺⁄-")
             setButton(percentButton, label: "%")
+            setButton(pmButton, label: "⌫")
             toiButton.title = "→𝒊"
             dpButton.title = "."
             leButton.title = "≤"
@@ -196,9 +196,6 @@ class ViewController: NSViewController, WKUIDelegate {
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
-            iButton.title = "let"
-            exButton.title = ","
-            piButton.title = "="
             setButton(sqrtButton, image: NSImage(named: "sqrt"))
             setButton(cbrtButton, image: NSImage(named: "cbrt"))
             setButton(nRootButton, image: NSImage(named: "nroot"))
@@ -224,8 +221,9 @@ class ViewController: NSViewController, WKUIDelegate {
             setButton(bButton, label: ">")
             setButton(cButton, label: "<")
             setButton(dButton, label: "≥")
-            setButton(pmButton, label: "⁺⁄-")
             setButton(percentButton, label: "%")
+            setButton(pmButton, label: "⌫")
+            toiButton.title = "→𝒊"
             dpButton.title = "."
             leButton.title = "≤"
             neButton.title = "≠"
@@ -239,9 +237,6 @@ class ViewController: NSViewController, WKUIDelegate {
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
-            iButton.title = "let"
-            exButton.title = ","
-            piButton.title = "="
             setButton(reciprocalButton, image: NSImage(named: "inverse"))
             setButton(etoxButton, image: NSImage(named: "powerOf"))
             setButton(sqrtButton, image: NSImage(named: "sqrt"))
@@ -275,9 +270,6 @@ class ViewController: NSViewController, WKUIDelegate {
             intButton.title = "rol"
             fracButton.title = "ror"
             divButton.title = "luc"
-            iButton.title = "let"
-            exButton.title = ","
-            piButton.title = "="
             setButton(sqrtButton, label: "cbit")
             setButton(cbrtButton, label: "sbit")
             setButton(nRootButton, label: "tbit")
@@ -324,12 +316,43 @@ class ViewController: NSViewController, WKUIDelegate {
         setKeypadLabels(sender.integerValue)
     }
     
+    func addToEquation(_ s: String) {
+        if equation.hasPrefix("&emsp;") { equation = "" }  // remove placeholder
+        equation += s
+    }
+    
     @IBAction func keyPressed(_ sender: SYFlatButton) {
-        equation += sender.title
-        if !isNumber(sender) { equation += " " }
+        addToEquation(sender.title)
+        if !isNumber(sender) { addToEquation(" ") }
         updateDisplay()
     }
     
+    let mfuncs = [
+        "", "^2", "^3", "^", "10^", "2^", "e^", "^(-1)",            // row 3
+        "sinh", "cosh", "tanh", "sin", "cos", "tan", "/",           // row 4
+        "asinh", "acosh", "atanh", "asin", "acos", "atan", "rand",  // row 5
+        "abs", "re", "im", "int", "frac", "div", "cmplx", "rtheta", // row 6
+        "sqrt", "cbrt", "nroot", "log10", "log2", "ln", "logy",     // row 2
+        "!"                                                         // row 1
+    ]
+    
+    let pfuncs = [
+        "", "^2", "^3", "^", "10^", "2^", "fib", "odd",             // row 3
+        "and", "or", "xor", "<<", ">>", "gcd", "/",                 // row 4
+        "nand", "nor", "xnor", "<<1", ">>1", "lcm", "rand",         // row 5
+        "abs", "bits", "bytes", "rol", "ror", "luc", "mod", "A",    // row 6
+        "cbit", "sbit", "tbit", "bit", "cnt", "compl", "neg",       // row 2
+        "!"                                                         // row 1
+    ]
+    
+    @IBAction func funcPressed(_ sender: SYFlatButton) {
+        let id = sender.tag
+        if id <= 0 || id >= mfuncs.count { return } // tags are all > 0
+        if keypad == 0 { addToEquation(mfuncs[id]) }
+        else if keypad == 2 { addToEquation(pfuncs[id]) }
+        updateDisplay()
+    }
+
     @IBAction func clearPressed(_ sender: Any) {
         equation = "&emsp;"
         result = "0"
@@ -337,7 +360,16 @@ class ViewController: NSViewController, WKUIDelegate {
     }
     
     @IBAction func equalPressed(_ sender: SYFlatButton) {
-        result = equation
+        let input = InputStream(data: equation.data(using: .utf8)!)
+        let scanner = Scanner(s: input)
+        let parser = Parser(scanner: scanner)
+        parser.Parse()
+        if parser.errors.count == 0 {
+            print("Value = \(parser.curBlock.value)")
+            result = String(parser.curBlock.value)
+        } else {
+            result = "\(parser.errors.count) errors"
+        }
         updateDisplay()
     }
     
@@ -359,7 +391,7 @@ class ViewController: NSViewController, WKUIDelegate {
         if segue.identifier == "Show LetterPad" {
             let vc = segue.destinationController as! LetterPadController
             vc.keyPressed = { key in
-                self.equation += key
+                self.addToEquation(key)
                 self.updateDisplay()
             }
         } else if segue.identifier == "Show Digits" {
@@ -380,7 +412,7 @@ class ViewController: NSViewController, WKUIDelegate {
         } else if segue.identifier == "Show Radix" {
             let vc = segue.destinationController as! RadixController
             vc.callback = { prefix in
-                self.equation += prefix
+                self.addToEquation(prefix)
                 self.updateDisplay()
             }
         } else if segue.identifier == "Show Constants" {
@@ -390,7 +422,7 @@ class ViewController: NSViewController, WKUIDelegate {
                 if const.contains("_") {
                     const = const.replacingOccurrences(of: "_", with: "<sub>") + "</sub>"
                 }
-                self.equation += const
+                self.addToEquation(const)
                 self.updateDisplay()
             }
         }

@@ -690,7 +690,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="710" height="437"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjk-BO-LzT" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="15" translatesAutoresizingMaskIntoConstraints="NO" id="xjk-BO-LzT" customClass="SYFlatButton">
                                 <rect key="frame" x="0.0" y="49" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="asinh" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kwp-UH-suW">
@@ -736,8 +736,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="csc-3t-f3h"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRb-qf-10c" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="16" translatesAutoresizingMaskIntoConstraints="NO" id="BRb-qf-10c" customClass="SYFlatButton">
                                 <rect key="frame" x="59" y="49" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="acosh" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ucp-ri-gM7">
@@ -783,8 +786,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="bSx-xr-BqG"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xj1-3z-wMp" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xj1-3z-wMp" customClass="SYFlatButton">
                                 <rect key="frame" x="118" y="49" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="atanh" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jdy-NG-fRk">
@@ -830,6 +836,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="dxH-o7-uZc"/>
+                                </connections>
                             </button>
                             <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="behindWindow" material="dark" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yFT-uG-E9K">
                                 <rect key="frame" x="0.0" y="295" width="710" height="142"/>
@@ -952,7 +961,7 @@
                                     <constraint firstItem="Ipf-Dz-kTP" firstAttribute="leading" secondItem="yFT-uG-E9K" secondAttribute="leading" id="osM-eV-thP"/>
                                 </constraints>
                             </visualEffectView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ne-JR-BVB" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="2ne-JR-BVB" customClass="SYFlatButton">
                                 <rect key="frame" x="0.0" y="98" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="sinh" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8pO-NB-IdB">
@@ -998,8 +1007,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="wYc-gl-gd8"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oDl-oV-llt" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="oDl-oV-llt" customClass="SYFlatButton">
                                 <rect key="frame" x="59" y="98" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="cosh" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qku-BQ-ant">
@@ -1045,8 +1057,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="KIB-x3-uoA"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUl-uu-qFX" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="dUl-uu-qFX" customClass="SYFlatButton">
                                 <rect key="frame" x="118" y="98" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="tanh" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UEa-wT-Q0T">
@@ -1092,8 +1107,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="oYI-kW-4Dj"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yJ-in-R75" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="18" translatesAutoresizingMaskIntoConstraints="NO" id="6yJ-in-R75" customClass="SYFlatButton">
                                 <rect key="frame" x="177" y="49" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="asin" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e9R-8K-zCy">
@@ -1139,8 +1157,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="ZNj-10-SB6"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9e-sq-Ao1" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="19" translatesAutoresizingMaskIntoConstraints="NO" id="d9e-sq-Ao1" customClass="SYFlatButton">
                                 <rect key="frame" x="236" y="49" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="acos" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5fb-s7-HhG">
@@ -1186,8 +1207,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="X0f-GR-V7B"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaY-qC-7Pm" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="20" translatesAutoresizingMaskIntoConstraints="NO" id="UaY-qC-7Pm" customClass="SYFlatButton">
                                 <rect key="frame" x="295" y="49" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="atan" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="A94-jV-iT1">
@@ -1233,8 +1257,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="1N8-dr-xQT"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSD-hD-T8F" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="uSD-hD-T8F" customClass="SYFlatButton">
                                 <rect key="frame" x="177" y="98" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="sin" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sch-4h-vJu">
@@ -1280,8 +1307,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="7qD-sR-FlS"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6SS-ON-fX3" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="12" translatesAutoresizingMaskIntoConstraints="NO" id="6SS-ON-fX3" customClass="SYFlatButton">
                                 <rect key="frame" x="236" y="98" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="cos" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="l03-5v-UmX">
@@ -1327,8 +1357,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="rs7-u1-RLR"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThK-qe-CTI" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="13" translatesAutoresizingMaskIntoConstraints="NO" id="ThK-qe-CTI" customClass="SYFlatButton">
                                 <rect key="frame" x="295" y="98" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="tan" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PtK-4b-bcB">
@@ -1374,8 +1407,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="Fbp-1B-FmN"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-JA-aBX" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="21" translatesAutoresizingMaskIntoConstraints="NO" id="o5e-JA-aBX" customClass="SYFlatButton">
                                 <rect key="frame" x="354" y="49" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="rand" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pTb-Gt-AoG">
@@ -1415,6 +1451,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="Sbp-H7-JeE"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yim-Db-xvu" customClass="SYFlatButton">
                                 <rect key="frame" x="472" y="147" width="60" height="50"/>
@@ -1506,7 +1545,7 @@
                                     <action selector="keyPressed:" target="XfG-lQ-9wD" id="cDa-K4-mU4"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xPT-h0-WTF" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="xPT-h0-WTF" customClass="SYFlatButton">
                                 <rect key="frame" x="0.0" y="147" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="squared" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UXG-og-qOL">
@@ -1552,8 +1591,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="kBi-9g-S8H"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FMJ-VF-O4U" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="FMJ-VF-O4U" customClass="SYFlatButton">
                                 <rect key="frame" x="59" y="147" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="cubed" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FZF-4Z-gkB">
@@ -1599,8 +1641,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="c3T-cF-rhG"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYR-j4-yq8" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="rYR-j4-yq8" customClass="SYFlatButton">
                                 <rect key="frame" x="118" y="147" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="npower" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cxZ-Gg-iw8">
@@ -1646,8 +1691,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="xA4-gM-smh"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-Xn-4F7" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-Xn-4F7" customClass="SYFlatButton">
                                 <rect key="frame" x="177" y="147" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="powerOf10" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cgl-0I-jZA">
@@ -1693,8 +1741,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="pZr-Pp-Xcu"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qwc-aE-2T9" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qwc-aE-2T9" customClass="SYFlatButton">
                                 <rect key="frame" x="236" y="147" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="powerOf2" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mjm-o1-3nQ">
@@ -1740,8 +1791,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="lb7-v9-xOg"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-qG-DYv" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-qG-DYv" customClass="SYFlatButton">
                                 <rect key="frame" x="295" y="147" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="powerOf" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="E7o-Ba-v4M">
@@ -1787,8 +1841,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="WRV-BP-3fZ"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xrr-bG-8rw" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="30" translatesAutoresizingMaskIntoConstraints="NO" id="Xrr-bG-8rw" customClass="SYFlatButton">
                                 <rect key="frame" x="0.0" y="196" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="sqrt" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="scd-RR-aSP">
@@ -1834,8 +1891,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="yuQ-GM-U4q"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SIo-8l-eqb" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="31" translatesAutoresizingMaskIntoConstraints="NO" id="SIo-8l-eqb" customClass="SYFlatButton">
                                 <rect key="frame" x="59" y="196" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="cbrt" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hs2-XZ-QFC">
@@ -1881,8 +1941,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="TQA-2j-ksH"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W80-2T-meI" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="W80-2T-meI" customClass="SYFlatButton">
                                 <rect key="frame" x="118" y="196" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="nroot" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zwf-wM-s3j">
@@ -1928,8 +1991,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="Hnf-8S-ipk"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jLf-xl-CDv" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="33" translatesAutoresizingMaskIntoConstraints="NO" id="jLf-xl-CDv" customClass="SYFlatButton">
                                 <rect key="frame" x="177" y="196" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="log10" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MvL-tV-hII">
@@ -1975,8 +2041,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="gAM-CE-KqQ"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6nR-bF-OfH" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="34" translatesAutoresizingMaskIntoConstraints="NO" id="6nR-bF-OfH" customClass="SYFlatButton">
                                 <rect key="frame" x="236" y="196" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="log2" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="X5g-kd-K99">
@@ -2022,8 +2091,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="Ljz-vM-qa7"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAe-y6-yO3" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="35" translatesAutoresizingMaskIntoConstraints="NO" id="mAe-y6-yO3" customClass="SYFlatButton">
                                 <rect key="frame" x="295" y="196" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="log" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="chE-fe-sXM">
@@ -2069,8 +2141,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="7ZW-VU-skf"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-Wi-Dbr" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-Wi-Dbr" customClass="SYFlatButton">
                                 <rect key="frame" x="354" y="147" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="inverse" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="gT2-8n-4wX">
@@ -2116,8 +2191,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="pNG-tj-2kz"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hI2-KR-ss7" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="36" translatesAutoresizingMaskIntoConstraints="NO" id="hI2-KR-ss7" customClass="SYFlatButton">
                                 <rect key="frame" x="354" y="196" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="logy" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="N7V-3O-8iT">
@@ -2163,6 +2241,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="czD-ZY-1ga"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdM-0r-sN7" customClass="SYFlatButton">
                                 <rect key="frame" x="590" y="147" width="60" height="50"/>
@@ -2610,7 +2691,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7g2-dD-icz" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="14" translatesAutoresizingMaskIntoConstraints="NO" id="7g2-dD-icz" customClass="SYFlatButton">
                                 <rect key="frame" x="354" y="98" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="fraction" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="gB0-g5-cb7">
@@ -2650,6 +2731,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="5Co-BC-2t2"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gfp-C0-l3J" customClass="SYFlatButton">
                                 <rect key="frame" x="0.0" y="245" width="60" height="50"/>
@@ -2693,6 +2777,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="VqV-fX-9UQ"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8h-Bn-Zgx" customClass="SYFlatButton">
                                 <rect key="frame" x="59" y="245" width="60" height="50"/>
@@ -2736,8 +2823,11 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="ziX-2q-bLE"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-tw-OSV" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="37" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-tw-OSV" customClass="SYFlatButton">
                                 <rect key="frame" x="118" y="245" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="x!" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XRW-JQ-UxK">
@@ -2777,6 +2867,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="koR-ju-aaR"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFj-wC-piu" customClass="SYFlatButton">
                                 <rect key="frame" x="177" y="245" width="60" height="50"/>
@@ -3480,7 +3573,7 @@ CA
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4TW-0h-LG8" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="22" translatesAutoresizingMaskIntoConstraints="NO" id="4TW-0h-LG8" customClass="SYFlatButton">
                                 <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="|x|" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pa4-k9-c7q">
@@ -3520,8 +3613,11 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="fhe-oW-bhF"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A9T-7y-WEE" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="23" translatesAutoresizingMaskIntoConstraints="NO" id="A9T-7y-WEE" customClass="SYFlatButton">
                                 <rect key="frame" x="59" y="0.0" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="re" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oMh-TN-Jch">
@@ -3561,8 +3657,11 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="Nv8-Wh-6Xu"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-4L-SBo" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="24" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-4L-SBo" customClass="SYFlatButton">
                                 <rect key="frame" x="118" y="0.0" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="im" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wqW-ba-ryJ">
@@ -3602,8 +3701,11 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="g27-uU-rHa"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpR-7D-zqG" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="25" translatesAutoresizingMaskIntoConstraints="NO" id="bpR-7D-zqG" customClass="SYFlatButton">
                                 <rect key="frame" x="177" y="0.0" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="int" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bzq-EN-CuM">
@@ -3643,8 +3745,11 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="pBc-sl-3b8"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUj-gw-xU4" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="27" translatesAutoresizingMaskIntoConstraints="NO" id="hUj-gw-xU4" customClass="SYFlatButton">
                                 <rect key="frame" x="295" y="0.0" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="div" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HTa-Tv-0DO">
@@ -3684,8 +3789,11 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="kgi-ob-sXl"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yzw-vJ-WS9" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="26" translatesAutoresizingMaskIntoConstraints="NO" id="yzw-vJ-WS9" customClass="SYFlatButton">
                                 <rect key="frame" x="236" y="0.0" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="frac" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tkc-L0-AxO">
@@ -3725,8 +3833,11 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="Ys6-tm-BJ2"/>
+                                </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3oV-ON-eWe" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="28" translatesAutoresizingMaskIntoConstraints="NO" id="3oV-ON-eWe" customClass="SYFlatButton">
                                 <rect key="frame" x="354" y="0.0" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="→𝒊" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C4g-z1-RLO">
@@ -3766,6 +3877,9 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="gCP-o0-3nV"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvm-8P-1dp" customClass="SYFlatButton">
                                 <rect key="frame" x="413" y="49" width="60" height="50"/>
@@ -3813,7 +3927,7 @@ CA
                                     <action selector="keyPressed:" target="XfG-lQ-9wD" id="IXu-4e-m7E"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXe-NX-fFK" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="29" translatesAutoresizingMaskIntoConstraints="NO" id="qXe-NX-fFK" customClass="SYFlatButton">
                                 <rect key="frame" x="413" y="0.0" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="→rθ" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pyx-9E-Uh1">
@@ -3853,6 +3967,9 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="funcPressed:" target="XfG-lQ-9wD" id="aig-wv-KTZ"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpb-p5-S6f" customClass="SYFlatButton">
                                 <rect key="frame" x="413" y="147" width="60" height="50"/>
