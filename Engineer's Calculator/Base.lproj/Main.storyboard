@@ -2690,6 +2690,9 @@
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="keyPressed:" target="XfG-lQ-9wD" id="Sxy-tm-4fA"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" tag="14" translatesAutoresizingMaskIntoConstraints="NO" id="7g2-dD-icz" customClass="SYFlatButton">
                                 <rect key="frame" x="354" y="98" width="60" height="50"/>
@@ -3317,6 +3320,9 @@ CA
                                         <color key="value" name="shadowColor" catalog="System" colorSpace="catalog"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backSpace:" target="XfG-lQ-9wD" id="PmJ-YA-vuQ"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLf-fn-EfY" customClass="SYFlatButton">
                                 <rect key="frame" x="472" y="196" width="60" height="50"/>

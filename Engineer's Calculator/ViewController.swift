@@ -82,20 +82,19 @@ class ViewController: NSViewController, WKUIDelegate {
     static var numberColour : NSColor = NSColor.white    // replaced during loading
     static var functionColour : NSColor = NSColor.white  // replaced during loading
     
+    let empty = "&emsp;"
+    
+    enum Keypad : Int { case normal=0, statistic=1, programming=2 }
+    
     var equation = ""
     var result = ""
-    var keypad = 0
+    var keypad = Keypad.normal
+    
     var radix = 10
-    var bits = 32 {
-        didSet {
-            digitsDisplay.setLabel("Bits: \(bits)", forSegment: 0)
-        }
-    }
-    var digits = 25 {
-        didSet {
-            digitsDisplay.setLabel("Digits: \(digits)", forSegment: 0)
-        }
-    }
+    var bits = 32 { didSet { digitsDisplay.setLabel("Bits: \(bits)", forSegment: 0) } }
+    var digits = 25 {didSet { digitsDisplay.setLabel("Digits: \(digits)", forSegment: 0) } }
+    
+    // MARK: - Support utility methods
 
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -105,6 +104,177 @@ class ViewController: NSViewController, WKUIDelegate {
             webView.allowsBackForwardNavigationGestures = false
         }
     }
+
+    @IBAction func radixChanged(_ sender: NSSegmentedControl) {
+        if keypad == .programming { setFFButton() }
+        switch sender.integerValue {
+        case 0: radix = 2
+        case 1: radix = 8
+        case 3: radix = 16
+        default: radix = 10
+        }
+        enableDigits()
+    }
+    
+    func updateDisplay() {
+        let content = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Equation #1</title>" +
+        "</head><body text=\"white\"><font face=\"Helvetica Neue\" size=\"6\">\(equation)<font face=\"Helvetica Neue\" size=\"2\">" +
+        "<p align=\"right\"><font face=\"Helvetica Neue\" size=\"5\">\(result) &emsp;</p></body></html>"
+        webView.loadHTMLString(content, baseURL: nil)
+    }
+    
+    func isNumber (_ button : SYFlatButton) -> Bool {
+        let char = button.title
+        let chSet = CharacterSet(charactersIn: ".+−ABCDEF").union(CharacterSet.decimalDigits)
+        if char == "EE" { return true }
+        if char.characters.count == 1 {
+            let ch = char.unicodeScalars.first!
+            return chSet.contains(ch)
+        }
+        return false
+    }
+    
+    @IBAction func keypadChanged(_ sender: NSSegmentedControl) {
+        keypad = Keypad(rawValue: sender.integerValue)!
+        setKeypadLabels(keypad)
+    }
+    
+    func addToEquation(_ s: String) {
+        if equation.hasPrefix(empty) { equation = "" }  // remove placeholder
+        equation += s
+    }
+    
+    
+    // MARK: - Calculator function handling
+    
+    let mfuncs = [
+        "", "^2", "^3", "^", "10^", "2^", "e^", "^(-1)",            // row 3
+        "sinh", "cosh", "tanh", "sin", "cos", "tan", "/",           // row 4
+        "asinh", "acosh", "atanh", "asin", "acos", "atan", "rand",  // row 5
+        "abs", "re", "im", "int", "frac", "div", "cmplx", "rtheta", // row 6
+        "sqrt", "cbrt", "nroot", "log10", "log2", "ln", "logy",     // row 2
+        "!"                                                         // row 1
+    ]
+    
+    let pfuncs = [
+        "", "^2", "^3", "^", "10^", "2^", "fib", "odd",             // row 3
+        "and", "or", "xor", "<<", ">>", "gcd", "/",                 // row 4
+        "nand", "nor", "xnor", "<<1", ">>1", "lcm", "rand",         // row 5
+        "abs", "bits", "bytes", "rol", "ror", "luc", "mod", "A",    // row 6
+        "cbit", "sbit", "tbit", "bit", "cnt", "compl", "neg",       // row 2
+        "!"                                                         // row 1
+    ]
+    
+    @IBAction func funcPressed(_ sender: SYFlatButton) {
+        let id = sender.tag
+        if id <= 0 || id >= mfuncs.count { return } // tags are all > 0
+        switch keypad {
+        case .normal: addToEquation(mfuncs[id])
+        case .programming: addToEquation(pfuncs[id])
+        case .statistic: break // TBD
+        }
+        updateDisplay()
+    }
+    
+    @IBAction func keyPressed(_ sender: SYFlatButton) {
+        let key = sender.title
+        if key == "EE" { addToEquation("e") }
+        else { addToEquation(key) }
+        if !isNumber(sender) { addToEquation(" ") }
+        updateDisplay()
+    }
+
+    @IBAction func clearPressed(_ sender: Any) {
+        equation = empty
+        result = "0"
+        updateDisplay()
+    }
+    
+    @IBAction func backSpace(_ sender: SYFlatButton) {
+        if equation == empty { return }
+        _ = equation.remove(at: equation.index(before: equation.endIndex))
+        if equation.isEmpty { equation = empty }
+        updateDisplay()
+    }
+    
+    @IBAction func equalPressed(_ sender: SYFlatButton) {
+        let input = InputStream(data: equation.data(using: .utf8)!)
+        let scanner = Scanner(s: input)
+        let parser = Parser(scanner: scanner)
+        parser.Parse()
+        if parser.errors.count == 0 {
+            print("Value = \(parser.curBlock.value)")
+            result = String(parser.curBlock.value)
+        } else {
+            result = "\(parser.errors.count) errors"
+        }
+        updateDisplay()
+    }
+    
+	// MARK: - Viewcontroller life-cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        clearPressed(iButton)  // dummy button argument
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "Show Radix" && keypad != .programming {
+            return false
+        }
+        return true
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "Show LetterPad":
+            let vc = segue.destinationController as! LetterPadController
+            vc.keyPressed = { key in
+                self.addToEquation(key)
+                self.updateDisplay()
+            }
+        case "Show Digits":
+            let vc = segue.destinationController as! DigitController
+            if keypad != .programming {
+                vc.digits = self.digits
+                vc.bits = 0
+                vc.callback = { digits in
+                    self.digits = digits
+                }
+            } else {
+                vc.digits = 0
+                vc.bits = self.bits
+                vc.callback = { digits in
+                    self.bits = digits
+                }
+            }
+        case "Show Radix":
+            let vc = segue.destinationController as! RadixController
+            vc.callback = { prefix in
+                self.addToEquation(prefix)
+                self.updateDisplay()
+            }
+        case "Show Constants":
+            let vc = segue.destinationController as! ConstController
+            vc.callback = { const in
+                var const = const
+                if const.contains("_") {
+                    const = const.replacingOccurrences(of: "_", with: "<sub>") + "</sub>"
+                }
+                self.addToEquation(const)
+                self.updateDisplay()
+            }
+        default: break
+        }
+    }
+
+}
+
+extension ViewController {
+    
+	// MARK: - Keypad label management
     
     func setFFButton() {
         switch radix {
@@ -156,24 +326,13 @@ class ViewController: NSViewController, WKUIDelegate {
         setButton(pmButton,      label: "E", color: ViewController.numberColour, enabled: radix > 14)
         setButton(percentButton, label: "F", color: ViewController.numberColour, enabled: radix > 15)
     }
-
-    @IBAction func radixChanged(_ sender: NSSegmentedControl) {
-        if keypad == 2 { setFFButton() }
-        switch sender.integerValue {
-        case 0: radix = 2
-        case 1: radix = 8
-        case 3: radix = 16
-        default: radix = 10
-        }
-        enableDigits()
-    }
     
-    func setKeypadLabels(_ mode: Int) {
+    func setKeypadLabels(_ mode: Keypad) {
         radixControl.isEnabled = false
         degRadGradControl.isEnabled = true
         numberModeControl.isEnabled = true
         switch mode {
-        case 0: // math mode
+        case .normal: // mode
             radix = 10
             enableDigits()
             setButton(aButton, label: "→rθ")
@@ -214,7 +373,7 @@ class ViewController: NSViewController, WKUIDelegate {
             reButton.title = "re"
             imButton.title = "im"
             digits += 0  // refresh digits display
-        case 1: // statistic mode
+        case .statistic: // mode
             radix = 10
             enableDigits()
             setButton(aButton, label: "→rθ")
@@ -254,7 +413,7 @@ class ViewController: NSViewController, WKUIDelegate {
             setButton(atanButton, label: "CD")
             reButton.title = "nPr"
             imButton.title = "nCr"
-        default: // programmer mode
+        case .programming: // mode
             enableDigits()
             toiButton.title = "mod"
             dpButton.title = "00"
@@ -294,142 +453,7 @@ class ViewController: NSViewController, WKUIDelegate {
         }
     }
     
-    func updateDisplay() {
-        let content = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Equation #1</title>" +
-        "</head><body text=\"white\"><font face=\"Helvetica Neue\" size=\"6\">\(equation)<font face=\"Helvetica Neue\" size=\"2\">" +
-        "<p align=\"right\"><font face=\"Helvetica Neue\" size=\"5\">\(result) &emsp;</p></body></html>"
-        webView.loadHTMLString(content, baseURL: nil)
-    }
     
-    func isNumber (_ button : SYFlatButton) -> Bool {
-        let char = button.title
-        if char == "." { return true }
-        if char.characters.count == 1 {
-            let ch = char.unicodeScalars.first!
-            return CharacterSet.decimalDigits.contains(ch)
-        }
-        return false
-    }
-    
-    @IBAction func keypadChanged(_ sender: NSSegmentedControl) {
-        keypad = sender.integerValue
-        setKeypadLabels(sender.integerValue)
-    }
-    
-    func addToEquation(_ s: String) {
-        if equation.hasPrefix("&emsp;") { equation = "" }  // remove placeholder
-        equation += s
-    }
-    
-    @IBAction func keyPressed(_ sender: SYFlatButton) {
-        addToEquation(sender.title)
-        if !isNumber(sender) { addToEquation(" ") }
-        updateDisplay()
-    }
-    
-    let mfuncs = [
-        "", "^2", "^3", "^", "10^", "2^", "e^", "^(-1)",            // row 3
-        "sinh", "cosh", "tanh", "sin", "cos", "tan", "/",           // row 4
-        "asinh", "acosh", "atanh", "asin", "acos", "atan", "rand",  // row 5
-        "abs", "re", "im", "int", "frac", "div", "cmplx", "rtheta", // row 6
-        "sqrt", "cbrt", "nroot", "log10", "log2", "ln", "logy",     // row 2
-        "!"                                                         // row 1
-    ]
-    
-    let pfuncs = [
-        "", "^2", "^3", "^", "10^", "2^", "fib", "odd",             // row 3
-        "and", "or", "xor", "<<", ">>", "gcd", "/",                 // row 4
-        "nand", "nor", "xnor", "<<1", ">>1", "lcm", "rand",         // row 5
-        "abs", "bits", "bytes", "rol", "ror", "luc", "mod", "A",    // row 6
-        "cbit", "sbit", "tbit", "bit", "cnt", "compl", "neg",       // row 2
-        "!"                                                         // row 1
-    ]
-    
-    @IBAction func funcPressed(_ sender: SYFlatButton) {
-        let id = sender.tag
-        if id <= 0 || id >= mfuncs.count { return } // tags are all > 0
-        if keypad == 0 { addToEquation(mfuncs[id]) }
-        else if keypad == 2 { addToEquation(pfuncs[id]) }
-        updateDisplay()
-    }
-
-    @IBAction func clearPressed(_ sender: Any) {
-        equation = "&emsp;"
-        result = "0"
-        updateDisplay()
-    }
-    
-    @IBAction func equalPressed(_ sender: SYFlatButton) {
-        let input = InputStream(data: equation.data(using: .utf8)!)
-        let scanner = Scanner(s: input)
-        let parser = Parser(scanner: scanner)
-        parser.Parse()
-        if parser.errors.count == 0 {
-            print("Value = \(parser.curBlock.value)")
-            result = String(parser.curBlock.value)
-        } else {
-            result = "\(parser.errors.count) errors"
-        }
-        updateDisplay()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        clearPressed(iButton)  // dummy button argument
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "Show Radix" && keypad != 2 {
-            return false
-        }
-        return true
-    }
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Show LetterPad" {
-            let vc = segue.destinationController as! LetterPadController
-            vc.keyPressed = { key in
-                self.addToEquation(key)
-                self.updateDisplay()
-            }
-        } else if segue.identifier == "Show Digits" {
-            let vc = segue.destinationController as! DigitController
-            if self.keypad != 2 {
-                vc.digits = self.digits
-                vc.bits = 0
-                vc.callback = { digits in
-                    self.digits = digits
-                }
-            } else {
-                vc.digits = 0
-                vc.bits = self.bits
-                vc.callback = { digits in
-                    self.bits = digits
-                }
-            }
-        } else if segue.identifier == "Show Radix" {
-            let vc = segue.destinationController as! RadixController
-            vc.callback = { prefix in
-                self.addToEquation(prefix)
-                self.updateDisplay()
-            }
-        } else if segue.identifier == "Show Constants" {
-            let vc = segue.destinationController as! ConstController
-            vc.callback = { const in
-                var const = const
-                if const.contains("_") {
-                    const = const.replacingOccurrences(of: "_", with: "<sub>") + "</sub>"
-                }
-                self.addToEquation(const)
-                self.updateDisplay()
-            }
-        }
-    }
-    
-    
-
 }
 
 
