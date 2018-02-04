@@ -29,9 +29,9 @@ class Constant {
         } else {
             var location = (c as NSString).range(of: "_")
             let result = NSMutableAttributedString(string: c.replacingOccurrences(of: "_", with: ""))
-            location.length = cv[1].characters.count
-            result.addAttribute(NSFontAttributeName, value: NSFont.systemFont(ofSize: 13), range: location)
-            result.addAttribute(NSSuperscriptAttributeName, value: -1, range: location)
+            location.length = cv[1].count
+            result.addAttribute(NSAttributedStringKey.font, value: NSFont.systemFont(ofSize: 13), range: location)
+            result.addAttribute(NSAttributedStringKey.superscript, value: -1, range: location)
             return result
         }
     }

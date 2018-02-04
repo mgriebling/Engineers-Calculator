@@ -127,7 +127,7 @@ class ViewController: NSViewController, WKUIDelegate {
         let char = button.title
         let chSet = CharacterSet(charactersIn: ".+−ABCDEF").union(CharacterSet.decimalDigits)
         if char == "EE" { return true }
-        if char.characters.count == 1 {
+        if char.count == 1 {
             let ch = char.unicodeScalars.first!
             return chSet.contains(ch)
         }
@@ -220,15 +220,15 @@ class ViewController: NSViewController, WKUIDelegate {
         clearPressed(iButton)  // dummy button argument
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "Show Radix" && keypad != .programming {
+    override func shouldPerformSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, sender: Any?) -> Bool {
+        if identifier.rawValue == "Show Radix" && keypad != .programming {
             return false
         }
         return true
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
+        switch segue.identifier!.rawValue {
         case "Show LetterPad":
             let vc = segue.destinationController as! LetterPadController
             vc.keyPressed = { key in
@@ -355,21 +355,21 @@ extension ViewController {
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
-            setButton(sqrtButton, image: NSImage(named: "sqrt"))
-            setButton(cbrtButton, image: NSImage(named: "cbrt"))
-            setButton(nRootButton, image: NSImage(named: "nroot"))
-            setButton(log10Button, image: NSImage(named: "log10"))
-            setButton(log2Button, image: NSImage(named: "log2"))
-            setButton(reciprocalButton, image: NSImage(named: "inverse"))
-            setButton(etoxButton, image: NSImage(named: "powerOf"))
-            setButton(lnButton, image: NSImage(named: "log"))
-            setButton(logyButton, image: NSImage(named: "logy"))
-            setButton(asinhButton, image: NSImage(named: "asinh"))
-            setButton(acoshButton, image: NSImage(named: "acosh"))
-            setButton(atanhButton, image: NSImage(named: "atanh"))
-            setButton(asinButton, image: NSImage(named: "asin"))
-            setButton(acosButton, image: NSImage(named: "acos"))
-            setButton(atanButton, image: NSImage(named: "atan"))
+            setButton(sqrtButton, image: NSImage(named: NSImage.Name(rawValue: "sqrt")))
+            setButton(cbrtButton, image: NSImage(named: NSImage.Name(rawValue: "cbrt")))
+            setButton(nRootButton, image: NSImage(named: NSImage.Name(rawValue: "nroot")))
+            setButton(log10Button, image: NSImage(named: NSImage.Name(rawValue: "log10")))
+            setButton(log2Button, image: NSImage(named: NSImage.Name(rawValue: "log2")))
+            setButton(reciprocalButton, image: NSImage(named: NSImage.Name(rawValue: "inverse")))
+            setButton(etoxButton, image: NSImage(named: NSImage.Name(rawValue: "powerOf")))
+            setButton(lnButton, image: NSImage(named: NSImage.Name(rawValue: "log")))
+            setButton(logyButton, image: NSImage(named: NSImage.Name(rawValue: "logy")))
+            setButton(asinhButton, image: NSImage(named: NSImage.Name(rawValue: "asinh")))
+            setButton(acoshButton, image: NSImage(named: NSImage.Name(rawValue: "acosh")))
+            setButton(atanhButton, image: NSImage(named: NSImage.Name(rawValue: "atanh")))
+            setButton(asinButton, image: NSImage(named: NSImage.Name(rawValue: "asin")))
+            setButton(acosButton, image: NSImage(named: NSImage.Name(rawValue: "acos")))
+            setButton(atanButton, image: NSImage(named: NSImage.Name(rawValue: "atan")))
             reButton.title = "re"
             imButton.title = "im"
             digits += 0  // refresh digits display
@@ -388,28 +388,28 @@ extension ViewController {
             neButton.title = "≠"
             expButton.title = "EE"
             sinhButton.title = "n"
-            setButton(coshButton, image: NSImage(named: "sumx"))
-            setButton(tanhButton, image: NSImage(named: "sumy"))
-            setButton(sinButton, image: NSImage(named: "sumx2"))
-            setButton(cosButton, image: NSImage(named: "sumxy"))
-            setButton(tanButton, image: NSImage(named: "sumy2"))
+            setButton(coshButton, image: NSImage(named: NSImage.Name(rawValue: "sumx")))
+            setButton(tanhButton, image: NSImage(named: NSImage.Name(rawValue: "sumy")))
+            setButton(sinButton, image: NSImage(named: NSImage.Name(rawValue: "sumx2")))
+            setButton(cosButton, image: NSImage(named: NSImage.Name(rawValue: "sumxy")))
+            setButton(tanButton, image: NSImage(named: NSImage.Name(rawValue: "sumy2")))
             intButton.title = "int"
             fracButton.title = "frac"
             divButton.title = "div"
-            setButton(reciprocalButton, image: NSImage(named: "inverse"))
-            setButton(etoxButton, image: NSImage(named: "powerOf"))
-            setButton(sqrtButton, image: NSImage(named: "sqrt"))
-            setButton(cbrtButton, image: NSImage(named: "cbrt"))
-            setButton(nRootButton, image: NSImage(named: "nroot"))
-            setButton(log10Button, image: NSImage(named: "stddevx"))
-            setButton(log2Button, image: NSImage(named: "stddevy"))
-            setButton(lnButton, image: NSImage(named: "sigmax"))
-            setButton(logyButton, image: NSImage(named: "sigmay"))
+            setButton(reciprocalButton, image: NSImage(named: NSImage.Name(rawValue: "inverse")))
+            setButton(etoxButton, image: NSImage(named: NSImage.Name(rawValue: "powerOf")))
+            setButton(sqrtButton, image: NSImage(named: NSImage.Name(rawValue: "sqrt")))
+            setButton(cbrtButton, image: NSImage(named: NSImage.Name(rawValue: "cbrt")))
+            setButton(nRootButton, image: NSImage(named: NSImage.Name(rawValue: "nroot")))
+            setButton(log10Button, image: NSImage(named: NSImage.Name(rawValue: "stddevx")))
+            setButton(log2Button, image: NSImage(named: NSImage.Name(rawValue: "stddevy")))
+            setButton(lnButton, image: NSImage(named: NSImage.Name(rawValue: "sigmax")))
+            setButton(logyButton, image: NSImage(named: NSImage.Name(rawValue: "sigmay")))
             setButton(asinhButton, label: "→x")
             setButton(acoshButton, label: "→y")
             setButton(atanhButton, label: "→x,y")
-            setButton(asinButton, image: NSImage(named: "xmean"))
-            setButton(acosButton, image: NSImage(named: "ymean"))
+            setButton(asinButton, image: NSImage(named: NSImage.Name(rawValue: "xmean")))
+            setButton(acosButton, image: NSImage(named: NSImage.Name(rawValue: "ymean")))
             setButton(atanButton, label: "CD")
             reButton.title = "nPr"
             imButton.title = "nCr"

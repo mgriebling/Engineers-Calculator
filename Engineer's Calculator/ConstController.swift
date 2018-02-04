@@ -42,7 +42,7 @@ extension ConstController : NSTableViewDataSource, NSTableViewDelegate {
             text = Constant.getFormattedStringFor(value.key)
         }
         
-        if let cell = tableView.make(withIdentifier: colName, owner: self) as? NSTableCellView {
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: colName), owner: self) as? NSTableCellView {
             cell.textField!.attributedStringValue = text
             return cell
         }
