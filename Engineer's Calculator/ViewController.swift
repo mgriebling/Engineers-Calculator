@@ -7,9 +7,9 @@
 //
 
 import Cocoa
-import WebKit
+import iosMath
 
-class ViewController: NSViewController, WKUIDelegate {
+class ViewController: NSViewController {
     
     @IBOutlet weak var boxBackdrop: NSBox!
     @IBOutlet weak var aButton: SYFlatButton!
@@ -96,14 +96,15 @@ class ViewController: NSViewController, WKUIDelegate {
     
     // MARK: - Support utility methods
 
-    @IBOutlet weak var webView: WKWebView! {
-        didSet {
-            webView.uiDelegate = self
-            webView.setValue(false, forKey: "drawsBackground")
-            webView.acceptsTouchEvents = false
-            webView.allowsBackForwardNavigationGestures = false
-        }
-    }
+    @IBOutlet weak var mathView: MTMathUILabel!
+    //    @IBOutlet weak var webView: WKWebView! {
+//        didSet {
+//            webView.uiDelegate = self
+//            webView.setValue(false, forKey: "drawsBackground")
+//            webView.acceptsTouchEvents = false
+//            webView.allowsBackForwardNavigationGestures = false
+//        }
+//    }
 
     @IBAction func radixChanged(_ sender: NSSegmentedControl) {
         if keypad == .programming { setFFButton() }
@@ -117,10 +118,11 @@ class ViewController: NSViewController, WKUIDelegate {
     }
     
     func updateDisplay() {
-        let content = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Equation #1</title>" +
-        "</head><body text=\"white\"><font face=\"Helvetica Neue\" size=\"6\">\(equation)<font face=\"Helvetica Neue\" size=\"2\">" +
-        "<p align=\"right\"><font face=\"Helvetica Neue\" size=\"5\">\(result) &emsp;</p></body></html>"
-        webView.loadHTMLString(content, baseURL: nil)
+        //        let content = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Equation #1</title>" +
+        //        "</head><body text=\"white\"><font face=\"Helvetica Neue\" size=\"6\">\(equation)<font face=\"Helvetica Neue\" size=\"2\">" +
+        //        "<p align=\"right\"><font face=\"Helvetica Neue\" size=\"5\">\(result) &emsp;</p></body></html>"
+        mathView.latex = "\\sqrt{\\frac{1}{\\sqrt[10]{\\pi}}}" // equation
+        //        webView.loadHTMLString(eqation, baseURL: nil)
     }
     
     func isNumber (_ button : SYFlatButton) -> Bool {
