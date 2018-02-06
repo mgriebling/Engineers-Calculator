@@ -16,7 +16,6 @@
 		471C4F9B1F5416F20017FB8E /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F981F5416F20017FB8E /* Parser.swift */; };
 		471C4F9C1F5416F20017FB8E /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F991F5416F20017FB8E /* Scanner.swift */; };
 		471C4F9E1F54175D0017FB8E /* AST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F9D1F54175D0017FB8E /* AST.swift */; };
-		475368721F49D25600F0DFBC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475368711F49D25600F0DFBC /* WebView.swift */; };
 		4760D45B1F49ADD20001CAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */; };
 		4760D45D1F49ADD20001CAA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45C1F49ADD20001CAA2 /* ViewController.swift */; };
 		4760D45F1F49ADD20001CAA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4760D45E1F49ADD20001CAA2 /* Assets.xcassets */; };
@@ -38,7 +37,6 @@
 		471C4F981F5416F20017FB8E /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		471C4F991F5416F20017FB8E /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		471C4F9D1F54175D0017FB8E /* AST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AST.swift; sourceTree = "<group>"; };
-		475368711F49D25600F0DFBC /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		4760D4571F49ADD20001CAA2 /* Engineer's Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Engineer's Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4760D45C1F49ADD20001CAA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +66,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47419508202866170065A999 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4760D45E1F49ADD20001CAA2 /* Assets.xcassets */,
+				47DB7FB320273347008F998B /* ButtonStyle.swift */,
+				471C4F951F5416E60017FB8E /* String+Char.swift */,
+				478AE1DB1F4B0115004847B5 /* SYFlatButton.h */,
+				478AE1DC1F4B0115004847B5 /* SYFlatButton.m */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		4760D44E1F49ADD20001CAA2 = {
 			isa = PBXGroup;
 			children = (
@@ -89,27 +99,22 @@
 		4760D4591F49ADD20001CAA2 /* Engineer's Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				47DB7FB320273347008F998B /* ButtonStyle.swift */,
 				4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */,
 				4760D45C1F49ADD20001CAA2 /* ViewController.swift */,
 				471C4F911F51CBCF0017FB8E /* ConstController.swift */,
-				4760D45E1F49ADD20001CAA2 /* Assets.xcassets */,
 				4760D4601F49ADD20001CAA2 /* Main.storyboard */,
-				4760D4631F49ADD20001CAA2 /* Info.plist */,
 				478AE1DF1F4B2C2F004847B5 /* LetterPadController.swift */,
 				478AE1E11F4B3180004847B5 /* DigitController.swift */,
 				471C4F8B1F502D350017FB8E /* RadixController.swift */,
 				4760D4691F49C1440001CAA2 /* MainController.swift */,
 				471C4F8F1F5199CA0017FB8E /* Constants.swift */,
-				475368711F49D25600F0DFBC /* WebView.swift */,
 				471C4F9D1F54175D0017FB8E /* AST.swift */,
 				471C4F971F5416F20017FB8E /* MathML.swift */,
 				471C4F981F5416F20017FB8E /* Parser.swift */,
 				471C4F991F5416F20017FB8E /* Scanner.swift */,
-				471C4F951F5416E60017FB8E /* String+Char.swift */,
-				478AE1DB1F4B0115004847B5 /* SYFlatButton.h */,
-				478AE1DC1F4B0115004847B5 /* SYFlatButton.m */,
 				478AE1DA1F4B0115004847B5 /* Engineer's Calculator-Bridging-Header.h */,
+				4760D4631F49ADD20001CAA2 /* Info.plist */,
+				47419508202866170065A999 /* Support */,
 			);
 			path = "Engineer's Calculator";
 			sourceTree = "<group>";
@@ -263,7 +268,6 @@
 			files = (
 				4760D45D1F49ADD20001CAA2 /* ViewController.swift in Sources */,
 				478AE1E01F4B2C2F004847B5 /* LetterPadController.swift in Sources */,
-				475368721F49D25600F0DFBC /* WebView.swift in Sources */,
 				4760D46A1F49C1440001CAA2 /* MainController.swift in Sources */,
 				471C4F961F5416E60017FB8E /* String+Char.swift in Sources */,
 				478AE1DD1F4B0115004847B5 /* SYFlatButton.m in Sources */,

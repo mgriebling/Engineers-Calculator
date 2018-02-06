@@ -18,6 +18,7 @@ public class Node {
     func printn(_ s: String) { print(s, terminator: "") }
     public var value: Double { return 0 }
     public var mathml: String { return "" }
+    public var latex: String { return "" }
 }
 
 
@@ -71,11 +72,29 @@ public class BuiltInProc : Expr {
         let x = arg?.mathml ?? ""
         var s = ""
         switch name {
+        case "sqrt": return root(x, n: 2, latex: false)
+        case "cbrt": return root(x, n: 3, latex: false)
+        case "abs": return  fenced(x, open: "|", close: "|", latex: false)
+        case "exp": return power(variable("e"), to: x, latex: false)
+        case "log", "log10": s += "<msub>\n\(variable("log"))\(number(10, latex: false))</msub>\n"
+        case "asin", "acos", "atan", "asinh", "acosh", "atanh":
+            var f = name
+            let _ = f.remove(at: f.startIndex)
+            s = power(variable(f), to: number(-1), latex: false)
+        default: s += variable(name, latex: false)
+        }
+        return s + fenced(x, latex: false)
+    }
+    
+    override public var latex: String {
+        let x = arg?.latex ?? ""
+        var s = ""
+        switch name {
         case "sqrt": return root(x, n: 2)
         case "cbrt": return root(x, n: 3)
-        case "abs": return  fenced(x, open: "|", close: "|")
+        case "abs": return fenced(x, open: "|", close: "|")
         case "exp": return power(variable("e"), to: x)
-        case "log", "log10": s += "<msub>\n\(variable("log"))\(number(10))</msub>\n"
+        case "log", "log10": s += "\\log_\(10)"
         case "asin", "acos", "atan", "asinh", "acosh", "atanh":
             var f = name
             let _ = f.remove(at: f.startIndex)
@@ -127,6 +146,10 @@ public class Proc : Obj {      // procedure (also used for the main program)
     override public var mathml: String {
         return block?.mathml ?? ""
     }
+    
+    override public var latex: String {
+        return block?.latex ?? ""
+    }
 }
 
 //----------- Expressions ----------------------------
@@ -167,20 +190,44 @@ public class BinExpr: Expr {
         let l = left?.mathml ?? ""
         let r = right?.mathml ?? ""
         switch op {
+        case .ADD: s = symbol("+", latex: false)
+        case .SUB: s = symbol("&minus;", latex: false)
+        case .MUL: s = symbol("&InvisibleTimes;", latex: false)
+        case .DIV: return fraction(l, over: r, latex: false)
+        case .REM: s = symbol("%", latex: false)
+        case .AND: s = symbol("&amp;", latex: false)
+        case .OR:  s = symbol("|", latex: false)
+        case .POW: return power(l, to:r, latex: false)
+        case .EQU: s = symbol("=", latex: false)
+        case .LSS: s = symbol("&lt;", latex: false)
+        case .GTR: s = symbol("&gt;", latex: false)
+        case .LEQ: s = symbol("&le;", latex: false)
+        case .GEQ: s = symbol("&ge;", latex: false)
+        case .NEQ: s = symbol("&ne;", latex: false)
+        default: break
+        }
+        return l + s + r
+    }
+    
+    override public var latex: String {
+        var s = ""
+        let l = left?.latex ?? ""
+        let r = right?.latex ?? ""
+        switch op {
         case .ADD: s = symbol("+")
-        case .SUB: s = symbol("&minus;")
-        case .MUL: s = symbol("&InvisibleTimes;")
+        case .SUB: s = symbol("-")
+        case .MUL: s = symbol("\\times")
         case .DIV: return fraction(l, over: r)
-        case .REM: s = symbol("%")
-        case .AND: s = symbol("&amp;")
-        case .OR:  s = symbol("|")
+        case .REM: s = symbol("\\%")
+        case .AND: s = symbol("\\&")
+        case .OR:  s = symbol("\\textbar")
         case .POW: return power(l, to:r)
         case .EQU: s = symbol("=")
-        case .LSS: s = symbol("&lt;")
-        case .GTR: s = symbol("&gt;")
-        case .LEQ: s = symbol("&le;")
-        case .GEQ: s = symbol("&ge;")
-        case .NEQ: s = symbol("&ne;")
+        case .LSS: s = symbol("<")
+        case .GTR: s = symbol(">")
+        case .LEQ: s = symbol("\\leq")
+        case .GEQ: s = symbol("\\geq")
+        case .NEQ: s = symbol("\\neq")
         default: break
         }
         return l + s + r
@@ -210,8 +257,22 @@ public class UnaryExpr: Expr {
         let x = e?.mathml ?? ""
         var s = ""
         switch op {
+        case .SUB: s = symbol("-", latex: false)
+        case .NOT: return "<mover>\n<mrow>\n\(x)</mrow>\n" + symbol("&OverBar;", latex: false) + "</mover>\n"
+        case .SQR: return power(x, to:number(2), latex: false)
+        case .CUB: return power(x, to:number(3), latex: false)
+        case .FACT: return x + symbol("!", latex: false)
+        default: break
+        }
+        return s + x
+    }
+    
+    override public var latex: String {
+        let x = e?.latex ?? ""
+        var s = ""
+        switch op {
         case .SUB: s = symbol("-")
-        case .NOT: return "<mover>\n<mrow>\n\(x)</mrow>\n" + symbol("&OverBar;") + "</mover>\n"
+        case .NOT: return "\\overline{\(x)}"
         case .SQR: return power(x, to:number(2))
         case .CUB: return power(x, to:number(3))
         case .FACT: return x + symbol("!")
@@ -235,7 +296,11 @@ public class Ident: Expr {
         return obj.val?.value ?? 0
     }
     override public var mathml: String {
-        if obj.name == "pi" { return variable("&pi;") }
+        if obj.name == "pi" { return variable("&pi;", latex: false) }
+        return variable(obj.name, latex: false)
+    }
+    override public var latex: String {
+        if obj.name == "pi" { return variable("\\pi") }
         return variable(obj.name)
     }
 }
@@ -246,9 +311,8 @@ public class IntCon: Expr {
     init(_ x:Double) { val = x }
     override public func dump() { printn("\(val)") }
     override public var value: Double { return val }
-    override public var mathml: String {
-        return number(val)
-    }
+    override public var mathml: String { return number(val, latex: false) }
+    override public var latex: String { return number(val) }
 }
 
 public class BoolCon: Expr {
@@ -257,9 +321,8 @@ public class BoolCon: Expr {
     init(_ x: Bool) { val = x }
     override public func dump() { printn("\(val)") }
     override public var value: Double { return val ? 1 : 0 }
-    override public var mathml: String {
-        return symbol("\(val)")
-    }
+    override public var mathml: String { return symbol("\(val)", latex: false) }
+    override public var latex: String { return symbol("\(val)") }
 }
 
 //------------- Statements -----------------------------
@@ -282,9 +345,19 @@ public class Assignment: Stat {
         let l = left?.name ?? ""
         var x = "<mrow>\n"
         if !l.isEmpty {
-            x += variable(l) + symbol("=")
+            x += variable(l, latex: false) + symbol("=", latex: false)
         }
         return x + e + "</mrow>\n"
+    }
+    
+    override public var latex: String {
+        let e = right?.latex ?? ""
+        let l = left?.name ?? ""
+        var x = ""
+        if !l.isEmpty {
+            x += variable(l) + symbol("=")
+        }
+        return x + e
     }
 }
 
@@ -308,6 +381,12 @@ public class Block: Stat {
         var r = "<!DOCTYPE html>\n<html>\n<body>\n"
         for s in stats { r += "<p><math>\n" + s.mathml + "</math></p>\n\n" }
         return r + "</html>\n</body>\n"
+    }
+    
+    override public var latex: String {
+        var r = ""
+        for s in stats { r += s.latex + "\n" }
+        return r
     }
 }
 

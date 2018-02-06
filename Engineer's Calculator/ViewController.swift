@@ -82,12 +82,13 @@ class ViewController: NSViewController {
     static var numberColour : NSColor = NSColor.white    // replaced during loading
     static var functionColour : NSColor = NSColor.white  // replaced during loading
     
-    let empty = "&emsp;"
+    let empty = ""
     
     enum Keypad : Int { case normal=0, statistic=1, programming=2 }
     
     var equation = ""
     var result = ""
+    var latex = ""
     var keypad = Keypad.normal
     
     var radix = 10
@@ -97,14 +98,6 @@ class ViewController: NSViewController {
     // MARK: - Support utility methods
 
     @IBOutlet weak var mathView: MTMathUILabel!
-    //    @IBOutlet weak var webView: WKWebView! {
-//        didSet {
-//            webView.uiDelegate = self
-//            webView.setValue(false, forKey: "drawsBackground")
-//            webView.acceptsTouchEvents = false
-//            webView.allowsBackForwardNavigationGestures = false
-//        }
-//    }
 
     @IBAction func radixChanged(_ sender: NSSegmentedControl) {
         if keypad == .programming { setFFButton() }
@@ -121,7 +114,7 @@ class ViewController: NSViewController {
         //        let content = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Equation #1</title>" +
         //        "</head><body text=\"white\"><font face=\"Helvetica Neue\" size=\"6\">\(equation)<font face=\"Helvetica Neue\" size=\"2\">" +
         //        "<p align=\"right\"><font face=\"Helvetica Neue\" size=\"5\">\(result) &emsp;</p></body></html>"
-        mathView.latex = "\\sqrt{\\frac{1}{\\sqrt[10]{\\pi}}}" // equation
+        mathView.latex = latex
         //        webView.loadHTMLString(eqation, baseURL: nil)
     }
     
@@ -142,7 +135,6 @@ class ViewController: NSViewController {
     }
     
     func addToEquation(_ s: String) {
-        if equation.hasPrefix(empty) { equation = "" }  // remove placeholder
         equation += s
     }
     
@@ -154,7 +146,7 @@ class ViewController: NSViewController {
         "sinh", "cosh", "tanh", "sin", "cos", "tan", "/",           // row 4
         "asinh", "acosh", "atanh", "asin", "acos", "atan", "rand",  // row 5
         "abs", "re", "im", "int", "frac", "div", "cmplx", "rtheta", // row 6
-        "sqrt", "cbrt", "nroot", "log10", "log2", "ln", "logy",     // row 2
+        "sqrt(", "cbrt", "nroot", "log10", "log2", "ln", "logy",     // row 2
         "!"                                                         // row 1
     ]
     
@@ -175,6 +167,7 @@ class ViewController: NSViewController {
         case .programming: addToEquation(pfuncs[id])
         case .statistic: break // TBD
         }
+        parseInput()
         updateDisplay()
     }
     
@@ -183,12 +176,14 @@ class ViewController: NSViewController {
         if key == "EE" { addToEquation("e") }
         else { addToEquation(key) }
         if !isNumber(sender) { addToEquation(" ") }
+        parseInput()
         updateDisplay()
     }
 
     @IBAction func clearPressed(_ sender: Any) {
         equation = empty
         result = "0"
+        latex = ""
         updateDisplay()
     }
     
@@ -196,20 +191,30 @@ class ViewController: NSViewController {
         if equation == empty { return }
         _ = equation.remove(at: equation.index(before: equation.endIndex))
         if equation.isEmpty { equation = empty }
+        parseInput()
         updateDisplay()
     }
     
-    @IBAction func equalPressed(_ sender: SYFlatButton) {
+    private func parseInput(_ showResult: Bool = false) {
         let input = InputStream(data: equation.data(using: .utf8)!)
         let scanner = Scanner(s: input)
         let parser = Parser(scanner: scanner)
         parser.Parse()
-        if parser.errors.count == 0 {
-            print("Value = \(parser.curBlock.value)")
-            result = String(parser.curBlock.value)
+        if showResult {
+            if parser.errors.count == 0 {
+                print("Value = \(parser.curBlock.value)")
+                print("Latex = \(parser.curBlock.latex)")
+                result = String(parser.curBlock.value)
+            } else {
+                result = "\(parser.errors.count) errors"
+            }
         } else {
-            result = "\(parser.errors.count) errors"
+            latex = parser.curBlock.latex
         }
+    }
+    
+    @IBAction func equalPressed(_ sender: SYFlatButton) {
+        parseInput(true)
         updateDisplay()
     }
     
@@ -261,10 +266,10 @@ class ViewController: NSViewController {
         case "Show Constants":
             let vc = segue.destinationController as! ConstController
             vc.callback = { const in
-                var const = const
-                if const.contains("_") {
-                    const = const.replacingOccurrences(of: "_", with: "<sub>") + "</sub>"
-                }
+//                var const = const
+//                if const.contains("_") {
+//                    const = const.replacingOccurrences(of: "_", with: "<sub>") + "</sub>"
+//                }
                 self.addToEquation(const)
                 self.updateDisplay()
             }

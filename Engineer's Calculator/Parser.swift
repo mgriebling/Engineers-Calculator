@@ -131,8 +131,8 @@ public class Parser {
 		curBlock = Proc("", nil, self); curBlock.block = Block() 
 		BlockList(curBlock.block)
 		curBlock.dump()
-		let x = curBlock.mathml
-		if let f = OutputStream(toFileAtPath: "test.html", append: false), let d = x.data(using: .utf8) {
+		let x = curBlock.latex
+		if let f = OutputStream(toFileAtPath: "test.tex", append: false), let d = x.data(using: .utf8) {
 		  f.open()
 		  let bytes = [UInt8](d)
 		  f.write(bytes, maxLength: bytes.count)
