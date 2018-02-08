@@ -79,6 +79,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var degRadGradControl: NSSegmentedControl!
     @IBOutlet weak var numberModeControl: NSSegmentedControl!
     
+    @IBOutlet weak var answerField: NSTextField!
+    
     static var numberColour : NSColor = NSColor.white    // replaced during loading
     static var functionColour : NSColor = NSColor.white  // replaced during loading
     
@@ -111,11 +113,8 @@ class ViewController: NSViewController {
     }
     
     func updateDisplay() {
-        //        let content = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Equation #1</title>" +
-        //        "</head><body text=\"white\"><font face=\"Helvetica Neue\" size=\"6\">\(equation)<font face=\"Helvetica Neue\" size=\"2\">" +
-        //        "<p align=\"right\"><font face=\"Helvetica Neue\" size=\"5\">\(result) &emsp;</p></body></html>"
         mathView.latex = latex
-        //        webView.loadHTMLString(eqation, baseURL: nil)
+        answerField.stringValue = result
     }
     
     func isNumber (_ button : SYFlatButton) -> Bool {
@@ -225,6 +224,8 @@ class ViewController: NSViewController {
 
         // Do any additional setup after loading the view.
         clearPressed(iButton)  // dummy button argument
+        mathView.font = MTFontManager().termesFont(withSize: 30)
+        mathView.contentInsets = MTEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, sender: Any?) -> Bool {

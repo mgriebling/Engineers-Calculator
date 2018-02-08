@@ -692,6 +692,150 @@
                         <rect key="frame" x="0.0" y="0.0" width="715" height="437"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="behindWindow" material="light" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yFT-uG-E9K">
+                                <rect key="frame" x="0.0" y="295" width="715" height="142"/>
+                                <subviews>
+                                    <box appearanceType="aqua" boxType="custom" borderType="none" cornerRadius="4" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1gs-Qh-5ta">
+                                        <rect key="frame" x="0.0" y="2" width="715" height="30"/>
+                                        <view key="contentView" id="xsM-3x-yLn">
+                                            <rect key="frame" x="0.0" y="0.0" width="715" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <stackView distribution="equalCentering" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-De-XT0">
+                                                    <rect key="frame" x="5" y="0.0" width="705" height="30"/>
+                                                    <subviews>
+                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WFa-9n-085">
+                                                            <rect key="frame" x="-1" y="5" width="151" height="20"/>
+                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="9hI-S9-bCb">
+                                                                <font key="font" metaFont="cellTitle"/>
+                                                                <segments>
+                                                                    <segment label="Deg" imageScaling="axesIndependently" selected="YES"/>
+                                                                    <segment label="Rad" tag="1"/>
+                                                                    <segment label="Grad"/>
+                                                                </segments>
+                                                            </segmentedCell>
+                                                        </segmentedControl>
+                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fT5-i0-udR">
+                                                            <rect key="frame" x="163" y="5" width="144" height="20"/>
+                                                            <segmentedCell key="cell" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="1Wi-58-LPv">
+                                                                <font key="font" metaFont="cellTitle"/>
+                                                                <segments>
+                                                                    <segment label="Math" imageScaling="axesIndependently" selected="YES"/>
+                                                                    <segment label="Stat" width="34" tag="1"/>
+                                                                    <segment label="Prog"/>
+                                                                </segments>
+                                                            </segmentedCell>
+                                                            <connections>
+                                                                <action selector="keypadChanged:" target="XfG-lQ-9wD" id="8vO-r1-dsG"/>
+                                                            </connections>
+                                                        </segmentedControl>
+                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c0k-PS-oKf">
+                                                            <rect key="frame" x="320" y="5" width="150" height="20"/>
+                                                            <segmentedCell key="cell" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="ofO-JY-R4W">
+                                                                <font key="font" metaFont="cellTitle"/>
+                                                                <segments>
+                                                                    <segment label="Norm" imageScaling="axesIndependently" selected="YES"/>
+                                                                    <segment label="Eng"/>
+                                                                    <segment label="Sci"/>
+                                                                </segments>
+                                                            </segmentedCell>
+                                                        </segmentedControl>
+                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mOo-Ir-htU">
+                                                            <rect key="frame" x="483" y="5" width="84" height="20"/>
+                                                            <segmentedCell key="cell" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="roundRect" trackingMode="momentary" id="ETm-mr-Brj">
+                                                                <font key="font" metaFont="cellTitle"/>
+                                                                <segments>
+                                                                    <segment label="Digits: 25" imageScaling="axesIndependently" width="80"/>
+                                                                </segments>
+                                                            </segmentedCell>
+                                                            <connections>
+                                                                <segue destination="dXh-FS-0tj" kind="popover" identifier="Show Digits" popoverAnchorView="mOo-Ir-htU" popoverBehavior="t" preferredEdge="maxY" id="gQY-aC-2Sp"/>
+                                                            </connections>
+                                                        </segmentedControl>
+                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WD9-Yw-akL">
+                                                            <rect key="frame" x="580" y="5" width="126" height="20"/>
+                                                            <segmentedCell key="cell" enabled="NO" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="kng-6f-odg">
+                                                                <font key="font" metaFont="cellTitle"/>
+                                                                <segments>
+                                                                    <segment label="2" imageScaling="axesIndependently"/>
+                                                                    <segment label="8" width="25" tag="1"/>
+                                                                    <segment label="10" width="25" selected="YES"/>
+                                                                    <segment label="16"/>
+                                                                </segments>
+                                                            </segmentedCell>
+                                                            <connections>
+                                                                <action selector="radixChanged:" target="XfG-lQ-9wD" id="55m-ls-Czd"/>
+                                                            </connections>
+                                                        </segmentedControl>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="WD9-Yw-akL" firstAttribute="leading" secondItem="mOo-Ir-htU" secondAttribute="trailing" constant="15" id="Os1-TW-e2o"/>
+                                                    </constraints>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wfH-De-XT0" firstAttribute="leading" secondItem="xsM-3x-yLn" secondAttribute="leading" constant="5" id="IDO-Gr-4av"/>
+                                                <constraint firstAttribute="bottom" secondItem="wfH-De-XT0" secondAttribute="bottom" id="g9y-R6-4au"/>
+                                                <constraint firstItem="wfH-De-XT0" firstAttribute="top" secondItem="xsM-3x-yLn" secondAttribute="top" id="pWb-Xn-odu"/>
+                                                <constraint firstAttribute="trailing" secondItem="wfH-De-XT0" secondAttribute="trailing" constant="5" id="wfO-vV-6Ur"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="CKI-L8-lOe"/>
+                                        </constraints>
+                                        <color key="fillColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
+                                    </box>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-Pv-KaD" customClass="MTMathUILabel">
+                                        <rect key="frame" x="-2" y="32" width="719" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="nWF-tP-nhd"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="fnL-gN-mZ9">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="latex" value="0"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-nU-Bjx">
+                                        <rect key="frame" x="-2" y="32" width="711" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0" id="MzS-mX-Nbf">
+                                            <font key="font" size="32" name="HelveticaNeue-LightItalic"/>
+                                            <color key="textColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="1gs-Qh-5ta" firstAttribute="leading" secondItem="yFT-uG-E9K" secondAttribute="leading" id="6sv-UO-y7i"/>
+                                    <constraint firstAttribute="height" constant="142" id="BED-wG-0JU"/>
+                                    <constraint firstItem="hkp-Pv-KaD" firstAttribute="leading" secondItem="yFT-uG-E9K" secondAttribute="leading" id="HCr-sY-AMH"/>
+                                    <constraint firstItem="1gs-Qh-5ta" firstAttribute="top" secondItem="hkp-Pv-KaD" secondAttribute="bottom" id="IWA-Lb-unY"/>
+                                    <constraint firstItem="hkp-Pv-KaD" firstAttribute="top" secondItem="yFT-uG-E9K" secondAttribute="top" constant="20" symbolic="YES" id="QgU-8M-xts"/>
+                                    <constraint firstAttribute="trailing" secondItem="hkp-Pv-KaD" secondAttribute="trailing" id="iKo-vN-17R"/>
+                                    <constraint firstAttribute="trailing" secondItem="1gs-Qh-5ta" secondAttribute="trailing" id="vFg-41-KDv"/>
+                                </constraints>
+                            </visualEffectView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" tag="15" translatesAutoresizingMaskIntoConstraints="NO" id="xjk-BO-LzT" customClass="SYFlatButton">
                                 <rect key="frame" x="0.0" y="49" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -842,141 +986,6 @@
                                     <action selector="funcPressed:" target="XfG-lQ-9wD" id="dxH-o7-uZc"/>
                                 </connections>
                             </button>
-                            <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" blendingMode="behindWindow" material="light" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yFT-uG-E9K">
-                                <rect key="frame" x="0.0" y="295" width="715" height="142"/>
-                                <subviews>
-                                    <box appearanceType="aqua" boxType="custom" borderType="none" cornerRadius="4" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1gs-Qh-5ta">
-                                        <rect key="frame" x="0.0" y="2" width="715" height="30"/>
-                                        <view key="contentView" id="xsM-3x-yLn">
-                                            <rect key="frame" x="0.0" y="0.0" width="715" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <stackView distribution="equalCentering" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfH-De-XT0">
-                                                    <rect key="frame" x="5" y="0.0" width="705" height="30"/>
-                                                    <subviews>
-                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WFa-9n-085">
-                                                            <rect key="frame" x="-1" y="5" width="151" height="20"/>
-                                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="9hI-S9-bCb">
-                                                                <font key="font" metaFont="cellTitle"/>
-                                                                <segments>
-                                                                    <segment label="Deg" imageScaling="axesIndependently" selected="YES"/>
-                                                                    <segment label="Rad" tag="1"/>
-                                                                    <segment label="Grad"/>
-                                                                </segments>
-                                                            </segmentedCell>
-                                                        </segmentedControl>
-                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fT5-i0-udR">
-                                                            <rect key="frame" x="163" y="5" width="144" height="20"/>
-                                                            <segmentedCell key="cell" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="1Wi-58-LPv">
-                                                                <font key="font" metaFont="cellTitle"/>
-                                                                <segments>
-                                                                    <segment label="Math" imageScaling="axesIndependently" selected="YES"/>
-                                                                    <segment label="Stat" width="34" tag="1"/>
-                                                                    <segment label="Prog"/>
-                                                                </segments>
-                                                            </segmentedCell>
-                                                            <connections>
-                                                                <action selector="keypadChanged:" target="XfG-lQ-9wD" id="8vO-r1-dsG"/>
-                                                            </connections>
-                                                        </segmentedControl>
-                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c0k-PS-oKf">
-                                                            <rect key="frame" x="320" y="5" width="150" height="20"/>
-                                                            <segmentedCell key="cell" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="ofO-JY-R4W">
-                                                                <font key="font" metaFont="cellTitle"/>
-                                                                <segments>
-                                                                    <segment label="Norm" imageScaling="axesIndependently" selected="YES"/>
-                                                                    <segment label="Eng"/>
-                                                                    <segment label="Sci"/>
-                                                                </segments>
-                                                            </segmentedCell>
-                                                        </segmentedControl>
-                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mOo-Ir-htU">
-                                                            <rect key="frame" x="483" y="5" width="84" height="20"/>
-                                                            <segmentedCell key="cell" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="roundRect" trackingMode="momentary" id="ETm-mr-Brj">
-                                                                <font key="font" metaFont="cellTitle"/>
-                                                                <segments>
-                                                                    <segment label="Digits: 25" imageScaling="axesIndependently" width="80"/>
-                                                                </segments>
-                                                            </segmentedCell>
-                                                            <connections>
-                                                                <segue destination="dXh-FS-0tj" kind="popover" identifier="Show Digits" popoverAnchorView="mOo-Ir-htU" popoverBehavior="t" preferredEdge="maxY" id="gQY-aC-2Sp"/>
-                                                            </connections>
-                                                        </segmentedControl>
-                                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WD9-Yw-akL">
-                                                            <rect key="frame" x="580" y="5" width="126" height="20"/>
-                                                            <segmentedCell key="cell" enabled="NO" refusesFirstResponder="YES" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="kng-6f-odg">
-                                                                <font key="font" metaFont="cellTitle"/>
-                                                                <segments>
-                                                                    <segment label="2" imageScaling="axesIndependently"/>
-                                                                    <segment label="8" width="25" tag="1"/>
-                                                                    <segment label="10" width="25" selected="YES"/>
-                                                                    <segment label="16"/>
-                                                                </segments>
-                                                            </segmentedCell>
-                                                            <connections>
-                                                                <action selector="radixChanged:" target="XfG-lQ-9wD" id="55m-ls-Czd"/>
-                                                            </connections>
-                                                        </segmentedControl>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="WD9-Yw-akL" firstAttribute="leading" secondItem="mOo-Ir-htU" secondAttribute="trailing" constant="15" id="Os1-TW-e2o"/>
-                                                    </constraints>
-                                                    <visibilityPriorities>
-                                                        <integer value="1000"/>
-                                                        <integer value="1000"/>
-                                                        <integer value="1000"/>
-                                                        <integer value="1000"/>
-                                                        <integer value="1000"/>
-                                                    </visibilityPriorities>
-                                                    <customSpacing>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                    </customSpacing>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="wfH-De-XT0" firstAttribute="leading" secondItem="xsM-3x-yLn" secondAttribute="leading" constant="5" id="IDO-Gr-4av"/>
-                                                <constraint firstAttribute="bottom" secondItem="wfH-De-XT0" secondAttribute="bottom" id="g9y-R6-4au"/>
-                                                <constraint firstItem="wfH-De-XT0" firstAttribute="top" secondItem="xsM-3x-yLn" secondAttribute="top" id="pWb-Xn-odu"/>
-                                                <constraint firstAttribute="trailing" secondItem="wfH-De-XT0" secondAttribute="trailing" constant="5" id="wfO-vV-6Ur"/>
-                                            </constraints>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="CKI-L8-lOe"/>
-                                        </constraints>
-                                        <color key="fillColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
-                                    </box>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-Pv-KaD" customClass="MTMathUILabel">
-                                        <rect key="frame" x="-2" y="32" width="719" height="90"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="nWF-tP-nhd"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="fnL-gN-mZ9">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="latex" value="0"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="1gs-Qh-5ta" firstAttribute="leading" secondItem="yFT-uG-E9K" secondAttribute="leading" id="6sv-UO-y7i"/>
-                                    <constraint firstAttribute="height" constant="142" id="BED-wG-0JU"/>
-                                    <constraint firstItem="hkp-Pv-KaD" firstAttribute="leading" secondItem="yFT-uG-E9K" secondAttribute="leading" id="HCr-sY-AMH"/>
-                                    <constraint firstItem="1gs-Qh-5ta" firstAttribute="top" secondItem="hkp-Pv-KaD" secondAttribute="bottom" id="IWA-Lb-unY"/>
-                                    <constraint firstItem="hkp-Pv-KaD" firstAttribute="top" secondItem="yFT-uG-E9K" secondAttribute="top" constant="20" symbolic="YES" id="QgU-8M-xts"/>
-                                    <constraint firstAttribute="trailing" secondItem="hkp-Pv-KaD" secondAttribute="trailing" id="iKo-vN-17R"/>
-                                    <constraint firstAttribute="trailing" secondItem="1gs-Qh-5ta" secondAttribute="trailing" id="vFg-41-KDv"/>
-                                </constraints>
-                            </visualEffectView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="2ne-JR-BVB" customClass="SYFlatButton">
                                 <rect key="frame" x="0.0" y="98" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -4183,6 +4192,7 @@ CA
                         <outlet property="aButton" destination="qXe-NX-fFK" id="9Cc-6B-184"/>
                         <outlet property="acosButton" destination="d9e-sq-Ao1" id="e0h-EF-1CO"/>
                         <outlet property="acoshButton" destination="BRb-qf-10c" id="Vnm-DH-dsw"/>
+                        <outlet property="answerField" destination="a9q-nU-Bjx" id="Yrq-Hx-uos"/>
                         <outlet property="asinButton" destination="6yJ-in-R75" id="ydJ-0q-5lj"/>
                         <outlet property="asinhButton" destination="xjk-BO-LzT" id="ha6-nx-1Zb"/>
                         <outlet property="atanButton" destination="UaY-qC-7Pm" id="shv-0C-JOf"/>
@@ -4238,7 +4248,7 @@ CA
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="734.5"/>
+            <point key="canvasLocation" x="74.5" y="734.5"/>
         </scene>
         <!--Letter Pad Controller-->
         <scene sceneID="O3I-3U-rev">
