@@ -241,6 +241,7 @@ class ViewController: NSViewController {
             let vc = segue.destinationController as! LetterPadController
             vc.keyPressed = { key in
                 self.addToEquation(key)
+                self.parseInput()
                 self.updateDisplay()
             }
         case "Show Digits":
@@ -262,16 +263,14 @@ class ViewController: NSViewController {
             let vc = segue.destinationController as! RadixController
             vc.callback = { prefix in
                 self.addToEquation(prefix)
+                self.parseInput()
                 self.updateDisplay()
             }
         case "Show Constants":
             let vc = segue.destinationController as! ConstController
             vc.callback = { const in
-//                var const = const
-//                if const.contains("_") {
-//                    const = const.replacingOccurrences(of: "_", with: "<sub>") + "</sub>"
-//                }
                 self.addToEquation(const)
+                self.parseInput()
                 self.updateDisplay()
             }
         default: break

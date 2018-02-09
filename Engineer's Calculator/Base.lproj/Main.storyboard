@@ -820,7 +820,7 @@
                                         <rect key="frame" x="-2" y="32" width="711" height="35"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0" id="MzS-mX-Nbf">
-                                            <font key="font" size="32" name="HelveticaNeue-LightItalic"/>
+                                            <font key="font" size="32" name="HelveticaNeue-Light"/>
                                             <color key="textColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
