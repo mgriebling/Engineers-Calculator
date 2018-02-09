@@ -286,7 +286,8 @@ public class Ident: Expr {
     var obj: Obj
     
     static var _symbols : [String: Double] = [
-        "pi"  : Double.pi
+        "pi"  : Double.pi,
+        "e"   : exp(1)
     ]
 
     init(_ o: Obj) { obj = o }
