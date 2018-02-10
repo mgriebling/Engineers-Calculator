@@ -286,7 +286,7 @@ public class Ident: Expr {
     var obj: Obj
     
     static var _symbols : [String: Double] = [
-        "pi"  : Double.pi,
+        "π"  : Double.pi,
         "e"   : exp(1)
     ]
 
@@ -297,11 +297,18 @@ public class Ident: Expr {
         return obj.val?.value ?? 0
     }
     override public var mathml: String {
-        if obj.name == "pi" { return variable("&pi;", latex: false) }
+        if obj.name == "π" { return variable("&pi;", latex: false) }
         return variable(obj.name, latex: false)
     }
     override public var latex: String {
-        if obj.name == "pi" { return variable("\\pi") }
+        if obj.name == "π" { return variable("\\pi") }
+        if let latex = Constant.values[obj.name] {
+            if latex.latex.isEmpty {
+                return variable(obj.name)
+            } else {
+                return variable(latex.latex)
+            }
+        }
         return variable(obj.name)
     }
 }

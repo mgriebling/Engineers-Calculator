@@ -13,9 +13,9 @@
 		471C4F931F51CBCF0017FB8E /* ConstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F911F51CBCF0017FB8E /* ConstController.swift */; };
 		471C4F961F5416E60017FB8E /* String+Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F951F5416E60017FB8E /* String+Char.swift */; };
 		471C4F9A1F5416F20017FB8E /* MathML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F971F5416F20017FB8E /* MathML.swift */; };
-		471C4F9B1F5416F20017FB8E /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F981F5416F20017FB8E /* Parser.swift */; };
-		471C4F9C1F5416F20017FB8E /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F991F5416F20017FB8E /* Scanner.swift */; };
 		471C4F9E1F54175D0017FB8E /* AST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F9D1F54175D0017FB8E /* AST.swift */; };
+		47419517202F33960065A999 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47419515202F33960065A999 /* Parser.swift */; };
+		47419518202F33960065A999 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47419516202F33960065A999 /* Scanner.swift */; };
 		4760D45B1F49ADD20001CAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */; };
 		4760D45D1F49ADD20001CAA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45C1F49ADD20001CAA2 /* ViewController.swift */; };
 		4760D45F1F49ADD20001CAA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4760D45E1F49ADD20001CAA2 /* Assets.xcassets */; };
@@ -34,9 +34,13 @@
 		471C4F911F51CBCF0017FB8E /* ConstController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstController.swift; sourceTree = "<group>"; };
 		471C4F951F5416E60017FB8E /* String+Char.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Char.swift"; sourceTree = "<group>"; };
 		471C4F971F5416F20017FB8E /* MathML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathML.swift; sourceTree = "<group>"; };
-		471C4F981F5416F20017FB8E /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		471C4F991F5416F20017FB8E /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		471C4F9D1F54175D0017FB8E /* AST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AST.swift; sourceTree = "<group>"; };
+		47419509202F27EB0065A999 /* exp.atg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exp.atg; sourceTree = "<group>"; };
+		4741950B202F27FD0065A999 /* Parser.frame */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Parser.frame; sourceTree = "<group>"; };
+		4741950D202F28060065A999 /* Scanner.frame */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Scanner.frame; sourceTree = "<group>"; };
+		4741950F202F28250065A999 /* Copyright.frame */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Copyright.frame; sourceTree = "<group>"; };
+		47419515202F33960065A999 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		47419516202F33960065A999 /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		4760D4571F49ADD20001CAA2 /* Engineer's Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Engineer's Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4760D45C1F49ADD20001CAA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +73,12 @@
 		47419508202866170065A999 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				47419515202F33960065A999 /* Parser.swift */,
+				47419516202F33960065A999 /* Scanner.swift */,
+				47419509202F27EB0065A999 /* exp.atg */,
+				4741950B202F27FD0065A999 /* Parser.frame */,
+				4741950D202F28060065A999 /* Scanner.frame */,
+				4741950F202F28250065A999 /* Copyright.frame */,
 				4760D45E1F49ADD20001CAA2 /* Assets.xcassets */,
 				47DB7FB320273347008F998B /* ButtonStyle.swift */,
 				471C4F951F5416E60017FB8E /* String+Char.swift */,
@@ -110,8 +120,6 @@
 				471C4F8F1F5199CA0017FB8E /* Constants.swift */,
 				471C4F9D1F54175D0017FB8E /* AST.swift */,
 				471C4F971F5416F20017FB8E /* MathML.swift */,
-				471C4F981F5416F20017FB8E /* Parser.swift */,
-				471C4F991F5416F20017FB8E /* Scanner.swift */,
 				478AE1DA1F4B0115004847B5 /* Engineer's Calculator-Bridging-Header.h */,
 				4760D4631F49ADD20001CAA2 /* Info.plist */,
 				47419508202866170065A999 /* Support */,
@@ -271,15 +279,15 @@
 				4760D46A1F49C1440001CAA2 /* MainController.swift in Sources */,
 				471C4F961F5416E60017FB8E /* String+Char.swift in Sources */,
 				478AE1DD1F4B0115004847B5 /* SYFlatButton.m in Sources */,
-				471C4F9B1F5416F20017FB8E /* Parser.swift in Sources */,
 				471C4F9A1F5416F20017FB8E /* MathML.swift in Sources */,
+				47419517202F33960065A999 /* Parser.swift in Sources */,
 				471C4F901F5199CA0017FB8E /* Constants.swift in Sources */,
 				47DB7FB420273347008F998B /* ButtonStyle.swift in Sources */,
 				478AE1E31F4B3180004847B5 /* DigitController.swift in Sources */,
 				471C4F8D1F502D350017FB8E /* RadixController.swift in Sources */,
 				471C4F9E1F54175D0017FB8E /* AST.swift in Sources */,
 				471C4F931F51CBCF0017FB8E /* ConstController.swift in Sources */,
-				471C4F9C1F5416F20017FB8E /* Scanner.swift in Sources */,
+				47419518202F33960065A999 /* Scanner.swift in Sources */,
 				4760D45B1F49ADD20001CAA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

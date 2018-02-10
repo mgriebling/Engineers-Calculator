@@ -223,6 +223,8 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        Constant.addConstantsToIdents()   // add constants to the parser
+        
         clearPressed(iButton)  // dummy button argument
         mathView.font = MTFontManager().termesFont(withSize: 30)
         mathView.contentInsets = MTEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
