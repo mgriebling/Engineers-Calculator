@@ -65,10 +65,8 @@ class Constant {
                 let x = symbol.value.value
                 let n = evalString(x)
                 Ident._symbols[symbol.key] = n
-                print("Adding symbol " + symbol.key + " = \(n)")
             }
         }
-        print(Ident._symbols)
     }
     
     static let values : [String: Description] = [
@@ -83,7 +81,7 @@ class Constant {
         "c":    Description("299_792_458",          "Speed of light in vacuum (m s⁻¹)"),
         "E_h":  Description("4.359_744_650e-18",    "Hartree energy (J)"),
         "e_c":  Description("1.602_176_6208e-19",   "Elementary charge (C)"),
-        "ε_0":  Description("1/(μ_0*c^2)",          "Electric constant 1/μ₀c² (F m⁻¹)",         "\\varepsilon_0"),
+        "ε_0":  Description("1/(4*π*1e-7*c^2)",          "Electric constant 1/μ₀c² (F m⁻¹)",         "\\varepsilon_0"),
         "eV":   Description("1.602_176_6208e-19",   "Electron volt (J)"),
         "F":    Description("96_485.332_89",        "Faraday constant (C mol⁻¹)"),
         "g_e":  Description("-2.002_319_304_361_82", "Electron g-factor"),
@@ -95,7 +93,7 @@ class Constant {
         "ħ":    Description("1.054_571_800e-34",    "Planck constant/2π (J s)",                 "\\hbar"),
         "k":    Description("1.380_648_52e-23",     "Boltzmann constant (J K⁻¹)"),
         "l_P":  Description("1.616_229e−35",        "Planck length (m)"),
-        "ƛ_C":  Description("386.159_267_64e-15",   "Electron Compton wavelength/2π (m)",       "\\textcrlambda_C"),
+        "ƛ_C":  Description("386.159_267_64e-15",   "Electron Compton wavelength/2π (m)",        "\\bar{\\lambda}_C"),
         "λ_Cn": Description("1.319_590_904_81e-15", "Neutron Compton wavelength (m)",           "\\lambda_Cn"),
         "λ_Cp": Description("1.321_409_853_96e-15", "Proton Compton wavelength (m)",            "\\lambda_Cp"),
         "λ_C":  Description("2.426_310_2367e-12",   "Electron Compton wavelength (m)",          "\\lambda_C"),

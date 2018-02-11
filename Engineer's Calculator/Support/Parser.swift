@@ -368,8 +368,9 @@ public class Errors {
     public var count = 0                                 // number of errors detected
     private let errorStream = Darwin.stderr              // error messages go to this stream
     public var errMsgFormat = "-- line %i col %i: %@"    // 0=line, 1=column, 2=text
+    public var prevError = ""
     
-    func Write(_ s: String) { fputs(s, errorStream) }
+    func Write(_ s: String) { fputs(s, errorStream); prevError = s }
     func WriteLine(_ format: String, line: Int, col: Int, s: String) {
         let str = String(format: format, line, col, s)
         WriteLine(str)

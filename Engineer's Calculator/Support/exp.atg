@@ -27,7 +27,7 @@ TOKENS
   divide      = '\u00f7' .
   minus       = '\u2212' .
   ident       = letter { letter | digit } .
-  number      =  digit { digit } [ '.' { digit} ] [ 'e' [ '+' | '-' ] digit { digit } ] ['i'] .
+  number      =  digit { digit } [ '.' { digit} ] [ exponent [ '+' | '-' ] digit { digit } ] ['i'] .
   octalInt    = "0o" octDigit { octDigit } .
   hexInt      = "0x" hexDigit { hexDigit } .
   binInt      = "0b" binDigit { binDigit } .

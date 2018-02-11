@@ -417,14 +417,12 @@ public class Scanner {
 				else { t.kind = 6;  t.val = tval; CheckLiteral(); return t }
 			case 7:
 				recEnd = pos; recKind = 7
-				if ch >= "0" && ch <= "9" || ch == "_" { AddCh(); state = 7 }
+				if ch == "E" || ch == "e" { AddCh(); state = 8 }
+				else if ch >= "0" && ch <= "9" || ch == "_" { AddCh(); state = 7 }
 				else if ch == "i" { AddCh(); state = 12 }
-				else if ch == "e" { AddCh(); state = 8 }
 				else if ch == "." { AddCh(); state = 11 }
 				else { t.kind = 7; break loop }
 			case 8:
-                let x = ch.unicodeScalar.value
-                print("state = \(state); ch = \(ch)[\(x)]")
 				if ch >= "0" && ch <= "9" || ch == "_" { AddCh(); state = 10 }
 				else if ch == "+" || ch == "-" { AddCh(); state = 9 }
 				else { state = 0 }
@@ -438,9 +436,9 @@ public class Scanner {
 				else { t.kind = 7; break loop }
 			case 11:
 				recEnd = pos; recKind = 7
-				if ch >= "0" && ch <= "9" || ch == "_" { AddCh(); state = 11 }
+				if ch == "E" || ch == "e" { AddCh(); state = 8 }
+				else if ch >= "0" && ch <= "9" || ch == "_" { AddCh(); state = 11 }
 				else if ch == "i" { AddCh(); state = 12 }
-				else if ch == "e" { AddCh(); state = 8 }
 				else { t.kind = 7; break loop }
 			case 12:
 				 t.kind = 7; break loop 
@@ -488,9 +486,9 @@ public class Scanner {
 				else { t.kind = 12; break loop }
 			case 25:
 				recEnd = pos; recKind = 7
-				if ch >= "0" && ch <= "9" || ch == "_" { AddCh(); state = 7 }
+				if ch == "E" || ch == "e" { AddCh(); state = 8 }
+				else if ch >= "0" && ch <= "9" || ch == "_" { AddCh(); state = 7 }
 				else if ch == "i" { AddCh(); state = 12 }
-				else if ch == "e" { AddCh(); state = 8 }
 				else if ch == "." { AddCh(); state = 11 }
 				else if ch == "o" { AddCh(); state = 13 }
 				else if ch == "x" { AddCh(); state = 15 }

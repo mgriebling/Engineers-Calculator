@@ -133,9 +133,7 @@ class ViewController: NSViewController {
         setKeypadLabels(keypad)
     }
     
-    func addToEquation(_ s: String) {
-        equation += s
-    }
+    func addToEquation(_ s: String) { equation += s }
     
     
     // MARK: - Calculator function handling
@@ -161,18 +159,22 @@ class ViewController: NSViewController {
     @IBAction func funcPressed(_ sender: SYFlatButton) {
         let id = sender.tag
         if id <= 0 || id >= mfuncs.count { return } // tags are all > 0
+        var function : String
         switch keypad {
-        case .normal: addToEquation(mfuncs[id])
-        case .programming: addToEquation(pfuncs[id])
-        case .statistic: break // TBD
+        case .normal: function = mfuncs[id]
+        case .programming: function = pfuncs[id]
+        case .statistic: function = "" // TBD
         }
+        if function.hasPrefix("^") && equation.isEmpty { function = "0" + function } // prepend 0
+        addToEquation(function)
         parseInput()
         updateDisplay()
     }
     
     @IBAction func keyPressed(_ sender: SYFlatButton) {
         let key = sender.title
-        if key == "EE" { addToEquation("e") }
+        if key == "EE" { addToEquation("*10^") }
+        else if key == "." && equation.isEmpty { addToEquation("0.") }  // prepend 0 in this case
         else { addToEquation(key) }
         if !isNumber(sender) { addToEquation(" ") }
         parseInput()
@@ -201,14 +203,16 @@ class ViewController: NSViewController {
         parser.Parse()
         if showResult {
             if parser.errors.count == 0 {
-                print("Value = \(parser.curBlock.value)")
-                print("Latex = \(parser.curBlock.latex)")
+                print("Value = \(parser.curBlock.value); Input = \(equation); Latex = \(parser.curBlock.latex)")
                 result = String(parser.curBlock.value)
             } else {
-                result = "\(parser.errors.count) errors"
+                result = "Error: \(parser.errors.prevError)"
             }
         } else {
             latex = parser.curBlock.latex
+            if equation.hasSuffix(".") { latex.removeLast(2); latex += ".}\n" }  // add back decimal point in this case
+            if latex.hasSuffix("}\n") { latex.removeLast(2); latex += "\\_}\n" }
+            else { latex += "\\_" }
         }
     }
     
