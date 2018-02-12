@@ -55,6 +55,7 @@ public class BuiltInProc : Expr {
         "ln"   : log,
         "log"  : log10,
         "log10": log10,
+        "log2" : log2,
         "abs"  : abs,
         "sqrt" : sqrt,
         "cbrt" : cbrt
@@ -77,6 +78,7 @@ public class BuiltInProc : Expr {
         case "abs": return  fenced(x, open: "|", close: "|", latex: false)
         case "exp": return power(variable("e"), to: x, latex: false)
         case "log", "log10": s += "<msub>\n\(variable("log"))\(number(10, latex: false))</msub>\n"
+        case "log2": s += "<msub>\n\(variable("log"))\(number(2, latex: false))</msub>\n"
         case "asin", "acos", "atan", "asinh", "acosh", "atanh":
             var f = name
             let _ = f.remove(at: f.startIndex)
@@ -95,6 +97,7 @@ public class BuiltInProc : Expr {
         case "abs": return fenced(x, open: "|", close: "|")
         case "exp": return power(variable("e"), to: x)
         case "log", "log10": s += "\\log_\(10)"
+        case "log2": s += "\\log_\(2)"
         case "asin", "acos", "atan", "asinh", "acosh", "atanh":
             var f = name
             let _ = f.remove(at: f.startIndex)

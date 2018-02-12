@@ -92,6 +92,7 @@ class ViewController: NSViewController {
     var result = ""
     var latex = ""
     var keypad = Keypad.normal
+    var equalPressed = false
     
     var radix = 10
     var bits = 32 { didSet { digitsDisplay.setLabel("Bits: \(bits)", forSegment: 0) } }
@@ -114,6 +115,7 @@ class ViewController: NSViewController {
     
     func updateDisplay() {
         mathView.latex = latex
+        if result.hasSuffix(".0") { result.removeLast(2) }
         answerField.stringValue = result
     }
     
@@ -133,7 +135,9 @@ class ViewController: NSViewController {
         setKeypadLabels(keypad)
     }
     
-    func addToEquation(_ s: String) { equation += s }
+    func addToEquation(_ s: String) {
+        equation += s
+    }
     
     
     // MARK: - Calculator function handling
@@ -143,7 +147,7 @@ class ViewController: NSViewController {
         "sinh", "cosh", "tanh", "sin", "cos", "tan", "/",           // row 4
         "asinh", "acosh", "atanh", "asin", "acos", "atan", "rand",  // row 5
         "abs", "re", "im", "int", "frac", "div", "cmplx", "rtheta", // row 6
-        "sqrt(", "cbrt", "nroot", "log10", "log2", "ln", "logy",     // row 2
+        "sqrt", "cbrt", "nroot", "log10", "log2", "ln", "logy",     // row 2
         "!"                                                         // row 1
     ]
     
@@ -157,11 +161,15 @@ class ViewController: NSViewController {
     ]
     
     @IBAction func funcPressed(_ sender: SYFlatButton) {
+        if equalPressed {
+            clearPressed(piButton)  // clear with dummy button
+            equalPressed = false
+        }
         let id = sender.tag
         if id <= 0 || id >= mfuncs.count { return } // tags are all > 0
         var function : String
         switch keypad {
-        case .normal: function = mfuncs[id]
+        case .normal: function = mfuncs[id] + "("
         case .programming: function = pfuncs[id]
         case .statistic: function = "" // TBD
         }
@@ -172,6 +180,10 @@ class ViewController: NSViewController {
     }
     
     @IBAction func keyPressed(_ sender: SYFlatButton) {
+        if equalPressed {
+            clearPressed(piButton)  // clear with dummy button
+            equalPressed = false
+        }
         let key = sender.title
         if key == "EE" { addToEquation("*10^") }
         else if key == "." && equation.isEmpty { addToEquation("0.") }  // prepend 0 in this case
@@ -185,6 +197,7 @@ class ViewController: NSViewController {
         equation = empty
         result = "0"
         latex = ""
+        equalPressed = false
         updateDisplay()
     }
     
@@ -201,22 +214,30 @@ class ViewController: NSViewController {
         let scanner = Scanner(s: input)
         let parser = Parser(scanner: scanner)
         parser.Parse()
+        latex = parser.curBlock.latex
         if showResult {
+            print("Value = \(parser.curBlock.value); Input = \(equation); Latex = \(parser.curBlock.latex)")
             if parser.errors.count == 0 {
-                print("Value = \(parser.curBlock.value); Input = \(equation); Latex = \(parser.curBlock.latex)")
                 result = String(parser.curBlock.value)
             } else {
                 result = "Error: \(parser.errors.prevError)"
             }
         } else {
-            latex = parser.curBlock.latex
+            print("Input = \(equation); Latex = \(parser.curBlock.latex)")
+            if equation.hasPrefix("(") && !latex.contains("(") { latex = "(" + latex }
             if equation.hasSuffix(".") { latex.removeLast(2); latex += ".}\n" }  // add back decimal point in this case
+            if latex.hasSuffix(")\n\n") && !equation.hasSuffix(") ") { latex.removeLast(3) }
             if latex.hasSuffix("}\n") { latex.removeLast(2); latex += "\\_}\n" }
             else { latex += "\\_" }
         }
     }
     
     @IBAction func equalPressed(_ sender: SYFlatButton) {
+        if equation.contains("(") && !equation.contains(")") {
+            // complete bracketed term
+            equation += ")"
+        }
+        equalPressed = true
         parseInput(true)
         updateDisplay()
     }

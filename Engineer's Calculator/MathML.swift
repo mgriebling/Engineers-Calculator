@@ -23,7 +23,7 @@ extension Node {
     
     func variable(_ x: String, latex: Bool = true, size: Int = 0) -> String {
         if latex {
-            return x
+            return "\\" + x
         } else {
             let s = size == 0 ? "" : " mathsize=\"\(size)\""
             return "<mi\(s)>\(x)</mi>\n"

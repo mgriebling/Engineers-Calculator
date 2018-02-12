@@ -41,15 +41,15 @@ IGNORE eol + lf + tab
 
 PRODUCTIONS
   Program =                               (. curBlock = Proc("", nil, self); curBlock.block = Block() .)
-    BlockList<curBlock.block>             (. curBlock.dump()
-                                             let x = curBlock.latex
-                                             if let f = OutputStream(toFileAtPath: "test.tex", append: false), let d = x.data(using: .utf8) {
-                                                f.open()
-                                                let bytes = [UInt8](d)
-                                                f.write(bytes, maxLength: bytes.count)
-                                                print("\n\n\(x)")
-                                                f.close()
-                                             }
+    BlockList<curBlock.block>             (. // curBlock.dump()
+                                             // let x = curBlock.latex
+                                             // if let f = OutputStream(toFileAtPath: "test.tex", append: false), let d = x.data(using: .utf8) {
+                                             //   f.open()
+                                             //   let bytes = [UInt8](d)
+                                             //   f.write(bytes, maxLength: bytes.count)
+                                             //   print("\n\n\(x)")
+                                             //   f.close()
+                                             // }
                                            .)
     .
 
@@ -103,8 +103,10 @@ PRODUCTIONS
     =                                     (. e = nil .)
          ident                            (. name = t.val; e = Ident(curBlock.find(name)) .)
          [(UnaryOp<&op>                   (. e = UnaryExpr(op, e) .)
-          | '(' Expression <&e>           (. e = BuiltInProc(name, e) .)
-           ')' )
+          | '('                           (. e = nil .)
+            [ Expression <&e> ]
+            ')'                           (. e = BuiltInProc(name, e) .)
+           )
          ]
       |  number                           (. e = IntCon(Double(t.val.replacingOccurrences(of: "_", with: "")) ?? 0) .)
          [UnaryOp<&op>                    (. e = UnaryExpr(op, e) .)
@@ -113,8 +115,8 @@ PRODUCTIONS
       | "~" Factor<&e>                    (. e = UnaryExpr(Operator.NOT, e) .)
       | "true"                            (. e = BoolCon(true) .)
       | "false"                           (. e = BoolCon(false) .)
-      | "("
-            Expression <&e>
+      | "("                               (. e = nil; name = "" .)
+            [Expression <&e>]
         ")"
       .
 

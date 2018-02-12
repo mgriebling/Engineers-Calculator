@@ -130,15 +130,6 @@ public class Parser {
 	func Program() {
 		curBlock = Proc("", nil, self); curBlock.block = Block() 
 		BlockList(curBlock.block)
-		curBlock.dump()
-		let x = curBlock.latex
-		if let f = OutputStream(toFileAtPath: "test.tex", append: false), let d = x.data(using: .utf8) {
-		  f.open()
-		  let bytes = [UInt8](d)
-		  f.write(bytes, maxLength: bytes.count)
-		  print("\n\n\(x)")
-		  f.close()
-		}
 		
 	}
 
@@ -284,9 +275,12 @@ public class Parser {
 					e = UnaryExpr(op, e) 
 				} else {
 					Get()
-					Expression(&e)
-					e = BuiltInProc(name, e) 
+					e = nil 
+					if StartOf(5) {
+						Expression(&e)
+					}
 					Expect(17 /* ")" */)
+					e = BuiltInProc(name, e) 
 				}
 			}
 		case _number: 
@@ -312,7 +306,10 @@ public class Parser {
 			e = BoolCon(false) 
 		case 16 /* "(" */: 
 			Get()
-			Expression(&e)
+			e = nil; name = "" 
+			if StartOf(5) {
+				Expression(&e)
+			}
 			Expect(17 /* ")" */)
 		default: SynErr(41)
 		}
@@ -358,7 +355,8 @@ public class Parser {
 		[_x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_T, _T,_T,_T,_T, _T,_x,_x],
 		[_x,_x,_x,_x, _x,_T,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_T,_x, _x,_x,_T,_T, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x],
 		[_x,_x,_x,_T, _T,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _T,_T,_T,_T, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x],
-		[_x,_T,_T,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _T,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _T,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x]
+		[_x,_T,_T,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _T,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _T,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x],
+		[_x,_x,_x,_x, _x,_x,_T,_T, _x,_x,_x,_x, _x,_x,_x,_x, _T,_x,_T,_T, _T,_T,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x,_x, _x,_x,_x]
 
 	]
 } // end Parser
@@ -369,7 +367,7 @@ public class Errors {
     private let errorStream = Darwin.stderr              // error messages go to this stream
     public var errMsgFormat = "-- line %i col %i: %@"    // 0=line, 1=column, 2=text
     public var prevError = ""
-    
+
     func Write(_ s: String) { fputs(s, errorStream); prevError = s }
     func WriteLine(_ format: String, line: Int, col: Int, s: String) {
         let str = String(format: format, line, col, s)
