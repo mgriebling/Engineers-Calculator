@@ -28,6 +28,10 @@ class RadixController: NSViewController {
         insertButton.title = "Insert '\(getPrefix())'"
     }
     
+    @IBAction func insertRadix(_ sender: Any) {
+        dismissViewController(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         update()

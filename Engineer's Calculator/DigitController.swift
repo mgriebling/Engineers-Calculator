@@ -26,6 +26,12 @@ class DigitController: NSViewController {
         update()
     }
     
+    @IBAction func setMaximumDigits(_ sender: Any) {
+        let result = digits != 0 ? digits : bits
+        callback(result)
+        dismissViewController(self)
+    }
+    
     func update() {
         if digits != 0 {
             slider.integerValue = digits

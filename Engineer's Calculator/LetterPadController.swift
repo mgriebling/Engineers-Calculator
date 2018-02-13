@@ -48,6 +48,10 @@ class LetterPadController: NSViewController {
         }
     }
  
+    @IBAction func done(_ sender: Any) {
+        dismissViewController(self)
+    }
+    
     @IBAction func subscriptPressed(_ sender: SYFlatButton) {
         subscriptActive = sender.intValue == 1
     }
