@@ -228,8 +228,8 @@ public class UTF8Buffer: Buffer {
 public class Scanner {
 	let EOL : Character = "\n"
 	let eofSym = 0 /* pdt */
-	let maxT = 37
-	let noSym = 37
+	let maxT = 39
+	let noSym = 39
 
 
 	var buffer: Buffer?			// scanner buffer
@@ -260,21 +260,21 @@ public class Scanner {
 		result[48] = 25
 		result[35] = 21
 		result[59] = 26
-		result[61] = 42
+		result[61] = 44
 		result[40] = 27
 		result[41] = 28
 		result[45] = 29
 		result[126] = 30
 		result[43] = 31
 		result[124] = 32
-		result[42] = 43
+		result[42] = 45
 		result[47] = 33
 		result[37] = 34
 		result[38] = 35
-		result[33] = 44
+		result[33] = 46
 		result[94] = 36
-		result[60] = 45
-		result[62] = 46
+		result[60] = 47
+		result[62] = 48
 		result[Buffer.EOF] = -1
 
 		return result
@@ -526,27 +526,33 @@ public class Scanner {
 			case 40:
 				 t.kind = 33; break loop 
 			case 41:
-				 t.kind = 36; break loop 
+				 t.kind = 34; break loop 
 			case 42:
-				recEnd = pos; recKind = 15
-				if ch == "=" { AddCh(); state = 38 }
-				else { t.kind = 15; break loop }
+				 t.kind = 35; break loop 
 			case 43:
+				 t.kind = 38; break loop 
+			case 44:
+				recEnd = pos; recKind = 15
+				if ch == "=" { AddCh(); state = 40 }
+				else { t.kind = 15; break loop }
+			case 45:
 				recEnd = pos; recKind = 24
 				if ch == "*" { AddCh(); state = 37 }
 				else { t.kind = 24; break loop }
-			case 44:
-				recEnd = pos; recKind = 28
-				if ch == "=" { AddCh(); state = 39 }
-				else { t.kind = 28; break loop }
-			case 45:
-				recEnd = pos; recKind = 34
-				if ch == "=" { AddCh(); state = 40 }
-				else { t.kind = 34; break loop }
 			case 46:
-				recEnd = pos; recKind = 35
-				if ch == "=" { AddCh(); state = 41 }
-				else { t.kind = 35; break loop }
+				recEnd = pos; recKind = 28
+				if ch == "^" { AddCh(); state = 38 }
+				else if ch == "*" { AddCh(); state = 39 }
+				else if ch == "=" { AddCh(); state = 41 }
+				else { t.kind = 28; break loop }
+			case 47:
+				recEnd = pos; recKind = 36
+				if ch == "=" { AddCh(); state = 42 }
+				else { t.kind = 36; break loop }
+			case 48:
+				recEnd = pos; recKind = 37
+				if ch == "=" { AddCh(); state = 43 }
+				else { t.kind = 37; break loop }
 
 			default: break loop
 			}

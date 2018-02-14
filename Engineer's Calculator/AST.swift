@@ -9,7 +9,7 @@
 import Foundation
 
 public enum Type { case UNDEF, INT, BOOL }
-public enum Operator { case EQU, LSS, GTR, GEQ, LEQ, NEQ, ADD, SUB, MUL, DIV, REM, OR, AND, NOT, POW, FACT, SQR, CUB }
+public enum Operator { case EQU, LSS, GTR, GEQ, LEQ, NEQ, ADD, SUB, MUL, DIV, REM, OR, AND, NOT, POW, ROOT, LOG, FACT, SQR, CUB }
 
 /// Base node class of the AST
 public class Node {
@@ -178,6 +178,8 @@ public class BinExpr: Expr {
         case .AND: return Double(Int(l) & Int(r))
         case .OR:  return Double(Int(l) | Int(r))
         case .POW: return pow(l, r)
+        case .ROOT: return pow(r, 1.0/Double(Int(l)))
+        case .LOG: return log(r)/log(l)
         case .EQU: return l == r ? 1 : 0
         case .LSS: return l <  r ? 1 : 0
         case .GTR: return l >  r ? 1 : 0
@@ -201,6 +203,8 @@ public class BinExpr: Expr {
         case .AND: s = symbol("&amp;", latex: false)
         case .OR:  s = symbol("|", latex: false)
         case .POW: return power(l, to:r, latex: false)
+        case .ROOT: return root(r, n: Int(left?.value ?? 2), latex: false)
+        case .LOG: return "<msub>\n\(variable("log"))\(number(Double(Int(left?.value ?? 10)), latex: false))</msub>\n" + r
         case .EQU: s = symbol("=", latex: false)
         case .LSS: s = symbol("&lt;", latex: false)
         case .GTR: s = symbol("&gt;", latex: false)
@@ -225,6 +229,8 @@ public class BinExpr: Expr {
         case .AND: s = symbol("\\&")
         case .OR:  s = symbol("\\textbar")
         case .POW: return power(l, to:r)
+        case .ROOT: return root(r, n: Int(left?.value ?? 2))
+        case .LOG: return "\\log_\(Int(left?.value ?? 10))" + r
         case .EQU: s = symbol("=")
         case .LSS: s = symbol("<")
         case .GTR: s = symbol(">")

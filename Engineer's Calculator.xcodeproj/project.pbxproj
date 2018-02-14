@@ -112,10 +112,10 @@
 		4760D4591F49ADD20001CAA2 /* Engineer's Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				4760D4601F49ADD20001CAA2 /* Main.storyboard */,
 				4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */,
 				4760D45C1F49ADD20001CAA2 /* ViewController.swift */,
 				471C4F911F51CBCF0017FB8E /* ConstController.swift */,
-				4760D4601F49ADD20001CAA2 /* Main.storyboard */,
 				478AE1DF1F4B2C2F004847B5 /* LetterPadController.swift */,
 				478AE1E11F4B3180004847B5 /* DigitController.swift */,
 				471C4F8B1F502D350017FB8E /* RadixController.swift */,

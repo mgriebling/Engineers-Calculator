@@ -149,6 +149,8 @@ PRODUCTIONS
     =                                     (. op = .POW .)
       ( '^'
       | "**"                              (. op = .POW .)
+      | "!^"                              (. op = .ROOT .)
+      | "!*"                              (. op = .LOG .)
       ).
 
   RelOp <_ op: inout Operator>

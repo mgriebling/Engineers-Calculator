@@ -147,7 +147,7 @@ class ViewController: NSViewController {
         "sinh", "cosh", "tanh", "sin", "cos", "tan", "/",           // row 4
         "asinh", "acosh", "atanh", "asin", "acos", "atan", "rand",  // row 5
         "abs", "re", "im", "int", "frac", "div", "cmplx", "rtheta", // row 6
-        "sqrt", "cbrt", "nroot", "log10", "log2", "ln", "logy",     // row 2
+        "sqrt", "cbrt", "!^", "log10", "log2", "ln", "!*",          // row 2
         "!"                                                         // row 1
     ]
     
