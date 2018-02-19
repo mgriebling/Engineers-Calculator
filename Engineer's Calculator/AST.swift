@@ -16,7 +16,7 @@ public class Node {
     public init() {}
     public func dump() {}
     func printn(_ s: String) { print(s, terminator: "") }
-    public var value: Double { return 0 }
+    public var value: CDecimal { return 0 }
     public var mathml: String { return "" }
     public var latex: String { return "" }
 }
@@ -38,36 +38,39 @@ public class Var : Obj {       // variables
 
 public class BuiltInProc : Expr {
     
-    static var _builtIns : [String: (_:Double) -> Double] = [
-        "sin"  : sin,
-        "cos"  : cos,
-        "tan"  : tan,
-        "asin" : asin,
-        "acos" : acos,
-        "atan" : atan,
-        "sinh" : sinh,
-        "cosh" : cosh,
-        "tanh" : tanh,
-        "asinh": asinh,
-        "acosh": acosh,
-        "atanh": atanh,
-        "exp"  : exp,
-        "ln"   : log,
-        "log"  : log10,
-        "log10": log10,
+    static func log2 (_ x : CDecimal) -> CDecimal { return CDecimal.ln(x) / CDecimal.ln(CDecimal(Decimal.two)) }
+    static func abs (_ x : CDecimal) -> CDecimal { return CDecimal(CDecimal.abs(x)) }
+    
+    static var _builtIns : [String: (_:CDecimal) -> CDecimal] = [
+        "sin"  : CDecimal.sin,
+        "cos"  : CDecimal.cos,
+        "tan"  : CDecimal.tan,
+        "asin" : CDecimal.asin,
+        "acos" : CDecimal.acos,
+        "atan" : CDecimal.atan,
+        "sinh" : CDecimal.sinh,
+        "cosh" : CDecimal.cosh,
+        "tanh" : CDecimal.tanh,
+        "asinh": CDecimal.asinh,
+        "acosh": CDecimal.acosh,
+        "atanh": CDecimal.atanh,
+        "exp"  : CDecimal.exp,
+        "ln"   : CDecimal.ln,
+        "log"  : CDecimal.log10,
+        "log10": CDecimal.log10,
         "log2" : log2,
         "abs"  : abs,
-        "sqrt" : sqrt,
-        "cbrt" : cbrt
+        "sqrt" : CDecimal.sqrt,
+        "cbrt" : CDecimal.cbrt
     ]
     
-    var op: (_:Double) -> Double
+    var op: (_:CDecimal) -> CDecimal
     var arg: Expr?
     var name: String
     
     init(_ name: String, _ arg: Expr?) { op = BuiltInProc._builtIns[name] ?? { _ in 0 }; self.name = name; self.arg = arg; super.init() }
     override public func dump() { printn("Built-in " + name + "("); arg?.dump(); printn(")") }
-    override public var value: Double { return op(Double(arg?.value ?? 0)) }
+    override public var value: CDecimal { return op(arg?.value ?? 0) }
     
     override public var mathml: String {
         let x = arg?.mathml ?? ""
@@ -138,7 +141,7 @@ public class Proc : Obj {      // procedure (also used for the main program)
         return o
     }
     
-    override public var value: Double {
+    override public var value: CDecimal {
         return block?.value ?? 0
     }
     
@@ -166,7 +169,7 @@ public class BinExpr: Expr {
     public init(_ e1: Expr?, _ o: Operator, _ e2: Expr?) { op = o; left = e1; right = e2 }
     public override func dump() { printn("("); left?.dump(); printn(" \(op) "); right?.dump(); printn(")") }
     
-    public override var value: Double {
+    public override var value: CDecimal {
         let l = left?.value ?? 0
         let r = right?.value ?? 0
         switch op {
@@ -174,17 +177,17 @@ public class BinExpr: Expr {
         case .SUB: return l - r
         case .MUL: return l * r
         case .DIV: return l / r
-        case .REM: return Double(Int(l) % Int(r))
-        case .AND: return Double(Int(l) & Int(r))
-        case .OR:  return Double(Int(l) | Int(r))
-        case .POW: return pow(l, r)
-        case .ROOT: return pow(r, 1.0/Double(Int(l)))
-        case .LOG: return log(r)/log(l)
+        case .REM: return CDecimal(l.abs % r.abs)
+        case .AND: return CDecimal(l.abs & r.abs)
+        case .OR:  return CDecimal(l.abs | r.abs)
+        case .POW: return CDecimal.pow(l, r)
+        case .ROOT: return CDecimal.pow(r, Decimal(1.0/Double(l.abs.int)))
+        case .LOG: return CDecimal.ln(r)/CDecimal.ln(l)
         case .EQU: return l == r ? 1 : 0
-        case .LSS: return l <  r ? 1 : 0
-        case .GTR: return l >  r ? 1 : 0
-        case .LEQ: return l <= r ? 1 : 0
-        case .GEQ: return l >= r ? 1 : 0
+        case .LSS: return l.abs < r.abs ? 1 : 0
+        case .GTR: return l.abs > r.abs ? 1 : 0
+        case .LEQ: return l.abs <= r.abs ? 1 : 0
+        case .GEQ: return l.abs >= r.abs ? 1 : 0
         case .NEQ: return l != r ? 1 : 0
         default: return 0  // shouldn't occur
         }
@@ -203,8 +206,8 @@ public class BinExpr: Expr {
         case .AND: s = symbol("&amp;", latex: false)
         case .OR:  s = symbol("|", latex: false)
         case .POW: return power(l, to:r, latex: false)
-        case .ROOT: return root(r, n: Int(left?.value ?? 2), latex: false)
-        case .LOG: return "<msub>\n\(variable("log"))\(number(Double(Int(left?.value ?? 10)), latex: false))</msub>\n" + r
+        case .ROOT: return root(r, n: left?.value.abs.int ?? 2, latex: false)
+        case .LOG: return "<msub>\n\(variable("log"))\(number(CDecimal(Decimal(left?.value.abs.int ?? 10)), latex: false))</msub>\n" + r
         case .EQU: s = symbol("=", latex: false)
         case .LSS: s = symbol("&lt;", latex: false)
         case .GTR: s = symbol("&gt;", latex: false)
@@ -229,8 +232,8 @@ public class BinExpr: Expr {
         case .AND: s = symbol("\\&")
         case .OR:  s = symbol("\\textbar")
         case .POW: return power(l, to:r)
-        case .ROOT: return root(r, n: Int(left?.value ?? 2))
-        case .LOG: return "\\log_\(Int(left?.value ?? 10))" + r
+        case .ROOT: return root(r, n: left?.value.abs.int ?? 2)
+        case .LOG: return "\\log_\(left?.value.abs.int ?? 10)" + r
         case .EQU: s = symbol("=")
         case .LSS: s = symbol("<")
         case .GTR: s = symbol(">")
@@ -250,14 +253,14 @@ public class UnaryExpr: Expr {
     public init(_ x: Operator, _ y: Expr?) { op = x; e = y }
     public override func dump() { printn("\(op) "); e?.dump() }
     
-    public override var value: Double {
+    public override var value: CDecimal {
         let x = e?.value ?? 0
         switch op {
         case .SUB: return -x
-        case .NOT: return Double(~Int(x))
+        case .NOT: return CDecimal(~x.abs)
         case .SQR: return x*x
         case .CUB: return x*x*x
-        case .FACT: return tgamma(x+1)
+        case .FACT: return CDecimal(x.abs.factorial())
         default: return x
         }
     }
@@ -294,14 +297,14 @@ public class UnaryExpr: Expr {
 public class Ident: Expr {
     var obj: Obj
     
-    static var _symbols : [String: Double] = [
-        "π"  : Double.pi,
-        "e"   : exp(1)
+    static var _symbols : [String: CDecimal] = [
+        "π"  : CDecimal(Decimal.pi),
+        "e"  : CDecimal(Decimal.one.exp())
     ]
 
     init(_ o: Obj) { obj = o }
     override public func dump() { printn(obj.name) }
-    override public var value: Double {
+    override public var value: CDecimal {
         if let x = Ident._symbols[obj.name] { return x }
         return obj.val?.value ?? 0
     }
@@ -323,11 +326,11 @@ public class Ident: Expr {
 }
 
 public class IntCon: Expr {
-    var val: Double
+    var val: CDecimal
     
-    init(_ x:Double) { val = x }
+    init(_ x: CDecimal) { val = x }
     override public func dump() { printn("\(val)") }
-    override public var value: Double { return val }
+    override public var value: CDecimal { return val }
     override public var mathml: String { return number(val, latex: false) }
     override public var latex: String { return number(val) }
 }
@@ -337,7 +340,7 @@ public class BoolCon: Expr {
     
     init(_ x: Bool) { val = x }
     override public func dump() { printn("\(val)") }
-    override public var value: Double { return val ? 1 : 0 }
+    override public var value: CDecimal { return val ? 1 : 0 }
     override public var mathml: String { return symbol("\(val)", latex: false) }
     override public var latex: String { return symbol("\(val)") }
 }
@@ -355,7 +358,7 @@ public class Assignment: Stat {
     
     init(_ o:Obj?, _ e:Expr?) { left = o; left?.val = e; right = e }
     override public func dump() { super.dump(); if left != nil { printn(left!.name + " = ") }; right?.dump() }
-    override public var value: Double { return right?.value ?? 0 }
+    override public var value: CDecimal { return right?.value ?? 0 }
     
     override public var mathml: String {
         let e = right?.mathml ?? ""
@@ -390,7 +393,7 @@ public class Block: Stat {
         Stat.indent-=1; super.dump(); print(")")
     }
     
-    override public var value: Double {
+    override public var value: CDecimal {
         return stats.last?.value ?? 0
     }
     

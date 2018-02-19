@@ -46,7 +46,7 @@ class Constant {
         return left.key < right.key
     }
     
-    static func evalString(_ s: String) -> Double {
+    static func evalString(_ s: String) -> CDecimal {
         let input = InputStream(data: s.data(using: .utf8)!)
         let scanner = Scanner(s: input)
         let parser = Parser(scanner: scanner)

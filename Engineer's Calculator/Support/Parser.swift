@@ -285,7 +285,7 @@ public class Parser {
 			}
 		case _number: 
 			Get()
-			e = IntCon(Double(t.val.replacingOccurrences(of: "_", with: "")) ?? 0) 
+			e = IntCon(CDecimal(stringLiteral: t.val.replacingOccurrences(of: "_", with: ""))) 
 			if la.kind == _squared || la.kind == _cubed || la.kind == 28 /* "!" */ {
 				UnaryOp(&op)
 				e = UnaryExpr(op, e) 

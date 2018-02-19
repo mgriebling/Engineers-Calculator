@@ -30,8 +30,8 @@ extension Node {
         }
     }
     
-    func number(_ val: Double, latex: Bool = true, size: Int = 0) -> String {
-        var v = String(val)
+    func number(_ val: CDecimal, latex: Bool = true, size: Int = 0) -> String {
+        var v = String(describing: val)
         if v.hasSuffix(".0") { v = v.replacingOccurrences(of: ".0", with: "") }
         if latex {
             return v
@@ -70,7 +70,8 @@ extension Node {
             if n == 2 {
                 return "<msqrt>\n\(x)</msqrt>\n"
             } else {
-                return "<mroot><mrow>\n\(x)</mrow>\n\(number(Double(n)))</mroot>\n"
+                let n = CDecimal(Decimal(n))
+                return "<mroot><mrow>\n\(x)</mrow>\n\(number(n))</mroot>\n"
             }
         }
     }

@@ -108,7 +108,7 @@ PRODUCTIONS
             ')'                           (. e = BuiltInProc(name, e) .)
            )
          ]
-      |  number                           (. e = IntCon(Double(t.val.replacingOccurrences(of: "_", with: "")) ?? 0) .)
+      |  number                           (. e = IntCon(CDecimal(stringLiteral: t.val.replacingOccurrences(of: "_", with: ""))) .)
          [UnaryOp<&op>                    (. e = UnaryExpr(op, e) .)
          ]
       | "-" Factor<&e>                    (. e = UnaryExpr(Operator.SUB, e) .)

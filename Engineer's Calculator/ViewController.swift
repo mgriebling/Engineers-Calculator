@@ -222,7 +222,7 @@ class ViewController: NSViewController {
         if showResult {
             print("Value = \(parser.curBlock.value); Input = \(equation); Latex = \(parser.curBlock.latex)")
             if parser.errors.count == 0 {
-                result = String(parser.curBlock.value)
+                result = String(describing: parser.curBlock.value)
             } else {
                 result = "Error: \(parser.errors.prevError)"
             }

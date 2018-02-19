@@ -613,6 +613,17 @@ public struct Decimal {
         return Decimal(result)
     }
     
+    public func cbrt () -> Decimal {
+        var a = decimal
+        var b = Decimal(3).decimal
+        var c = Decimal.one.decimal
+        var result = decNumber()
+        decNumberDivide(&result, &c, &b, &Decimal.context)  // get 1/3
+        decNumberCopy(&b, &result)
+        decNumberPower(&result, &a, &b, &Decimal.context)   // self ^ (1/3)
+        return Decimal(result)
+    }
+    
     /// returns sqrt(self² + y²)
     public func hypot(y : Decimal) -> Decimal {
         var x = self.abs
@@ -688,7 +699,7 @@ public struct Decimal {
 // Trigonometric functions
 //
 
-extension Decimal {
+public extension Decimal {
     
     public static var SINCOS_DIGITS : Int { return Decimal.maximumDigits }
     
@@ -1091,7 +1102,7 @@ extension Decimal {
 // Hyperbolic trig functions
 //
 
-extension Decimal {
+public extension Decimal {
     
     /* exp(x)-1 */
     private static func Expm1(_ x: Decimal) -> Decimal {
@@ -1233,7 +1244,7 @@ extension Decimal {
 // Combination/Permutation functions
 //
 
-extension Decimal {
+public extension Decimal {
     
     /* Calculate permutations:
      * C(x, y) = P(x, y) / y! = x! / ( (x-y)! y! )
@@ -1467,14 +1478,14 @@ extension Decimal : ExpressibleByStringLiteral {
 // Convenience functions
 //
 
-extension Decimal {
+public extension Decimal {
     
     public func sqr() -> Decimal { return self * self }
     public var ² : Decimal { return sqr() }
     
 }
 
-extension Decimal {
+public extension Decimal {
     
     // MARK: - Archival Operations
     
@@ -1519,7 +1530,7 @@ precedencegroup ExponentPrecedence {
 // Mathematical operator definitions
 //
 
-extension Decimal {
+public extension Decimal {
     
     static public func % (lhs: Decimal, rhs: Decimal) -> Decimal { return lhs.remainder(rhs) }
 //    static public func * (lhs: Decimal, rhs: Decimal) -> Decimal { return lhs.mul(rhs) }
