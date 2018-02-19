@@ -14,7 +14,7 @@ extension Node {
     
     func symbol(_ x: String, latex: Bool = true, size: Int = 0) -> String {
         if latex {
-            return x
+            return "{" + x + "}"
         } else {
             let s = size == 0 ? "" : " mathsize=\"\(size)\""
             return "<mo\(s)>\(x)</mo>\n"

@@ -15,6 +15,11 @@
 		471C4F961F5416E60017FB8E /* String+Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F951F5416E60017FB8E /* String+Char.swift */; };
 		471C4F9A1F5416F20017FB8E /* MathML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F971F5416F20017FB8E /* MathML.swift */; };
 		471C4F9E1F54175D0017FB8E /* AST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C4F9D1F54175D0017FB8E /* AST.swift */; };
+		473ADF5A2039ADDD00E247A7 /* DecNumbersOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473ADF5B2039ADDD00E247A7 /* DecNumbersOSX.framework */; };
+		473ADF5D2039ADF700E247A7 /* DecNumbersOSX.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 473ADF5B2039ADDD00E247A7 /* DecNumbersOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		473ADF612039AE2D00E247A7 /* CDecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473ADF5E2039AE2D00E247A7 /* CDecimal.swift */; };
+		473ADF622039AE2D00E247A7 /* complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473ADF5F2039AE2D00E247A7 /* complex.swift */; };
+		473ADF632039AE2D00E247A7 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473ADF602039AE2D00E247A7 /* Decimal.swift */; };
 		47419517202F33960065A999 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47419515202F33960065A999 /* Parser.swift */; };
 		47419518202F33960065A999 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47419516202F33960065A999 /* Scanner.swift */; };
 		4760D45B1F49ADD20001CAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4760D45A1F49ADD20001CAA2 /* AppDelegate.swift */; };
@@ -28,6 +33,19 @@
 		47DB7FB420273347008F998B /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB7FB320273347008F998B /* ButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		473ADF5C2039ADEE00E247A7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				473ADF5D2039ADF700E247A7 /* DecNumbersOSX.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		23C0323C97AF3C58255908F8 /* Pods_Engineer_s_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Engineer_s_Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F861F35203319D700A7261A /* DummyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyWindow.swift; sourceTree = "<group>"; };
@@ -37,6 +55,10 @@
 		471C4F951F5416E60017FB8E /* String+Char.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Char.swift"; sourceTree = "<group>"; };
 		471C4F971F5416F20017FB8E /* MathML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathML.swift; sourceTree = "<group>"; };
 		471C4F9D1F54175D0017FB8E /* AST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AST.swift; sourceTree = "<group>"; };
+		473ADF5B2039ADDD00E247A7 /* DecNumbersOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DecNumbersOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		473ADF5E2039AE2D00E247A7 /* CDecimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDecimal.swift; sourceTree = "<group>"; };
+		473ADF5F2039AE2D00E247A7 /* complex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = complex.swift; sourceTree = "<group>"; };
+		473ADF602039AE2D00E247A7 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
 		47419509202F27EB0065A999 /* exp.atg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exp.atg; sourceTree = "<group>"; };
 		4741950B202F27FD0065A999 /* Parser.frame */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Parser.frame; sourceTree = "<group>"; };
 		4741950D202F28060065A999 /* Scanner.frame */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Scanner.frame; sourceTree = "<group>"; };
@@ -65,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				473ADF5A2039ADDD00E247A7 /* DecNumbersOSX.framework in Frameworks */,
 				23BEF557125201D7808C652D /* Pods_Engineer_s_Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +144,9 @@
 				471C4F8B1F502D350017FB8E /* RadixController.swift */,
 				4760D4691F49C1440001CAA2 /* MainController.swift */,
 				471C4F8F1F5199CA0017FB8E /* Constants.swift */,
+				473ADF5E2039AE2D00E247A7 /* CDecimal.swift */,
+				473ADF5F2039AE2D00E247A7 /* complex.swift */,
+				473ADF602039AE2D00E247A7 /* Decimal.swift */,
 				471C4F9D1F54175D0017FB8E /* AST.swift */,
 				471C4F971F5416F20017FB8E /* MathML.swift */,
 				478AE1DA1F4B0115004847B5 /* Engineer's Calculator-Bridging-Header.h */,
@@ -142,6 +168,7 @@
 		98482A9C8198D24F545712AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				473ADF5B2039ADDD00E247A7 /* DecNumbersOSX.framework */,
 				23C0323C97AF3C58255908F8 /* Pods_Engineer_s_Calculator.framework */,
 			);
 			name = Frameworks;
@@ -160,6 +187,7 @@
 				4760D4551F49ADD20001CAA2 /* Resources */,
 				E6A113B3982FDF3722D18991 /* [CP] Embed Pods Frameworks */,
 				DAB9546A1BB4E9325E2BF390 /* [CP] Copy Pods Resources */,
+				473ADF5C2039ADEE00E247A7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -283,12 +311,15 @@
 				4760D46A1F49C1440001CAA2 /* MainController.swift in Sources */,
 				471C4F961F5416E60017FB8E /* String+Char.swift in Sources */,
 				478AE1DD1F4B0115004847B5 /* SYFlatButton.m in Sources */,
+				473ADF632039AE2D00E247A7 /* Decimal.swift in Sources */,
 				471C4F9A1F5416F20017FB8E /* MathML.swift in Sources */,
 				47419517202F33960065A999 /* Parser.swift in Sources */,
 				471C4F901F5199CA0017FB8E /* Constants.swift in Sources */,
 				47DB7FB420273347008F998B /* ButtonStyle.swift in Sources */,
 				478AE1E31F4B3180004847B5 /* DigitController.swift in Sources */,
 				471C4F8D1F502D350017FB8E /* RadixController.swift in Sources */,
+				473ADF622039AE2D00E247A7 /* complex.swift in Sources */,
+				473ADF612039AE2D00E247A7 /* CDecimal.swift in Sources */,
 				471C4F9E1F54175D0017FB8E /* AST.swift in Sources */,
 				471C4F931F51CBCF0017FB8E /* ConstController.swift in Sources */,
 				47419518202F33960065A999 /* Scanner.swift in Sources */,

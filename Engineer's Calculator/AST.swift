@@ -96,8 +96,8 @@ public class BuiltInProc : Expr {
         case "cbrt": return root(x, n: 3)
         case "abs": return fenced(x, open: "|", close: "|")
         case "exp": return power(variable("e"), to: x)
-        case "log", "log10": s += "\\log_\(10)"
-        case "log2": s += "\\log_\(2)"
+        case "log", "log10": s += "\\log_{10}"
+        case "log2": s += "\\log_{2}"
         case "asin", "acos", "atan", "asinh", "acosh", "atanh":
             var f = name
             let _ = f.remove(at: f.startIndex)
@@ -313,9 +313,9 @@ public class Ident: Expr {
         if obj.name == "π" { return variable("\\pi") }
         if let latex = Constant.values[obj.name] {
             if latex.latex.isEmpty {
-                return variable(obj.name)
+                return symbol(obj.name)
             } else {
-                return variable(latex.latex)
+                return latex.latex
             }
         }
         return variable(obj.name)

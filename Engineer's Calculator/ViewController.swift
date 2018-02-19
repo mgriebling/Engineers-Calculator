@@ -169,10 +169,14 @@ class ViewController: NSViewController {
         if id <= 0 || id >= mfuncs.count { return } // tags are all > 0
         var function : String
         switch keypad {
-        case .normal: function = mfuncs[id] + "("
-        case .programming: function = pfuncs[id]
-        case .statistic: function = "" // TBD
+        case .normal:
+            function = mfuncs[id]
+        case .programming:
+            function = pfuncs[id]
+        case .statistic:
+            function = "" // TBD
         }
+        if function != "!" && !function.hasPrefix("^") { function += "(" }
         if function.hasPrefix("^") && equation.isEmpty { function = "0" + function } // prepend 0
         addToEquation(function)
         parseInput()
