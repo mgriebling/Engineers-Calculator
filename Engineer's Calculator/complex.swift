@@ -332,6 +332,8 @@ extension Complex : ExpressibleByStringLiteral {
             if iPresent {
                 if inumber.isEmpty { inumber = "1" }
                 else if inumber == "+" || inumber == "-" { inumber += "1" }
+            } else {
+                inumber = "0"
             }
             im = T(inumber)!
         }

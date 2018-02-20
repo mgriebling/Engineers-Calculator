@@ -257,6 +257,8 @@ class ViewController: NSViewController {
         clearPressed(iButton)  // dummy button argument
         mathView.font = MTFontManager().termesFont(withSize: 30)
         mathView.contentInsets = MTEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        
+        Decimal.digits = digits
     }
     
     override func shouldPerformSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, sender: Any?) -> Bool {
