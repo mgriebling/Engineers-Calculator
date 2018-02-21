@@ -11,7 +11,6 @@ import iosMath
 
 class ViewController: NSViewController {
     
-    @IBOutlet weak var boxBackdrop: NSBox!
     @IBOutlet weak var aButton: SYFlatButton!
     @IBOutlet weak var bButton: SYFlatButton!
     @IBOutlet weak var cButton: SYFlatButton!
@@ -22,6 +21,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var expButton: SYFlatButton!
     @IBOutlet weak var pmButton: SYFlatButton!
     @IBOutlet weak var percentButton: SYFlatButton!
+    @IBOutlet weak var enterButton: SYFlatButton!
     
     @IBOutlet weak var twoButton: SYFlatButton! {
         didSet {
@@ -74,11 +74,6 @@ class ViewController: NSViewController {
     @IBOutlet weak var etoxButton: SYFlatButton!
     @IBOutlet weak var reciprocalButton: SYFlatButton!
     
-    @IBOutlet weak var digitsDisplay: NSSegmentedControl!
-    @IBOutlet weak var radixControl: NSSegmentedControl!
-    @IBOutlet weak var degRadGradControl: NSSegmentedControl!
-    @IBOutlet weak var numberModeControl: NSSegmentedControl!
-    
     @IBOutlet weak var answerField: NSTextField!
     
     static var numberColour : NSColor = NSColor.white    // replaced during loading
@@ -95,8 +90,8 @@ class ViewController: NSViewController {
     var equalPressed = false
     
     var radix = 10
-    var bits = 32 { didSet { digitsDisplay.setLabel("Bits: \(bits)", forSegment: 0) } }
-    var digits = 25 {didSet { digitsDisplay.setLabel("Digits: \(digits)", forSegment: 0) } }
+    var bits = 32 { didSet {  } }
+    var digits = 25 {didSet {  } }
     
     // MARK: - Support utility methods
 
@@ -128,6 +123,10 @@ class ViewController: NSViewController {
             return chSet.contains(ch)
         }
         return false
+    }
+    
+    @IBAction func angleChanged(_ sender: Any) {
+        print("Angle changed...")
     }
     
     @IBAction func keypadChanged(_ sender: NSSegmentedControl) {
@@ -259,14 +258,15 @@ class ViewController: NSViewController {
         mathView.contentInsets = MTEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
         Decimal.digits = digits
+        enterButton.refusesFirstResponder = false
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, sender: Any?) -> Bool {
-        if identifier.rawValue == "Show Radix" && keypad != .programming {
-            return false
-        }
-        return true
-    }
+//    override func shouldPerformSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, sender: Any?) -> Bool {
+//        if identifier.rawValue == "Show Radix" && keypad != .programming {
+//            return false
+//        }
+//        return true
+//    }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         switch segue.identifier!.rawValue {
@@ -368,9 +368,6 @@ extension ViewController {
     }
     
     func setKeypadLabels(_ mode: Keypad) {
-        radixControl.isEnabled = false
-        degRadGradControl.isEnabled = true
-        numberModeControl.isEnabled = true
         switch mode {
         case .normal: // mode
             radix = 10
@@ -487,9 +484,6 @@ extension ViewController {
             reButton.title = "bit⇔"
             imButton.title = "byt⇔"
             bits += 0  // refresh bits display
-            radixControl.isEnabled = true
-            degRadGradControl.isEnabled = false
-            numberModeControl.isEnabled = false
         }
     }
     
