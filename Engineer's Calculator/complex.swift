@@ -9,7 +9,7 @@
 import Foundation
 
 // protocol RealType : FloatingPointType // sadly crashes as of Swift 1.1 :-(
-public protocol RealType {
+public protocol RealType : FloatingPoint {
     
     // copied from FloatingPointType
     init(_ value: UInt8)
@@ -44,6 +44,7 @@ public protocol RealType {
     var isInfinite: Bool { get }
     var isNaN: Bool { get }
     var isSignaling: Bool { get }
+    var isInteger: Bool { get }
     // copied from Hashable
     var hashValue: Int { get }
     
@@ -60,6 +61,7 @@ public protocol RealType {
     static func - (_: Self, _: Self)->Self
     static func * (_: Self, _: Self)->Self
     static func / (_: Self, _: Self)->Self
+    static func & (_: Self, _: Self)->Self
     static func += (_: inout Self, _: Self)
     static func -= (_: inout Self, _: Self)
     static func *= (_: inout Self, _: Self)
@@ -464,7 +466,8 @@ public extension Complex {
     // pow(b, x)
     static public func pow(_ lhs:Complex<T>, _ rhs:Complex<T>) -> Complex<T> {
         if lhs == T(0) { return 1 } // 0 ** 0 == 1
-        if rhs == T(-1) { return 1 / lhs } // x ** -1 == 1/x
+//        if rhs == T(-1) { return 1 / lhs } // x ** -1 == 1/x covered below
+        if rhs.im.isZero && rhs.re.isInteger { return ipow(lhs, rhs.re.rounded()) }
         let z = ln(lhs) * rhs
         return exp(z)
     }
@@ -473,6 +476,28 @@ public extension Complex {
     }
     static public func pow(_ lhs:T, _ rhs:Complex<T>) -> Complex<T> {
         return pow(Complex(lhs), rhs)
+    }
+    static public func ipow(_ x:Complex<T>, _ power: T) -> Complex<T> {
+        // This gives better accuracy than the standard power method
+        if x.im.isZero { return Complex(x.re.pow(power)) }  // standard library can handle this
+        
+        // Implement the integer power algorithm
+        var Y = Complex(1)
+        var ix = x
+        let negative = power < 0
+        var i = power.abs
+        let one = T(1)
+        while true {
+            if !(i & one).isZero { Y *= ix }
+            i /= 2
+            if i == 0 { break }
+            ix *= ix
+        }
+        if negative {
+            return 1 / Y
+        } else {
+            return Y
+        }
     }
     
     // **, **=
