@@ -39,7 +39,7 @@ public struct Decimal {
     static let maximumDigits = Int(DECNUMDIGITS)
     public static let nominalDigits = 38  // number of decimal digits in Apple's Decimal type
     static var context = decContext()
-    static var defaultAngularMeasure = AngularMeasure.radians
+    static var defaultAngularMeasure = AngularMeasure.degrees
     
     // Internal number representation
     fileprivate var decimal = decNumber()

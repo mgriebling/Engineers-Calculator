@@ -124,13 +124,20 @@ class ViewController: NSViewController {
         }
         return false
     }
+
     
-    @IBAction func angleChanged(_ sender: Any) {
-        print("Angle changed...")
+    @IBAction func angleMeasureChanged(_ sender: NSPopUpButton) {
+        let selected = sender.selectedItem!.title
+        if selected.hasSuffix("Degrees") { Decimal.defaultAngularMeasure = .degrees }
+        else if selected.hasSuffix("Radians") { Decimal.defaultAngularMeasure = .radians }
+        else { Decimal.defaultAngularMeasure = .gradians }
     }
     
-    @IBAction func keypadChanged(_ sender: NSSegmentedControl) {
-        keypad = Keypad(rawValue: sender.integerValue)!
+    @IBAction func keypadChanged(_ sender: NSPopUpButton) {
+        let selected = sender.selectedItem!.title
+        if selected.hasSuffix("Standard") { keypad = .normal }
+        else if selected.hasSuffix("Programmer") { keypad = .programming }
+        else { keypad = .statistic }
         setKeypadLabels(keypad)
     }
     
@@ -258,7 +265,6 @@ class ViewController: NSViewController {
         mathView.contentInsets = MTEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
         Decimal.digits = digits
-        enterButton.refusesFirstResponder = false
     }
     
 //    override func shouldPerformSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, sender: Any?) -> Bool {

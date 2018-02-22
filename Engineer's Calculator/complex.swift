@@ -464,6 +464,7 @@ public extension Complex {
     // pow(b, x)
     static public func pow(_ lhs:Complex<T>, _ rhs:Complex<T>) -> Complex<T> {
         if lhs == T(0) { return 1 } // 0 ** 0 == 1
+        if rhs == T(-1) { return 1 / lhs } // x ** -1 == 1/x
         let z = ln(lhs) * rhs
         return exp(z)
     }
