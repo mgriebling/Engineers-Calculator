@@ -41,6 +41,9 @@ public class BuiltInProc : Expr {
     
     static func log2 (_ x : ComplexDec) -> ComplexDec { return ComplexDec.ln(x) / ComplexDec.ln(ComplexDec(MGDecimal.two)) }
     static func abs (_ x : ComplexDec) -> ComplexDec { return ComplexDec(ComplexDec.abs(x)) }
+    static func rand (_ x : ComplexDec) -> ComplexDec {
+        return ComplexDec(MGDecimal(Foundation.arc4random()) / MGDecimal(UInt32.max))
+    }
     
     static var _builtIns : [String: (_:ComplexDec) -> ComplexDec] = [
         "sin"  : ComplexDec.sin,
@@ -62,7 +65,8 @@ public class BuiltInProc : Expr {
         "log2" : log2,
         "abs"  : abs,
         "sqrt" : ComplexDec.sqrt,
-        "cbrt" : ComplexDec.cbrt
+        "cbrt" : ComplexDec.cbrt,
+        "rand" : rand
     ]
     
     var op: (_:ComplexDec) -> ComplexDec
@@ -102,6 +106,7 @@ public class BuiltInProc : Expr {
         case "exp": return power(variable("e"), to: x)
         case "log", "log10": s += "\\log_{10}"
         case "log2": s += "\\log_{2}"
+        case "rand": s += "{\\mathrm {rand}}"
         case "asin", "acos", "atan", "asinh", "acosh", "atanh":
             var f = name
             let _ = f.remove(at: f.startIndex)
@@ -300,7 +305,8 @@ public class Ident: Expr {
     
     static var _symbols : [String: ComplexDec] = [
         "π"  : ComplexDec(MGDecimal.pi),
-        "e"  : ComplexDec(MGDecimal.one.exp())
+        "e"  : ComplexDec(MGDecimal.one.exp()),
+        "i"  : ComplexDec(0, 1)
     ]
 
     init(_ o: Obj) { obj = o }
@@ -314,7 +320,7 @@ public class Ident: Expr {
         return variable(obj.name, latex: false)
     }
     override public var latex: String {
-        if obj.name == "π" { return variable("\\pi") }
+        if obj.name == "e" { return "e"}
         if let latex = Constant.values[obj.name] {
             if latex.latex.isEmpty {
                 return symbol(obj.name)

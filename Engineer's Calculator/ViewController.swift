@@ -264,6 +264,7 @@ class ViewController: NSViewController {
         clearPressed(iButton)  // dummy button argument
         mathView.font = MTFontManager().termesFont(withSize: 30)
         mathView.contentInsets = MTEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        mathView.textColor = NSColor.white
         
         MGDecimal.digits = digits
     }
