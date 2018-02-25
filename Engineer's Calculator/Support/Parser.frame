@@ -28,6 +28,7 @@
 
 -->begin
 import Foundation
+import DecNumber
 
 -->namespace
 

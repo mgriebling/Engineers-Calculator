@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DecNumber
 
 extension Node {
     
@@ -30,7 +31,7 @@ extension Node {
         }
     }
     
-    func number(_ val: CDecimal, latex: Bool = true, size: Int = 0) -> String {
+    func number(_ val: ComplexDec, latex: Bool = true, size: Int = 0) -> String {
         var v = String(describing: val)
         if v.hasSuffix(".0") { v = v.replacingOccurrences(of: ".0", with: "") }
         if latex {
@@ -70,7 +71,7 @@ extension Node {
             if n == 2 {
                 return "<msqrt>\n\(x)</msqrt>\n"
             } else {
-                let n = CDecimal(Decimal(n))
+                let n = ComplexDec(MGDecimal(n))
                 return "<mroot><mrow>\n\(x)</mrow>\n\(number(n))</mroot>\n"
             }
         }

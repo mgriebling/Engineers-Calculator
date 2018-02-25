@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DecNumber
 
 // Constants last updated from NIST 2014 values
 
@@ -46,7 +47,7 @@ class Constant {
         return left.key < right.key
     }
     
-    static func evalString(_ s: String) -> CDecimal {
+    static func evalString(_ s: String) -> ComplexDec {
         let input = InputStream(data: s.data(using: .utf8)!)
         let scanner = Scanner(s: input)
         let parser = Parser(scanner: scanner)

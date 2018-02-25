@@ -8,6 +8,6 @@
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../DecimalNumber/DecNumbers.xcodeproj">
+      location = "group:../DecNumber/DecNumber.xcodeproj">
    </FileRef>
 </Workspace>

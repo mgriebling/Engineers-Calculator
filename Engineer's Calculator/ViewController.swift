@@ -8,6 +8,7 @@
 
 import Cocoa
 import iosMath
+import DecNumber
 
 class ViewController: NSViewController {
     
@@ -128,9 +129,9 @@ class ViewController: NSViewController {
     
     @IBAction func angleMeasureChanged(_ sender: NSPopUpButton) {
         let selected = sender.selectedItem!.title
-        if selected.hasSuffix("Degrees") { Decimal.defaultAngularMeasure = .degrees }
-        else if selected.hasSuffix("Radians") { Decimal.defaultAngularMeasure = .radians }
-        else { Decimal.defaultAngularMeasure = .gradians }
+        if selected.hasSuffix("Degrees") { MGDecimal.defaultAngularMeasure = .degrees }
+        else if selected.hasSuffix("Radians") { MGDecimal.defaultAngularMeasure = .radians }
+        else { MGDecimal.defaultAngularMeasure = .gradians }
     }
     
     @IBAction func keypadChanged(_ sender: NSPopUpButton) {
@@ -264,7 +265,7 @@ class ViewController: NSViewController {
         mathView.font = MTFontManager().termesFont(withSize: 30)
         mathView.contentInsets = MTEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
-        Decimal.digits = digits
+        MGDecimal.digits = digits
     }
     
 //    override func shouldPerformSegue(withIdentifier identifier: NSStoryboardSegue.Identifier, sender: Any?) -> Bool {
