@@ -10,7 +10,7 @@ import Cocoa
 
 class ConstController: NSViewController {
 
-    var callback: (_ selected: String) -> () = { _ in }   // callback
+    var callback: (_ selected: String) -> () = { _ in }
     
     @IBOutlet weak var constTableView: NSTableView!
     

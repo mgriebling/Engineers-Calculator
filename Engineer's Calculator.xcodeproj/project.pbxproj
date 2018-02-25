@@ -54,6 +54,7 @@
 		471C4F971F5416F20017FB8E /* MathML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathML.swift; sourceTree = "<group>"; };
 		471C4F9D1F54175D0017FB8E /* AST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AST.swift; sourceTree = "<group>"; };
 		4731A8212042E9CD00FE9F50 /* DecNumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DecNumber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4731A8252042ECB500FE9F50 /* DecNumber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DecNumber.framework; sourceTree = "<group>"; };
 		47419509202F27EB0065A999 /* exp.atg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exp.atg; sourceTree = "<group>"; };
 		4741950B202F27FD0065A999 /* Parser.frame */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Parser.frame; sourceTree = "<group>"; };
 		4741950D202F28060065A999 /* Scanner.frame */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Scanner.frame; sourceTree = "<group>"; };
@@ -112,9 +113,9 @@
 		4760D44E1F49ADD20001CAA2 = {
 			isa = PBXGroup;
 			children = (
-				4731A8212042E9CD00FE9F50 /* DecNumber.framework */,
 				4760D4591F49ADD20001CAA2 /* Engineer's Calculator */,
 				4760D4581F49ADD20001CAA2 /* Products */,
+				4731A8212042E9CD00FE9F50 /* DecNumber.framework */,
 				4BB9B4783F435368B71C187C /* Pods */,
 				98482A9C8198D24F545712AF /* Frameworks */,
 			);
@@ -161,6 +162,7 @@
 		98482A9C8198D24F545712AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4731A8252042ECB500FE9F50 /* DecNumber.framework */,
 				23C0323C97AF3C58255908F8 /* Pods_Engineer_s_Calculator.framework */,
 			);
 			name = Frameworks;

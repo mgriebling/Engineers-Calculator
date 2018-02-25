@@ -1,0 +1,4 @@
+framework module DecNumber {
+    header "DecNumber-Swift.h"
+    requires objc
+}
