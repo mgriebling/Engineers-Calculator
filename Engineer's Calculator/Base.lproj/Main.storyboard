@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment version="101202" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -665,7 +664,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="MainController" showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="MainController" customModule="Engineer_s_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" frameAutosaveName="EngineersCalculator" animationBehavior="default" id="IQv-IB-iLA" customClass="DummyWindow" customModule="Engineer_s_Calculator" customModuleProvider="target">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" frameAutosaveName="EngineersCalculator" animationBehavior="default" id="IQv-IB-iLA" customClass="DummyWindow" customModule="Engineer_s_Calculator" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -694,12 +693,12 @@
                             <visualEffectView wantsLayer="YES" appearanceType="vibrantLight" blendingMode="behindWindow" material="ultraDark" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yFT-uG-E9K">
                                 <rect key="frame" x="0.0" y="270" width="715" height="147"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-Pv-KaD" customClass="MTMathUILabel">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="715" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-Pv-KaD" customClass="MTMathUILabel">
                                         <rect key="frame" x="-2" y="39" width="719" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="nWF-tP-nhd"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="fnL-gN-mZ9">
+                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="fnL-gN-mZ9">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -711,12 +710,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-nU-Bjx">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-nU-Bjx">
                                         <rect key="frame" x="3" y="0.0" width="709" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="UrG-fv-dJO"/>
                                         </constraints>
-                                        <textFieldCell key="cell" lineBreakMode="truncatingMiddle" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="0" id="MzS-mX-Nbf">
+                                        <textFieldCell key="cell" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="0" id="MzS-mX-Nbf">
                                             <font key="font" size="32" name="HelveticaNeue-Light"/>
                                             <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -6275,26 +6274,26 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="450" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRX-aP-hP3">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wRX-aP-hP3">
                                 <rect key="frame" x="24" y="71" width="59" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Radix: 10" id="pmY-B6-q4Y">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DsC-kC-Z5R">
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DsC-kC-Z5R">
                                 <rect key="frame" x="97" y="69" width="336" height="24"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="2" maxValue="36" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="35" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mOv-a1-HdE"/>
                                 <connections>
                                     <action selector="sliderChanged:" target="539-PU-b4s" id="WFc-AF-VNB"/>
                                 </connections>
                             </slider>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Fe-E5-U7m" customClass="SYFlatButton">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Fe-E5-U7m" customClass="SYFlatButton">
                                 <rect key="frame" x="141" y="20" width="156" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="GQp-oR-5D0"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" title="Insert '#36'" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TTk-sD-YKt">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="24" name="HelveticaNeue"/>
@@ -6337,6 +6336,16 @@ DQ
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="5Fe-E5-U7m" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MxH-lF-7Tb" secondAttribute="leading" symbolic="YES" id="4Uy-XK-gNZ"/>
+                            <constraint firstItem="5Fe-E5-U7m" firstAttribute="top" secondItem="DsC-kC-Z5R" secondAttribute="bottom" constant="14" id="EDK-6V-oSD"/>
+                            <constraint firstItem="wRX-aP-hP3" firstAttribute="leading" secondItem="MxH-lF-7Tb" secondAttribute="leading" constant="26" id="FcX-iV-pe9"/>
+                            <constraint firstItem="DsC-kC-Z5R" firstAttribute="leading" secondItem="wRX-aP-hP3" secondAttribute="trailing" constant="18" id="IWT-HJ-muR"/>
+                            <constraint firstItem="wRX-aP-hP3" firstAttribute="baseline" secondItem="DsC-kC-Z5R" secondAttribute="baseline" id="aFH-if-bhc"/>
+                            <constraint firstAttribute="trailing" secondItem="DsC-kC-Z5R" secondAttribute="trailing" constant="19" id="bmC-jZ-lDm"/>
+                            <constraint firstItem="wRX-aP-hP3" firstAttribute="top" secondItem="MxH-lF-7Tb" secondAttribute="top" constant="20" symbolic="YES" id="udO-zV-Dmv"/>
+                            <constraint firstAttribute="trailing" secondItem="5Fe-E5-U7m" secondAttribute="trailing" constant="153" id="yRI-Vo-utd"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="insertButton" destination="5Fe-E5-U7m" id="eUG-eX-gJ7"/>
