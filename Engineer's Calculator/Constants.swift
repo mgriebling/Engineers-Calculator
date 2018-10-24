@@ -94,7 +94,7 @@ class Constant {
         "ħ":    Description("1.054_571_800e-34",    "Planck constant/2π (J s)",                 "\\hbar"),
         "k":    Description("1.380_648_52e-23",     "Boltzmann constant (J K⁻¹)"),
         "l_P":  Description("1.616_229e−35",        "Planck length (m)"),
-        "ƛ_C":  Description("386.159_267_64e-15",   "Electron Compton wavelength/2π (m)",       "\\bar{\\lambda}_C"),
+        "ƛ_C":  Description("386.159_267_64e-15",   "Electron Compton wavelength/2π (m)",       "\\lambdabar_C"), // "\\bar{\\lambda}_C"),
         "λ_Cn": Description("1.319_590_904_81e-15", "Neutron Compton wavelength (m)",           "\\lambda_Cn"),
         "λ_Cp": Description("1.321_409_853_96e-15", "Proton Compton wavelength (m)",            "\\lambda_Cp"),
         "λ_C":  Description("2.426_310_2367e-12",   "Electron Compton wavelength (m)",          "\\lambda_C"),

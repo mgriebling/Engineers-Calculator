@@ -625,6 +625,7 @@ NSString *const MTSymbolDegree = @"\u00B0"; // \circ
                      @"degree" : [MTMathAtom atomWithType:kMTMathAtomOrdinary value:@"\u00B0"],
                      @"neg" : [MTMathAtom atomWithType:kMTMathAtomOrdinary value:@"\u00AC"],
                      @"angstrom" : [MTMathAtom atomWithType:kMTMathAtomOrdinary value:@"\u00C5"],
+                     @"lambdabar" : [MTMathAtom atomWithType:kMTMathAtomOrdinary value:@"\u019B"],
                      @"|" : [MTMathAtom atomWithType:kMTMathAtomOrdinary value:@"\u2016"],
                      @"vert" : [MTMathAtom atomWithType:kMTMathAtomOrdinary value:@"|"],
                      @"ldots" : [MTMathAtom atomWithType:kMTMathAtomOrdinary value:@"\u2026"],
